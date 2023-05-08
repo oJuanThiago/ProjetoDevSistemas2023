@@ -61,7 +61,7 @@ namespace PizzariaDoZe
 
         private void buttonSair_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }

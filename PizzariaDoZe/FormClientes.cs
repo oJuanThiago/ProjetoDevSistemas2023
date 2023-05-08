@@ -15,6 +15,7 @@ namespace PizzariaDoZe
         public FormClientes()
         {
             InitializeComponent();
+            Funcoes.AjustaResourcesControl(this);
         }
 
         private void buttonCadastrar_Click(object sender, EventArgs e)

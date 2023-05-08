@@ -259,17 +259,17 @@
         #endregion
 
         private Panel panel1;
-        private Button buttonIngredientes;
-        private Button buttonSabores;
-        private Button buttonClientes;
-        private Button buttonFuncionarios;
-        private Button buttonInicio;
+        internal Button buttonIngredientes;
+        internal Button buttonSabores;
+        internal Button buttonClientes;
+        internal Button buttonFuncionarios;
+        internal Button buttonInicio;
         private Panel panel2;
-        private Button buttonValores;
-        private Button buttonProdutos;
-        private Button buttonSair;
+        internal Button buttonValores;
+        internal Button buttonProdutos;
+        internal Button buttonSair;
         private Label labelUsuario;
-        private PictureBox pictureBox1;
+        internal PictureBox pictureBox1;
         private Label labelFuncaoUsuario;
     }
 }

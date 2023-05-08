@@ -15,6 +15,13 @@ namespace PizzariaDoZe
         public FormPrincipal()
         {
             InitializeComponent();
+            Funcoes.AjustaResourcesControl(this);
+        }
+
+        private void buttonConfig_Click(object sender, EventArgs e)
+        {
+            FormConfig formConfig = new FormConfig();
+            formConfig.Show();
         }
     }
 }

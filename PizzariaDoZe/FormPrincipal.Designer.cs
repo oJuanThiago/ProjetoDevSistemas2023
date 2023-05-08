@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             menu1 = new Menu();
             panel1 = new Panel();
-            label1 = new Label();
+            labelInicio = new Label();
+            buttonConfig = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,24 +47,43 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(51, 51, 51);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(buttonConfig);
+            panel1.Controls.Add(labelInicio);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(684, 100);
             panel1.TabIndex = 1;
             // 
-            // label1
+            // labelInicio
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(32, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 45);
-            label1.TabIndex = 1;
-            label1.Text = "Início";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            labelInicio.AutoSize = true;
+            labelInicio.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelInicio.ForeColor = SystemColors.ControlLightLight;
+            labelInicio.Location = new Point(32, 28);
+            labelInicio.Name = "labelInicio";
+            labelInicio.Size = new Size(98, 45);
+            labelInicio.TabIndex = 1;
+            labelInicio.Text = "Início";
+            labelInicio.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // buttonConfig
+            // 
+            buttonConfig.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonConfig.BackColor = Color.Transparent;
+            buttonConfig.FlatAppearance.BorderSize = 0;
+            buttonConfig.FlatStyle = FlatStyle.Flat;
+            buttonConfig.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonConfig.ForeColor = Color.White;
+            buttonConfig.Image = (Image)resources.GetObject("buttonConfig.Image");
+            buttonConfig.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonConfig.Location = new Point(624, 28);
+            buttonConfig.Name = "buttonConfig";
+            buttonConfig.Size = new Size(48, 48);
+            buttonConfig.TabIndex = 8;
+            buttonConfig.TextImageRelation = TextImageRelation.ImageAboveText;
+            buttonConfig.UseVisualStyleBackColor = false;
+            buttonConfig.Click += buttonConfig_Click;
             // 
             // FormPrincipal
             // 
@@ -87,6 +108,7 @@
 
         private Menu menu1;
         private Panel panel1;
-        private Label label1;
+        private Label labelInicio;
+        private Button buttonConfig;
     }
 }

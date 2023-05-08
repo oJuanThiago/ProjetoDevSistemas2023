@@ -18,6 +18,8 @@ namespace PizzariaDoZe
         public FormIngredientes()
         {
             InitializeComponent();
+            Funcoes.AjustaResourcesControl(this);
+
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
 
