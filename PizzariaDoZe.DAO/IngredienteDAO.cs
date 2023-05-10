@@ -39,11 +39,12 @@ namespace PizzariaDoZe.DAO
 
             //Adiciona parâmetro (@campo e valor)
             var nome = comando.CreateParameter(); nome.ParameterName = "@nome";
-            nome.Value = ingrediente.Nome; comando.Parameters.Add(nome);
+            nome.Value = ingrediente.Nome; 
+            comando.Parameters.Add(nome);
 
             conexao.Open();
 
-            comando.CommandText = @"INSERT INTO tb_ingrediente(nome) VALUES (@nome)";
+            comando.CommandText = @"INSERT INTO ingrediente(nome) VALUES (@nome)";
 
             //Executa o script na conexão e retorna o número de linhas afetadas.
             var linhas = comando.ExecuteNonQuery();

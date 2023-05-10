@@ -43,6 +43,7 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
+            menu1.buttonInicio.Enabled = false;
             // 
             // panel1
             // 
@@ -110,5 +111,7 @@
         private Panel panel1;
         private Label labelInicio;
         private Button buttonConfig;
+
+        
     }
 }

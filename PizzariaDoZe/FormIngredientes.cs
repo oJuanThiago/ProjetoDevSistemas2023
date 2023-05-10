@@ -28,7 +28,9 @@ namespace PizzariaDoZe
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-
+            Ingrediente ingrediente = new Ingrediente();
+            var DAO = new IngredienteDAO();
+            DAO.InserirDbProvider(ingrediente);
         }
 
         private void buttonFechar_Click(object sender, EventArgs e)
