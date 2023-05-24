@@ -55,6 +55,7 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
+            menu1.buttonProdutos.Enabled = false;
             // 
             // panel1
             // 

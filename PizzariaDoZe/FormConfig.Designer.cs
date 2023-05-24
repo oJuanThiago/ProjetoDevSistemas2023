@@ -33,7 +33,13 @@
             labelIdioma = new Label();
             comboBoxIdioma = new ComboBox();
             buttonSalvar = new Button();
+            groupBoxBD = new GroupBox();
+            labelProvider = new Label();
+            comboBoxProvider = new ComboBox();
+            textBoxStringConexao = new TextBox();
+            labelStringConexao = new Label();
             groupBoxIdioma.SuspendLayout();
+            groupBoxBD.SuspendLayout();
             SuspendLayout();
             // 
             // groupBoxIdioma
@@ -42,12 +48,12 @@
             groupBoxIdioma.Controls.Add(labelIdioma);
             groupBoxIdioma.Controls.Add(comboBoxIdioma);
             groupBoxIdioma.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBoxIdioma.Location = new Point(70, 72);
+            groupBoxIdioma.Location = new Point(95, 80);
             groupBoxIdioma.Name = "groupBoxIdioma";
-            groupBoxIdioma.Size = new Size(518, 113);
+            groupBoxIdioma.Size = new Size(684, 99);
             groupBoxIdioma.TabIndex = 0;
             groupBoxIdioma.TabStop = false;
-            groupBoxIdioma.Text = "Idioma";
+            groupBoxIdioma.Text = "Linguagem/Cultura";
             // 
             // checkBoxReiniciar
             // 
@@ -85,7 +91,7 @@
             buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSalvar.ForeColor = Color.White;
             buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSalvar.Location = new Point(478, 229);
+            buttonSalvar.Location = new Point(669, 429);
             buttonSalvar.Name = "buttonSalvar";
             buttonSalvar.Size = new Size(110, 38);
             buttonSalvar.TabIndex = 71;
@@ -93,13 +99,62 @@
             buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonSalvar.UseVisualStyleBackColor = false;
             // 
+            // groupBoxBD
+            // 
+            groupBoxBD.Controls.Add(labelStringConexao);
+            groupBoxBD.Controls.Add(textBoxStringConexao);
+            groupBoxBD.Controls.Add(labelProvider);
+            groupBoxBD.Controls.Add(comboBoxProvider);
+            groupBoxBD.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxBD.Location = new Point(95, 200);
+            groupBoxBD.Name = "groupBoxBD";
+            groupBoxBD.Size = new Size(684, 188);
+            groupBoxBD.TabIndex = 2;
+            groupBoxBD.TabStop = false;
+            groupBoxBD.Text = "Banco de Dados";
+            // 
+            // labelProvider
+            // 
+            labelProvider.AutoSize = true;
+            labelProvider.Location = new Point(36, 30);
+            labelProvider.Name = "labelProvider";
+            labelProvider.Size = new Size(51, 15);
+            labelProvider.TabIndex = 1;
+            labelProvider.Text = "Provider";
+            // 
+            // comboBoxProvider
+            // 
+            comboBoxProvider.FormattingEnabled = true;
+            comboBoxProvider.Items.AddRange(new object[] { "MySql.Data.MySqlClient", "System.Data.SqlClient" });
+            comboBoxProvider.Location = new Point(36, 48);
+            comboBoxProvider.Name = "comboBoxProvider";
+            comboBoxProvider.Size = new Size(118, 23);
+            comboBoxProvider.TabIndex = 0;
+            // 
+            // textBoxStringConexao
+            // 
+            textBoxStringConexao.Location = new Point(36, 110);
+            textBoxStringConexao.Name = "textBoxStringConexao";
+            textBoxStringConexao.Size = new Size(500, 23);
+            textBoxStringConexao.TabIndex = 2;
+            // 
+            // labelStringConexao
+            // 
+            labelStringConexao.AutoSize = true;
+            labelStringConexao.Location = new Point(36, 92);
+            labelStringConexao.Name = "labelStringConexao";
+            labelStringConexao.Size = new Size(104, 15);
+            labelStringConexao.TabIndex = 3;
+            labelStringConexao.Text = "String de Conexão";
+            // 
             // FormConfig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(664, 301);
+            ClientSize = new Size(884, 599);
+            Controls.Add(groupBoxBD);
             Controls.Add(buttonSalvar);
             Controls.Add(groupBoxIdioma);
             Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -110,6 +165,8 @@
             Text = "Configurações";
             groupBoxIdioma.ResumeLayout(false);
             groupBoxIdioma.PerformLayout();
+            groupBoxBD.ResumeLayout(false);
+            groupBoxBD.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -120,5 +177,10 @@
         private ComboBox comboBoxIdioma;
         private CheckBox checkBoxReiniciar;
         private Button buttonSalvar;
+        private GroupBox groupBoxBD;
+        private Label labelStringConexao;
+        private TextBox textBoxStringConexao;
+        private Label labelProvider;
+        private ComboBox comboBoxProvider;
     }
 }

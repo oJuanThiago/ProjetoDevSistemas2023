@@ -14,7 +14,7 @@ namespace PizzariaDoZe
         {
             string? auxIdiomaRegiao = (ConfigurationManager.AppSettings.Get("IdiomaRegiao") is not null) ?
             ConfigurationManager.AppSettings.Get("IdiomaRegiao") : ""; // en-US, es, pt-BR, etc //ajusta o idioma/região
-            auxIdiomaRegiao = "en-US";
+            auxIdiomaRegiao = "pt-BR";
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(auxIdiomaRegiao!);
             Thread.CurrentThread.CurrentCulture = new CultureInfo(auxIdiomaRegiao!);
 

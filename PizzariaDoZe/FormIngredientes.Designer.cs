@@ -49,6 +49,7 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
+            menu1.buttonIngredientes.Enabled = false;
             // 
             // panel1
             // 
@@ -186,7 +187,7 @@
         private Panel panel2;
         private TextBox textBoxID;
         private Label labelID;
-        private TextBox textBoxDescricao;
+        internal TextBox textBoxDescricao;
         private Label labelDescricao;
         private Button buttonFechar;
         private Button buttonCadastrar;
