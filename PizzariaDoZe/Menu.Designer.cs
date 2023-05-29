@@ -41,6 +41,7 @@
             labelFuncaoUsuario = new Label();
             labelUsuario = new Label();
             pictureBox1 = new PictureBox();
+            buttonEnderecos = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -49,6 +50,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Firebrick;
+            panel1.Controls.Add(buttonEnderecos);
             panel1.Controls.Add(buttonSair);
             panel1.Controls.Add(buttonValores);
             panel1.Controls.Add(buttonProdutos);
@@ -89,9 +91,9 @@
             buttonValores.ForeColor = Color.White;
             buttonValores.Image = Properties.Resources.atividades;
             buttonValores.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonValores.Location = new Point(0, 460);
+            buttonValores.Location = new Point(0, 400);
             buttonValores.Name = "buttonValores";
-            buttonValores.Size = new Size(200, 48);
+            buttonValores.Size = new Size(200, 38);
             buttonValores.TabIndex = 7;
             buttonValores.Text = "Valores";
             buttonValores.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -106,9 +108,9 @@
             buttonProdutos.ForeColor = Color.White;
             buttonProdutos.Image = Properties.Resources.atividades;
             buttonProdutos.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonProdutos.Location = new Point(0, 412);
+            buttonProdutos.Location = new Point(0, 362);
             buttonProdutos.Name = "buttonProdutos";
-            buttonProdutos.Size = new Size(200, 48);
+            buttonProdutos.Size = new Size(200, 38);
             buttonProdutos.TabIndex = 6;
             buttonProdutos.Text = "Produtos";
             buttonProdutos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -123,9 +125,9 @@
             buttonIngredientes.ForeColor = Color.White;
             buttonIngredientes.Image = Properties.Resources.atividades;
             buttonIngredientes.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonIngredientes.Location = new Point(0, 316);
+            buttonIngredientes.Location = new Point(0, 286);
             buttonIngredientes.Name = "buttonIngredientes";
-            buttonIngredientes.Size = new Size(200, 48);
+            buttonIngredientes.Size = new Size(200, 38);
             buttonIngredientes.TabIndex = 4;
             buttonIngredientes.Text = "Ingredientes";
             buttonIngredientes.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -140,9 +142,9 @@
             buttonSabores.ForeColor = Color.White;
             buttonSabores.Image = Properties.Resources.atividades;
             buttonSabores.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSabores.Location = new Point(0, 364);
+            buttonSabores.Location = new Point(0, 324);
             buttonSabores.Name = "buttonSabores";
-            buttonSabores.Size = new Size(200, 48);
+            buttonSabores.Size = new Size(200, 38);
             buttonSabores.TabIndex = 5;
             buttonSabores.Text = "Sabores";
             buttonSabores.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -157,9 +159,9 @@
             buttonClientes.ForeColor = Color.White;
             buttonClientes.Image = Properties.Resources.analise;
             buttonClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonClientes.Location = new Point(0, 268);
+            buttonClientes.Location = new Point(0, 248);
             buttonClientes.Name = "buttonClientes";
-            buttonClientes.Size = new Size(200, 48);
+            buttonClientes.Size = new Size(200, 38);
             buttonClientes.TabIndex = 3;
             buttonClientes.Text = "Clientes";
             buttonClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -174,9 +176,9 @@
             buttonFuncionarios.ForeColor = Color.White;
             buttonFuncionarios.Image = Properties.Resources.equipe;
             buttonFuncionarios.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFuncionarios.Location = new Point(0, 220);
+            buttonFuncionarios.Location = new Point(0, 210);
             buttonFuncionarios.Name = "buttonFuncionarios";
-            buttonFuncionarios.Size = new Size(200, 48);
+            buttonFuncionarios.Size = new Size(200, 38);
             buttonFuncionarios.TabIndex = 2;
             buttonFuncionarios.Text = "Funcionários";
             buttonFuncionarios.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -193,7 +195,7 @@
             buttonInicio.ImageAlign = ContentAlignment.MiddleLeft;
             buttonInicio.Location = new Point(0, 172);
             buttonInicio.Name = "buttonInicio";
-            buttonInicio.Size = new Size(200, 48);
+            buttonInicio.Size = new Size(200, 38);
             buttonInicio.TabIndex = 1;
             buttonInicio.Text = "Início";
             buttonInicio.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -242,6 +244,23 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // buttonEnderecos
+            // 
+            buttonEnderecos.FlatAppearance.BorderSize = 0;
+            buttonEnderecos.FlatStyle = FlatStyle.Flat;
+            buttonEnderecos.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEnderecos.ForeColor = Color.White;
+            buttonEnderecos.Image = Properties.Resources.atividades;
+            buttonEnderecos.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEnderecos.Location = new Point(0, 438);
+            buttonEnderecos.Name = "buttonEnderecos";
+            buttonEnderecos.Size = new Size(200, 38);
+            buttonEnderecos.TabIndex = 9;
+            buttonEnderecos.Text = "Endereços";
+            buttonEnderecos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEnderecos.UseVisualStyleBackColor = true;
+            buttonEnderecos.Click += buttonEnderecos_Click;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,5 +290,6 @@
         private Label labelUsuario;
         internal PictureBox pictureBox1;
         private Label labelFuncaoUsuario;
+        internal Button buttonEnderecos;
     }
 }

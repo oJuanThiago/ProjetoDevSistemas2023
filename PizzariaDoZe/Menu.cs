@@ -63,5 +63,11 @@ namespace PizzariaDoZe
         {
             Application.Exit();
         }
+
+        private void buttonEnderecos_Click(object sender, EventArgs e)
+        {
+            Enderecos enderecos = new Enderecos();
+            enderecos.Show();
+        }
     }
 }
