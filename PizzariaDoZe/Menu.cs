@@ -25,19 +25,19 @@ namespace PizzariaDoZe
 
         private void buttonFuncionarios_Click(object sender, EventArgs e)
         {
-            FormFuncionarios funcionarios = new FormFuncionarios();
+            Funcionarios funcionarios = new Funcionarios();
             funcionarios.Show();
         }
 
         private void buttonClientes_Click(object sender, EventArgs e)
         {
-            FormClientes clientes = new FormClientes();
+            Clientes clientes = new Clientes();
             clientes.Show();
         }
 
         private void buttonIngredientes_Click(object sender, EventArgs e)
         {
-            FormIngredientes ingredientes = new FormIngredientes();
+            Ingredientes.Ingredientes ingredientes = new Ingredientes.Ingredientes();
             ingredientes.Show();
         }
 

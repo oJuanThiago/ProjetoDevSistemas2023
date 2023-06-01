@@ -32,25 +32,29 @@
             panel1 = new Panel();
             labelFuncionarios = new Label();
             panel2 = new Panel();
+            textBoxEnderecoID = new TextBox();
+            label1 = new Label();
+            maskedTextBoxTel = new MaskedTextBox();
+            maskedTextBoxCEP = new MaskedTextBox();
+            maskedTextBoxCNH = new MaskedTextBox();
+            maskedTextBoxCPF = new MaskedTextBox();
+            dateTimePickerValidade = new DateTimePicker();
+            comboBoxUF = new ComboBox();
             buttonCadastrar = new Button();
             comboBoxFuncao = new ComboBox();
             labelFuncao = new Label();
             buttonFechar = new Button();
-            textBoxCPF = new TextBox();
             labelCPF = new Label();
             textBoxMatricula = new TextBox();
             labelMatricula = new Label();
-            textBoxValidade = new TextBox();
             labelValidade = new Label();
             textBoxSenha = new TextBox();
             labelSenha = new Label();
-            textBox2 = new TextBox();
+            textBoxObs = new TextBox();
             labelObs = new Label();
-            textBox1 = new TextBox();
             labelTel = new Label();
             textBoxPais = new TextBox();
             labelPais = new Label();
-            textBoxUF = new TextBox();
             labelUF = new Label();
             textBoxBairro = new TextBox();
             labelBairro = new Label();
@@ -62,11 +66,9 @@
             labelNumero = new Label();
             textBoxLograd = new TextBox();
             label2 = new Label();
-            textBoxCEP = new TextBox();
             labelCEP = new Label();
             textBoxEmail = new TextBox();
             labelEmail = new Label();
-            textBoxCNH = new TextBox();
             labelCNH = new Label();
             textBoxID = new TextBox();
             labelID = new Label();
@@ -83,7 +85,6 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
-            menu1.buttonFuncionarios.Enabled = false;
             // 
             // panel1
             // 
@@ -109,25 +110,29 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(textBoxEnderecoID);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(maskedTextBoxTel);
+            panel2.Controls.Add(maskedTextBoxCEP);
+            panel2.Controls.Add(maskedTextBoxCNH);
+            panel2.Controls.Add(maskedTextBoxCPF);
+            panel2.Controls.Add(dateTimePickerValidade);
+            panel2.Controls.Add(comboBoxUF);
             panel2.Controls.Add(buttonCadastrar);
             panel2.Controls.Add(comboBoxFuncao);
             panel2.Controls.Add(labelFuncao);
             panel2.Controls.Add(buttonFechar);
-            panel2.Controls.Add(textBoxCPF);
             panel2.Controls.Add(labelCPF);
             panel2.Controls.Add(textBoxMatricula);
             panel2.Controls.Add(labelMatricula);
-            panel2.Controls.Add(textBoxValidade);
             panel2.Controls.Add(labelValidade);
             panel2.Controls.Add(textBoxSenha);
             panel2.Controls.Add(labelSenha);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(textBoxObs);
             panel2.Controls.Add(labelObs);
-            panel2.Controls.Add(textBox1);
             panel2.Controls.Add(labelTel);
             panel2.Controls.Add(textBoxPais);
             panel2.Controls.Add(labelPais);
-            panel2.Controls.Add(textBoxUF);
             panel2.Controls.Add(labelUF);
             panel2.Controls.Add(textBoxBairro);
             panel2.Controls.Add(labelBairro);
@@ -139,11 +144,9 @@
             panel2.Controls.Add(labelNumero);
             panel2.Controls.Add(textBoxLograd);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(textBoxCEP);
             panel2.Controls.Add(labelCEP);
             panel2.Controls.Add(textBoxEmail);
             panel2.Controls.Add(labelEmail);
-            panel2.Controls.Add(textBoxCNH);
             panel2.Controls.Add(labelCNH);
             panel2.Controls.Add(textBoxID);
             panel2.Controls.Add(labelID);
@@ -154,6 +157,76 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(684, 499);
             panel2.TabIndex = 2;
+            // 
+            // textBoxEnderecoID
+            // 
+            textBoxEnderecoID.Location = new Point(50, 272);
+            textBoxEnderecoID.Name = "textBoxEnderecoID";
+            textBoxEnderecoID.ReadOnly = true;
+            textBoxEnderecoID.Size = new Size(50, 23);
+            textBoxEnderecoID.TabIndex = 78;
+            textBoxEnderecoID.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(50, 254);
+            label1.Name = "label1";
+            label1.Size = new Size(20, 15);
+            label1.TabIndex = 77;
+            label1.Text = "ID";
+            // 
+            // maskedTextBoxTel
+            // 
+            maskedTextBoxTel.Location = new Point(462, 393);
+            maskedTextBoxTel.Mask = "(00) 000-000-000";
+            maskedTextBoxTel.Name = "maskedTextBoxTel";
+            maskedTextBoxTel.Size = new Size(133, 23);
+            maskedTextBoxTel.TabIndex = 20;
+            maskedTextBoxTel.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxCEP
+            // 
+            maskedTextBoxCEP.Location = new Point(114, 272);
+            maskedTextBoxCEP.Mask = "00000-000";
+            maskedTextBoxCEP.Name = "maskedTextBoxCEP";
+            maskedTextBoxCEP.Size = new Size(63, 23);
+            maskedTextBoxCEP.TabIndex = 9;
+            maskedTextBoxCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxCNH
+            // 
+            maskedTextBoxCNH.Location = new Point(268, 103);
+            maskedTextBoxCNH.Mask = "000000000000";
+            maskedTextBoxCNH.Name = "maskedTextBoxCNH";
+            maskedTextBoxCNH.Size = new Size(134, 23);
+            maskedTextBoxCNH.TabIndex = 5;
+            maskedTextBoxCNH.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxCPF
+            // 
+            maskedTextBoxCPF.Location = new Point(117, 106);
+            maskedTextBoxCPF.Mask = "000.000.000-00";
+            maskedTextBoxCPF.Name = "maskedTextBoxCPF";
+            maskedTextBoxCPF.Size = new Size(133, 23);
+            maskedTextBoxCPF.TabIndex = 4;
+            maskedTextBoxCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // dateTimePickerValidade
+            // 
+            dateTimePickerValidade.Location = new Point(420, 103);
+            dateTimePickerValidade.Name = "dateTimePickerValidade";
+            dateTimePickerValidade.Size = new Size(176, 23);
+            dateTimePickerValidade.TabIndex = 6;
+            // 
+            // comboBoxUF
+            // 
+            comboBoxUF.FormattingEnabled = true;
+            comboBoxUF.Location = new Point(50, 393);
+            comboBoxUF.Name = "comboBoxUF";
+            comboBoxUF.Size = new Size(50, 23);
+            comboBoxUF.TabIndex = 17;
             // 
             // buttonCadastrar
             // 
@@ -208,13 +281,6 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
-            // textBoxCPF
-            // 
-            textBoxCPF.Location = new Point(117, 103);
-            textBoxCPF.Name = "textBoxCPF";
-            textBoxCPF.Size = new Size(133, 23);
-            textBoxCPF.TabIndex = 4;
-            // 
             // labelCPF
             // 
             labelCPF.AutoSize = true;
@@ -242,18 +308,11 @@
             labelMatricula.TabIndex = 71;
             labelMatricula.Text = "Matrícula";
             // 
-            // textBoxValidade
-            // 
-            textBoxValidade.Location = new Point(268, 103);
-            textBoxValidade.Name = "textBoxValidade";
-            textBoxValidade.Size = new Size(134, 23);
-            textBoxValidade.TabIndex = 5;
-            // 
             // labelValidade
             // 
             labelValidade.AutoSize = true;
             labelValidade.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelValidade.Location = new Point(268, 85);
+            labelValidade.Location = new Point(420, 85);
             labelValidade.Name = "labelValidade";
             labelValidade.Size = new Size(53, 15);
             labelValidade.TabIndex = 69;
@@ -278,13 +337,13 @@
             labelSenha.TabIndex = 67;
             labelSenha.Text = "Senha";
             // 
-            // textBox2
+            // textBoxObs
             // 
-            textBox2.Location = new Point(50, 164);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(352, 56);
-            textBox2.TabIndex = 7;
+            textBoxObs.Location = new Point(50, 164);
+            textBoxObs.Multiline = true;
+            textBoxObs.Name = "textBoxObs";
+            textBoxObs.Size = new Size(352, 56);
+            textBoxObs.TabIndex = 7;
             // 
             // labelObs
             // 
@@ -295,13 +354,6 @@
             labelObs.Size = new Size(69, 15);
             labelObs.TabIndex = 63;
             labelObs.Text = "Observação";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(462, 393);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(134, 23);
-            textBox1.TabIndex = 20;
             // 
             // labelTel
             // 
@@ -329,13 +381,6 @@
             labelPais.Size = new Size(28, 15);
             labelPais.TabIndex = 59;
             labelPais.Text = "País";
-            // 
-            // textBoxUF
-            // 
-            textBoxUF.Location = new Point(50, 393);
-            textBoxUF.Name = "textBoxUF";
-            textBoxUF.Size = new Size(50, 23);
-            textBoxUF.TabIndex = 17;
             // 
             // labelUF
             // 
@@ -417,33 +462,26 @@
             // 
             // textBoxLograd
             // 
-            textBoxLograd.Location = new Point(159, 272);
+            textBoxLograd.Location = new Point(194, 272);
             textBoxLograd.Name = "textBoxLograd";
-            textBoxLograd.Size = new Size(367, 23);
+            textBoxLograd.Size = new Size(332, 23);
             textBoxLograd.TabIndex = 12;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(159, 254);
+            label2.Location = new Point(194, 254);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
             label2.TabIndex = 52;
             label2.Text = "Logradouro";
             // 
-            // textBoxCEP
-            // 
-            textBoxCEP.Location = new Point(50, 272);
-            textBoxCEP.Name = "textBoxCEP";
-            textBoxCEP.Size = new Size(93, 23);
-            textBoxCEP.TabIndex = 11;
-            // 
             // labelCEP
             // 
             labelCEP.AutoSize = true;
             labelCEP.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCEP.Location = new Point(50, 254);
+            labelCEP.Location = new Point(114, 254);
             labelCEP.Name = "labelCEP";
             labelCEP.Size = new Size(27, 15);
             labelCEP.TabIndex = 51;
@@ -466,18 +504,11 @@
             labelEmail.TabIndex = 49;
             labelEmail.Text = "E-mail";
             // 
-            // textBoxCNH
-            // 
-            textBoxCNH.Location = new Point(420, 103);
-            textBoxCNH.Name = "textBoxCNH";
-            textBoxCNH.Size = new Size(175, 23);
-            textBoxCNH.TabIndex = 6;
-            // 
             // labelCNH
             // 
             labelCNH.AutoSize = true;
             labelCNH.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCNH.Location = new Point(420, 85);
+            labelCNH.Location = new Point(268, 85);
             labelCNH.Name = "labelCNH";
             labelCNH.Size = new Size(32, 15);
             labelCNH.TabIndex = 46;
@@ -549,7 +580,6 @@
         private Panel panel2;
         private TextBox textBoxPais;
         private Label labelPais;
-        private TextBox textBoxUF;
         private Label labelUF;
         private TextBox textBoxBairro;
         private Label labelBairro;
@@ -561,11 +591,9 @@
         private Label labelNumero;
         private TextBox textBoxLograd;
         private Label label2;
-        private TextBox textBoxCEP;
         private Label labelCEP;
         private TextBox textBoxEmail;
         private Label labelEmail;
-        private TextBox textBoxCNH;
         private Label labelCNH;
         private TextBox textBoxID;
         private Label labelID;
@@ -573,19 +601,24 @@
         private Label labelNome;
         private TextBox textBoxSenha;
         private Label labelSenha;
-        private TextBox textBox2;
+        private TextBox textBoxObs;
         private Label labelObs;
-        private TextBox textBox1;
         private Label labelTel;
-        private TextBox textBoxValidade;
         private Label labelValidade;
         private TextBox textBoxMatricula;
         private Label labelMatricula;
-        private TextBox textBoxCPF;
         private Label labelCPF;
         private Button buttonFechar;
         private ComboBox comboBoxFuncao;
         private Label labelFuncao;
         private Button buttonCadastrar;
+        private DateTimePicker dateTimePickerValidade;
+        private ComboBox comboBoxUF;
+        private MaskedTextBox maskedTextBoxCEP;
+        private MaskedTextBox maskedTextBoxCNH;
+        private MaskedTextBox maskedTextBoxCPF;
+        private MaskedTextBox maskedTextBoxTel;
+        private TextBox textBoxEnderecoID;
+        private Label label1;
     }
 }

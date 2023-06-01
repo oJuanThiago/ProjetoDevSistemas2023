@@ -24,6 +24,7 @@ namespace PizzariaDoZe.DAO
         //pais_id
         public int IdPais { get; set; }
         public string Pais { get; set; }
+
         public Endereco(int id = 0, string cep = "", string logradouro = "", string bairro = "",
         int idCidade = 0, string cidade = "",
         int idUf = 0, string uf = "",
@@ -70,17 +71,13 @@ namespace PizzariaDoZe.DAO
                 auxSqlFiltro = "WHERE e.cep = '" + endereco.CEP + "' ";
             }
             conexao.Open();
-            comando.CommandText = @" " +
-            "SELECT e.id_endereco AS ID, e.cep AS CEP, e.logradouro AS Logradouro, e.bairro AS Bairro, " +
-            "c.id_cidade AS IDCidade, c.nome_cidade AS Cidade, " +
-            "u.id_uf AS IDUF, u.nome_uf AS UF, " +
-            "p.id_pais AS IDPais, p.nome_pais AS Pais " +
-            "FROM tb_enderecos AS e " +
-            "INNER JOIN cad_cidades AS c ON c.id_cidade = e.cidade_id " +
-            "INNER JOIN cad_uf AS u ON u.id_uf = c.uf_id " +
-            "INNER JOIN cad_paises AS p ON p.id_pais = u.pais_id " +
-            auxSqlFiltro +
-            "ORDER BY e.cep;";
+            comando.CommandText =   @" " + "SELECT e.id_endereco AS ID, e.cep AS CEP, e.logradouro AS Logradouro, e.bairro AS Bairro, c.id_cidade AS IDCidade, c.nome_cidade AS Cidade, " +
+                                    "u.id_uf AS IDUF, u.nome_uf AS UF, p.id_pais AS IDPais, p.nome_pais AS Pais " +
+                                    "FROM tb_enderecos AS e " +
+                                    "INNER JOIN cad_cidades AS c ON c.id_cidade = e.cidade_id " +
+                                    "INNER JOIN cad_uf AS u ON u.id_uf = c.uf_id " +
+                                    "INNER JOIN cad_paises AS p ON p.id_pais = u.pais_id " +
+                                    auxSqlFiltro + "ORDER BY e.cep;";
             //Executa o script na conexão e retorna as linhas afetadas.
             var sdr = comando.ExecuteReader();
             DataTable linhas = new();

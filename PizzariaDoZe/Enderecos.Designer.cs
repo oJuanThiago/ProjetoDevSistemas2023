@@ -54,6 +54,7 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 600);
             menu1.TabIndex = 1;
+            menu1.buttonEnderecos.Enabled = false;
             // 
             // panel1
             // 
@@ -93,6 +94,7 @@
             Controls.Add(menu1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Enderecos";
+            StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzariaDoZe.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -8,35 +9,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PizzariaDoZe.DAO;
 
 namespace PizzariaDoZe
 {
-    public partial class Enderecos : Form
+    public partial class Clientes : Form
     {
-        private readonly EnderecoDAO enderecoDAO;
-        public Enderecos()
+        private readonly ClienteDAO clienteDAO;
+        public Clientes()
         {
             InitializeComponent();
-            // pega os dados do banco de dados
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            // cria a instancia da classe da model
-            enderecoDAO = new EnderecoDAO(provider, strConnection);
+            clienteDAO = new ClienteDAO(provider, strConnection);
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
 
         private void AtualizarTela()
         {
-
             //Instância e Preenche o objeto com os dados da view
-            var endereco = new Endereco();
+            var cliente = new Cliente();
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = enderecoDAO.Buscar(endereco);
+                DataTable linhas = clienteDAO.Buscar(cliente);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -47,6 +43,22 @@ namespace PizzariaDoZe
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormClientes clientes = new FormClientes();
+            clientes.Show();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -76,5 +88,6 @@ namespace PizzariaDoZe
                 e.Value = d.ToString("N2");
             }
         }
+
     }
 }

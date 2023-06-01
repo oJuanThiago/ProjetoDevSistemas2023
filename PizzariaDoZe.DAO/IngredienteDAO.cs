@@ -41,7 +41,7 @@ namespace PizzariaDoZe.DAO
             conexao.Open();
             ConverterObjetoParaSql(ingrediente, comando);
 
-            comando.CommandText = @"INSERT INTO ingrediente(nome) VALUES (@nome)";
+            comando.CommandText = @"INSERT INTO cad_ingredientes(descricao_ingrediente) VALUES (@nome)";
 
             //Executa o script na conexão e retorna o número de linhas afetadas.
             var linhas = comando.ExecuteNonQuery();
@@ -59,18 +59,18 @@ namespace PizzariaDoZe.DAO
             string auxSqlFiltro = "";
             if (ingrediente.ID > 0)
             {
-                auxSqlFiltro = "WHERE i.id = " + ingrediente.ID + " ";
+                auxSqlFiltro = "WHERE i.id_ingrediente = " + ingrediente.ID + " ";
             }
             else if (ingrediente.Nome.Length > 0)
             {
-                auxSqlFiltro = "WHERE i.nome like '%" + ingrediente.Nome + "%' ";
+                auxSqlFiltro = "WHERE i.descricao_ingrediente like '%" + ingrediente.Nome + "%' ";
             }
             conexao.Open();
             comando.CommandText = @" " +
-            "SELECT i.id AS ID, i.nome AS Nome " +
-            "FROM tb_ingrediente AS i " +
+            "SELECT i.id_ingrediente AS ID, i.descricao_ingrediente AS Nome " +
+            "FROM cad_ingredientes AS i " +
             auxSqlFiltro +
-            "ORDER BY i.nome;";
+            "ORDER BY i.descricao_ingrediente;";
             //Executa o script na conexão e retorna as linhas afetadas.
             var reader = comando.ExecuteReader();
             DataTable linhas = new();
@@ -83,7 +83,7 @@ namespace PizzariaDoZe.DAO
         {
             var Ingrediente = new Ingrediente();
             Ingrediente.ID = int.Parse(leitor["id_ingrediente"].ToString()!);
-            Ingrediente.Nome = leitor["nome"].ToString()!;
+            Ingrediente.Nome = leitor["descricao_ingrediente"].ToString()!;
 
             return Ingrediente;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzariaDoZe.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -8,35 +9,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PizzariaDoZe.DAO;
+using static PizzariaDoZe.DAO.Funcionario;
 
 namespace PizzariaDoZe
 {
-    public partial class Enderecos : Form
+    public partial class Funcionarios : Form
     {
-        private readonly EnderecoDAO enderecoDAO;
-        public Enderecos()
+        private readonly FuncionarioDAO funcionarioDAO;
+        public Funcionarios()
         {
             InitializeComponent();
             // pega os dados do banco de dados
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
+            funcionarioDAO = new FuncionarioDAO(provider, strConnection);
 
-            // cria a instancia da classe da model
-            enderecoDAO = new EnderecoDAO(provider, strConnection);
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
+        }
+
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormFuncionarios funcionarios = new FormFuncionarios();
+            funcionarios.Show();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void AtualizarTela()
         {
 
             //Instância e Preenche o objeto com os dados da view
-            var endereco = new Endereco();
+            var funcionario = new Funcionario();
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = enderecoDAO.Buscar(endereco);
+                DataTable linhas = funcionarioDAO.Buscar(funcionario);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -76,5 +92,6 @@ namespace PizzariaDoZe
                 e.Value = d.ToString("N2");
             }
         }
+
     }
 }
