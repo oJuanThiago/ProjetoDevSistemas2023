@@ -9,50 +9,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static PizzariaDoZe.DAO.Funcionario;
 
-namespace PizzariaDoZe
+namespace PizzariaDoZe.Sabores
 {
-    public partial class Funcionarios : Form
+    public partial class ListaSabores : Form
     {
-        private readonly FuncionarioDAO funcionarioDAO;
-        public Funcionarios()
+        private readonly SaborDAO saborDAO;
+        public ListaSabores()
         {
             InitializeComponent();
-            // pega os dados do banco de dados
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            funcionarioDAO = new FuncionarioDAO(provider, strConnection);
-
+            saborDAO = new SaborDAO(provider, strConnection);
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
-
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-            FormFuncionarios funcionarios = new FormFuncionarios();
-            funcionarios.Show();
-        }
-
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void AtualizarTela()
         {
-
             //Instância e Preenche o objeto com os dados da view
-            var funcionario = new Funcionario();
+            var sabor = new Sabor();
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = funcionarioDAO.Buscar(funcionario);
+                DataTable linhas = saborDAO.Buscar(sabor);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -63,6 +42,21 @@ namespace PizzariaDoZe
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormSabores formSabores = new FormSabores();
+            formSabores.Show();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -92,6 +86,5 @@ namespace PizzariaDoZe
                 e.Value = d.ToString("N2");
             }
         }
-
     }
 }

@@ -32,6 +32,8 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            labelImagem = new Label();
+            pictureBoxImagem = new PictureBox();
             buttonCadastrar = new Button();
             labelTipo = new Label();
             labelCategoria = new Label();
@@ -39,13 +41,14 @@
             comboBoxCategoria = new ComboBox();
             labelIngredientes = new Label();
             buttonFechar = new Button();
-            checkedListBox1 = new CheckedListBox();
+            checkedListBoxIngredientes = new CheckedListBox();
             textBoxID = new TextBox();
             labelID = new Label();
             textBoxDescricao = new TextBox();
             labelDescricao = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxImagem).BeginInit();
             SuspendLayout();
             // 
             // menu1
@@ -55,7 +58,6 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
-            menu1.buttonSabores.Enabled = false;
             // 
             // panel1
             // 
@@ -80,6 +82,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(labelImagem);
+            panel2.Controls.Add(pictureBoxImagem);
             panel2.Controls.Add(buttonCadastrar);
             panel2.Controls.Add(labelTipo);
             panel2.Controls.Add(labelCategoria);
@@ -87,7 +91,7 @@
             panel2.Controls.Add(comboBoxCategoria);
             panel2.Controls.Add(labelIngredientes);
             panel2.Controls.Add(buttonFechar);
-            panel2.Controls.Add(checkedListBox1);
+            panel2.Controls.Add(checkedListBoxIngredientes);
             panel2.Controls.Add(textBoxID);
             panel2.Controls.Add(labelID);
             panel2.Controls.Add(textBoxDescricao);
@@ -97,6 +101,27 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(684, 499);
             panel2.TabIndex = 2;
+            // 
+            // labelImagem
+            // 
+            labelImagem.AutoSize = true;
+            labelImagem.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelImagem.Location = new Point(52, 176);
+            labelImagem.Name = "labelImagem";
+            labelImagem.Size = new Size(31, 15);
+            labelImagem.TabIndex = 83;
+            labelImagem.Text = "Foto";
+            // 
+            // pictureBoxImagem
+            // 
+            pictureBoxImagem.BackColor = Color.FromArgb(51, 51, 51);
+            pictureBoxImagem.Location = new Point(50, 194);
+            pictureBoxImagem.Name = "pictureBoxImagem";
+            pictureBoxImagem.Size = new Size(200, 200);
+            pictureBoxImagem.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxImagem.TabIndex = 82;
+            pictureBoxImagem.TabStop = false;
+            pictureBoxImagem.Tag = "";
             // 
             // buttonCadastrar
             // 
@@ -180,17 +205,16 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
-            // checkedListBox1
+            // checkedListBoxIngredientes
             // 
-            checkedListBox1.BackColor = Color.FromArgb(51, 51, 51);
-            checkedListBox1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkedListBox1.ForeColor = SystemColors.ControlLightLight;
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Queijo Parmesão", "Queijo Mussarela", "Orégano", "Tomate Cereja", "Cebola Roxa" });
-            checkedListBox1.Location = new Point(395, 48);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(200, 346);
-            checkedListBox1.TabIndex = 63;
+            checkedListBoxIngredientes.BackColor = Color.FromArgb(51, 51, 51);
+            checkedListBoxIngredientes.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkedListBoxIngredientes.ForeColor = SystemColors.ControlLightLight;
+            checkedListBoxIngredientes.FormattingEnabled = true;
+            checkedListBoxIngredientes.Location = new Point(395, 48);
+            checkedListBoxIngredientes.Name = "checkedListBoxIngredientes";
+            checkedListBoxIngredientes.Size = new Size(200, 346);
+            checkedListBoxIngredientes.TabIndex = 63;
             // 
             // textBoxID
             // 
@@ -245,6 +269,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxImagem).EndInit();
             ResumeLayout(false);
         }
 
@@ -254,7 +279,7 @@
         private Panel panel1;
         private Label label1;
         private Panel panel2;
-        private CheckedListBox checkedListBox1;
+        private CheckedListBox checkedListBoxIngredientes;
         private TextBox textBoxID;
         private Label labelID;
         private TextBox textBoxDescricao;
@@ -266,5 +291,7 @@
         private ComboBox comboBoxTipo;
         private ComboBox comboBoxCategoria;
         private Button buttonCadastrar;
+        private PictureBox pictureBoxImagem;
+        private Label labelImagem;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PizzariaDoZe.Ingredientes
 {
-    partial class Ingredientes
+    partial class ListaIngredientes
     {
         /// <summary>
         /// Required designer variable.

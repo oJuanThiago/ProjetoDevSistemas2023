@@ -10,45 +10,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PizzariaDoZe
+namespace PizzariaDoZe.Ingredientes
 {
-    public partial class Clientes : Form
+    public partial class ListaIngredientes : Form
     {
-        private readonly ClienteDAO clienteDAO;
-        public Clientes()
+        private readonly IngredienteDAO ingredienteDAO;
+        public ListaIngredientes()
         {
             InitializeComponent();
+            // pega os dados do banco de dados
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            clienteDAO = new ClienteDAO(provider, strConnection);
+
+            // cria a instancia da classe da model
+            ingredienteDAO = new(provider, strConnection);
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
 
-        private void AtualizarTela()
-        {
-            //Instância e Preenche o objeto com os dados da view
-            var cliente = new Cliente();
-            try
-            {
-                //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = clienteDAO.Buscar(cliente);
-                // seta o datasouce do dataGridView com os dados retornados
-                dataGridViewDados.Columns.Clear();
-                dataGridViewDados.AutoGenerateColumns = true;
-                dataGridViewDados.DataSource = linhas;
-                dataGridViewDados.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-            FormClientes clientes = new FormClientes();
-            clientes.Show();
+            FormIngredientes ingredientes = new FormIngredientes();
+            ingredientes.Show();
         }
 
         private void buttonEditar_Click(object sender, EventArgs e)
@@ -59,6 +42,26 @@ namespace PizzariaDoZe
         private void buttonFechar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void AtualizarTela()
+        {
+
+            //Instância e Preenche o objeto com os dados da view
+            var ingrediente = new Ingrediente();
+            try
+            {
+                //chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = ingredienteDAO.Buscar(ingrediente);
+                // seta o datasouce do dataGridView com os dados retornados
+                dataGridViewDados.Columns.Clear();
+                dataGridViewDados.AutoGenerateColumns = true;
+                dataGridViewDados.DataSource = linhas;
+                dataGridViewDados.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -88,6 +91,7 @@ namespace PizzariaDoZe
                 e.Value = d.ToString("N2");
             }
         }
+
 
     }
 }

@@ -10,48 +10,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PizzariaDoZe.Ingredientes
+namespace PizzariaDoZe
 {
-    public partial class Ingredientes : Form
+    public partial class ListaClientes : Form
     {
-        private readonly IngredienteDAO ingredienteDAO;
-        public Ingredientes()
+        private readonly ClienteDAO clienteDAO;
+        public ListaClientes()
         {
             InitializeComponent();
-            // pega os dados do banco de dados
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            // cria a instancia da classe da model
-            ingredienteDAO = new(provider, strConnection);
+            clienteDAO = new ClienteDAO(provider, strConnection);
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
 
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-            FormIngredientes ingredientes = new FormIngredientes();
-            ingredientes.Show();
-        }
-
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
         private void AtualizarTela()
         {
-
             //Instância e Preenche o objeto com os dados da view
-            var ingrediente = new Ingrediente();
+            var cliente = new Cliente();
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = ingredienteDAO.Buscar(ingrediente);
+                DataTable linhas = clienteDAO.Buscar(cliente);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -62,6 +43,22 @@ namespace PizzariaDoZe.Ingredientes
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormClientes clientes = new FormClientes();
+            clientes.Show();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -91,7 +88,6 @@ namespace PizzariaDoZe.Ingredientes
                 e.Value = d.ToString("N2");
             }
         }
-
 
     }
 }

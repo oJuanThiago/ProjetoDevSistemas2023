@@ -38,5 +38,14 @@ namespace PizzariaDoZe
             // retorna o hash SHA256.
             return hash.ToString();
         }
-}
+
+        internal static byte[] ConverteImagemParaByteArray(Image image)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            if (image != null)
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            return memoryStream.ToArray();
+        }
+    }
 }

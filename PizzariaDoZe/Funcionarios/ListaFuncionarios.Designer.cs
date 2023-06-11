@@ -1,6 +1,6 @@
 ﻿namespace PizzariaDoZe
 {
-    partial class Clientes
+    partial class ListaFuncionarios
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             dataGridViewDados = new DataGridView();
             panel1 = new Panel();
             buttonCadastrar = new Button();
-            labelClientes = new Label();
+            labelFuncionarios = new Label();
             menu1 = new Menu();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
@@ -49,7 +49,7 @@
             panel2.Location = new Point(200, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(684, 499);
-            panel2.TabIndex = 9;
+            panel2.TabIndex = 6;
             // 
             // buttonEditar
             // 
@@ -101,11 +101,11 @@
             // 
             panel1.BackColor = Color.FromArgb(51, 51, 51);
             panel1.Controls.Add(buttonCadastrar);
-            panel1.Controls.Add(labelClientes);
+            panel1.Controls.Add(labelFuncionarios);
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(684, 100);
-            panel1.TabIndex = 8;
+            panel1.TabIndex = 5;
             // 
             // buttonCadastrar
             // 
@@ -120,31 +120,30 @@
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(190, 38);
             buttonCadastrar.TabIndex = 79;
-            buttonCadastrar.Text = "Cadastrar Clientes";
+            buttonCadastrar.Text = "Cadastrar Funcionário";
             buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonCadastrar.UseVisualStyleBackColor = false;
             buttonCadastrar.Click += buttonCadastrar_Click;
             // 
-            // labelClientes
+            // labelFuncionarios
             // 
-            labelClientes.AutoSize = true;
-            labelClientes.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelClientes.ForeColor = SystemColors.ControlLightLight;
-            labelClientes.Location = new Point(32, 28);
-            labelClientes.Name = "labelClientes";
-            labelClientes.Size = new Size(135, 45);
-            labelClientes.TabIndex = 1;
-            labelClientes.Text = "Clientes";
+            labelFuncionarios.AutoSize = true;
+            labelFuncionarios.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelFuncionarios.ForeColor = SystemColors.ControlLightLight;
+            labelFuncionarios.Location = new Point(32, 28);
+            labelFuncionarios.Name = "labelFuncionarios";
+            labelFuncionarios.Size = new Size(203, 45);
+            labelFuncionarios.TabIndex = 1;
+            labelFuncionarios.Text = "Funcionários";
             // 
             // menu1
             // 
             menu1.Location = new Point(0, 0);
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 600);
-            menu1.TabIndex = 7;
-            menu1.buttonClientes.Enabled = false;
+            menu1.TabIndex = 4;
             // 
-            // Clientes
+            // Funcionarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -152,9 +151,9 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menu1);
-            Name = "Clientes";
+            Name = "Funcionarios";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Clientes";
+            Text = "Funcionarios";
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
             panel1.ResumeLayout(false);
@@ -165,12 +164,12 @@
         #endregion
 
         private Panel panel2;
-        private Button buttonEditar;
-        private Button buttonFechar;
         internal DataGridView dataGridViewDados;
         internal Panel panel1;
-        private Button buttonCadastrar;
-        private Label labelClientes;
+        private Label labelFuncionarios;
         internal Menu menu1;
+        private Button buttonEditar;
+        private Button buttonFechar;
+        private Button buttonCadastrar;
     }
 }

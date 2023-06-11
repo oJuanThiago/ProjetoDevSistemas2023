@@ -1,11 +1,8 @@
-﻿using System;
+﻿using PizzariaDoZe.Ingredientes;
+using PizzariaDoZe.Sabores;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PizzariaDoZe
@@ -25,25 +22,25 @@ namespace PizzariaDoZe
 
         private void buttonFuncionarios_Click(object sender, EventArgs e)
         {
-            Funcionarios funcionarios = new Funcionarios();
+            ListaFuncionarios funcionarios = new ListaFuncionarios();
             funcionarios.Show();
         }
 
         private void buttonClientes_Click(object sender, EventArgs e)
         {
-            Clientes clientes = new Clientes();
+            ListaClientes clientes = new ListaClientes();
             clientes.Show();
         }
 
         private void buttonIngredientes_Click(object sender, EventArgs e)
         {
-            Ingredientes.Ingredientes ingredientes = new Ingredientes.Ingredientes();
+            ListaIngredientes ingredientes = new ListaIngredientes();
             ingredientes.Show();
         }
 
         private void buttonSabores_Click(object sender, EventArgs e)
         {
-            FormSabores sabores = new FormSabores();
+            ListaSabores sabores = new ListaSabores();
             sabores.Show();
         }
 
