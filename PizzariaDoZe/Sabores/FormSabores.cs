@@ -45,6 +45,10 @@ namespace PizzariaDoZe
                 // chama o método para inserir da camada model
                 saborDAO.Inserir(sabor);
                 MessageBox.Show("Dados inseridos com sucesso!");
+                textBoxDescricao.Text = string.Empty;
+                comboBoxCategoria.Text = string.Empty;
+                comboBoxTipo.Text = string.Empty;
+                CarregarCheckedListBoxIngredientes();
             }
             catch (Exception ex)
             {
@@ -52,10 +56,7 @@ namespace PizzariaDoZe
             }
         }
 
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
 
         private void CarregarCheckedListBoxIngredientes()
         {
@@ -75,6 +76,24 @@ namespace PizzariaDoZe
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void pictureBoxImagem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialogImagem = new()
+            {
+                Title = "Imagem do sabor de pizza",
+                Filter = "Images (*.JPEG;*.BMP;*.JPG;*.GIF;*.PNG;*.)|*.JPEG;*.BMP;*.JPG;*.GIF;*.PNG;*.icon;*.JFIF"
+            };
+            if (openFileDialogImagem.ShowDialog() == DialogResult.OK)
+            {
+                //pega a imagem escolhida e adiciona na tela
+                pictureBoxImagem.Image = Image.FromFile(openFileDialogImagem.FileName);
+                //redimensiona a imagem
+                pictureBoxImagem.Image = (Image)(new Bitmap(pictureBoxImagem.Image, new Size(130, 98)));
+                //ajusta a visualização no tamanho do pictureBoxImagem na tela
+                pictureBoxImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
     }

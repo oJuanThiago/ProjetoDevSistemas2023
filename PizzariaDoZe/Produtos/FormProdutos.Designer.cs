@@ -30,20 +30,20 @@
         {
             menu1 = new Menu();
             panel1 = new Panel();
-            label1 = new Label();
+            labelProdutos = new Label();
             panel2 = new Panel();
+            buttonCadastrar = new Button();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxTipo = new ComboBox();
             textBoxID = new TextBox();
             labelID = new Label();
             labelML = new Label();
-            comboBoxTipo = new ComboBox();
+            comboBoxML = new ComboBox();
             buttonFechar = new Button();
-            textBox1 = new TextBox();
+            textBoxValor = new TextBox();
             labelValor = new Label();
             textBoxDescricao = new TextBox();
             labelDescricao = new Label();
-            buttonCadastrar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -60,36 +60,36 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(51, 51, 51);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(labelProdutos);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(684, 100);
             panel1.TabIndex = 1;
             // 
-            // label1
+            // labelProdutos
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(32, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(302, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Cadastrar Produtos";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            labelProdutos.AutoSize = true;
+            labelProdutos.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelProdutos.ForeColor = SystemColors.ControlLightLight;
+            labelProdutos.Location = new Point(32, 28);
+            labelProdutos.Name = "labelProdutos";
+            labelProdutos.Size = new Size(302, 45);
+            labelProdutos.TabIndex = 0;
+            labelProdutos.Text = "Cadastrar Produtos";
+            labelProdutos.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
             panel2.Controls.Add(buttonCadastrar);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(comboBoxTipo);
             panel2.Controls.Add(textBoxID);
             panel2.Controls.Add(labelID);
             panel2.Controls.Add(labelML);
-            panel2.Controls.Add(comboBoxTipo);
+            panel2.Controls.Add(comboBoxML);
             panel2.Controls.Add(buttonFechar);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(textBoxValor);
             panel2.Controls.Add(labelValor);
             panel2.Controls.Add(textBoxDescricao);
             panel2.Controls.Add(labelDescricao);
@@ -98,6 +98,23 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(684, 499);
             panel2.TabIndex = 2;
+            // 
+            // buttonCadastrar
+            // 
+            buttonCadastrar.BackColor = Color.DarkGreen;
+            buttonCadastrar.FlatAppearance.BorderColor = Color.Gray;
+            buttonCadastrar.FlatStyle = FlatStyle.Flat;
+            buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCadastrar.ForeColor = Color.White;
+            buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCadastrar.Location = new Point(453, 440);
+            buttonCadastrar.Name = "buttonCadastrar";
+            buttonCadastrar.Size = new Size(110, 38);
+            buttonCadastrar.TabIndex = 87;
+            buttonCadastrar.Text = "Cadastrar";
+            buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonCadastrar.UseVisualStyleBackColor = false;
+            buttonCadastrar.Click += buttonCadastrar_Click;
             // 
             // label2
             // 
@@ -109,14 +126,14 @@
             label2.TabIndex = 86;
             label2.Text = "Tipo";
             // 
-            // comboBox1
+            // comboBoxTipo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Água", "Refrigerante", "Suco", "Cerveja", "Vinho", "Outros" });
-            comboBox1.Location = new Point(50, 123);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 85;
+            comboBoxTipo.FormattingEnabled = true;
+            comboBoxTipo.Items.AddRange(new object[] { "Água", "Refrigerante", "Suco", "Cerveja", "Vinho", "Outros" });
+            comboBoxTipo.Location = new Point(50, 123);
+            comboBoxTipo.Name = "comboBoxTipo";
+            comboBoxTipo.Size = new Size(121, 23);
+            comboBoxTipo.TabIndex = 85;
             // 
             // textBoxID
             // 
@@ -147,14 +164,14 @@
             labelML.TabIndex = 82;
             labelML.Text = "ml";
             // 
-            // comboBoxTipo
+            // comboBoxML
             // 
-            comboBoxTipo.FormattingEnabled = true;
-            comboBoxTipo.Items.AddRange(new object[] { "150", "300", "350", "600", "1000", "1500", "2000", "2500" });
-            comboBoxTipo.Location = new Point(193, 123);
-            comboBoxTipo.Name = "comboBoxTipo";
-            comboBoxTipo.Size = new Size(121, 23);
-            comboBoxTipo.TabIndex = 81;
+            comboBoxML.FormattingEnabled = true;
+            comboBoxML.Items.AddRange(new object[] { "150", "300", "350", "600", "1000", "1500", "2000", "2500" });
+            comboBoxML.Location = new Point(193, 123);
+            comboBoxML.Name = "comboBoxML";
+            comboBoxML.Size = new Size(121, 23);
+            comboBoxML.TabIndex = 81;
             // 
             // buttonFechar
             // 
@@ -164,7 +181,7 @@
             buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonFechar.ForeColor = Color.White;
             buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFechar.Location = new Point(515, 440);
+            buttonFechar.Location = new Point(569, 440);
             buttonFechar.Name = "buttonFechar";
             buttonFechar.Size = new Size(80, 38);
             buttonFechar.TabIndex = 9;
@@ -173,12 +190,12 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
-            // textBox1
+            // textBoxValor
             // 
-            textBox1.Location = new Point(50, 185);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(106, 23);
-            textBox1.TabIndex = 7;
+            textBoxValor.Location = new Point(50, 185);
+            textBoxValor.Name = "textBoxValor";
+            textBoxValor.Size = new Size(106, 23);
+            textBoxValor.TabIndex = 7;
             // 
             // labelValor
             // 
@@ -207,23 +224,6 @@
             labelDescricao.TabIndex = 4;
             labelDescricao.Text = "Descrição";
             // 
-            // buttonCadastrar
-            // 
-            buttonCadastrar.BackColor = Color.DarkGreen;
-            buttonCadastrar.FlatAppearance.BorderColor = Color.Gray;
-            buttonCadastrar.FlatStyle = FlatStyle.Flat;
-            buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonCadastrar.ForeColor = Color.White;
-            buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCadastrar.Location = new Point(400, 440);
-            buttonCadastrar.Name = "buttonCadastrar";
-            buttonCadastrar.Size = new Size(110, 38);
-            buttonCadastrar.TabIndex = 87;
-            buttonCadastrar.Text = "Cadastrar";
-            buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonCadastrar.UseVisualStyleBackColor = false;
-            buttonCadastrar.Click += buttonCadastrar_Click;
-            // 
             // FormProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -250,17 +250,17 @@
 
         private Menu menu1;
         private Panel panel1;
-        private Label label1;
+        private Label labelProdutos;
         private Panel panel2;
-        private TextBox textBox1;
+        private TextBox textBoxValor;
         private Label labelValor;
         private TextBox textBoxDescricao;
         private Label labelDescricao;
         private Button buttonFechar;
         private Label labelML;
-        private ComboBox comboBoxTipo;
+        private ComboBox comboBoxML;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxTipo;
         private TextBox textBoxID;
         private Label labelID;
         private Button buttonCadastrar;

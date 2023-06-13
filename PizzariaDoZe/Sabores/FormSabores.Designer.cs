@@ -122,6 +122,7 @@
             pictureBoxImagem.TabIndex = 82;
             pictureBoxImagem.TabStop = false;
             pictureBoxImagem.Tag = "";
+            pictureBoxImagem.Click += pictureBoxImagem_Click;
             // 
             // buttonCadastrar
             // 

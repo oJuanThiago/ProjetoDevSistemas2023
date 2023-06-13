@@ -32,10 +32,10 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            maskedTextBoxValor = new MaskedTextBox();
             buttonCadastrar = new Button();
             textBoxValorBorda = new TextBox();
             labelValorBorda = new Label();
-            textBoxValor = new TextBox();
             labelValor = new Label();
             labelCategoria = new Label();
             labelTamanho = new Label();
@@ -81,10 +81,10 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(maskedTextBoxValor);
             panel2.Controls.Add(buttonCadastrar);
             panel2.Controls.Add(textBoxValorBorda);
             panel2.Controls.Add(labelValorBorda);
-            panel2.Controls.Add(textBoxValor);
             panel2.Controls.Add(labelValor);
             panel2.Controls.Add(labelCategoria);
             panel2.Controls.Add(labelTamanho);
@@ -99,6 +99,13 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(684, 499);
             panel2.TabIndex = 2;
+            // 
+            // maskedTextBoxValor
+            // 
+            maskedTextBoxValor.Location = new Point(124, 113);
+            maskedTextBoxValor.Name = "maskedTextBoxValor";
+            maskedTextBoxValor.Size = new Size(120, 23);
+            maskedTextBoxValor.TabIndex = 70;
             // 
             // buttonCadastrar
             // 
@@ -133,13 +140,6 @@
             labelValorBorda.Size = new Size(85, 15);
             labelValorBorda.TabIndex = 67;
             labelValorBorda.Text = "Valor da Borda";
-            // 
-            // textBoxValor
-            // 
-            textBoxValor.Location = new Point(124, 113);
-            textBoxValor.Name = "textBoxValor";
-            textBoxValor.Size = new Size(120, 23);
-            textBoxValor.TabIndex = 66;
             // 
             // labelValor
             // 
@@ -260,8 +260,8 @@
         private Label labelID;
         private TextBox textBoxValorBorda;
         private Label labelValorBorda;
-        private TextBox textBoxValor;
         private Label labelValor;
         private Button buttonCadastrar;
+        private MaskedTextBox maskedTextBoxValor;
     }
 }

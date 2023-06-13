@@ -74,12 +74,14 @@ namespace PizzariaDoZe.DAO
                 }
                 // Como não ocorreu nenhum erro, confirma as transações através do Commit()
                 transacao.Commit();
+
                 return Convert.ToInt32(IdSaborGerado);
             }
             catch (Exception ex)
             {
                 // Alguns dos comandos SQL acima gerou erro, dessa forma, todos os comandos serão desfeitos através do Rollback()
                 transacao.Rollback();
+
                 // retorna uma exceção para quem chamou a execução
                 throw new Exception(ex.Message);
             }

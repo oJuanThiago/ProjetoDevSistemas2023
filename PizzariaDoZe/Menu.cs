@@ -46,13 +46,13 @@ namespace PizzariaDoZe
 
         private void buttonProdutos_Click(object sender, EventArgs e)
         {
-            FormProdutos produtos = new FormProdutos();
+            ListaProdutos produtos = new ListaProdutos();
             produtos.Show();
         }
 
         private void buttonValores_Click(object sender, EventArgs e)
         {
-            FormValores valores = new FormValores();
+            ListaValores valores = new ListaValores();
             valores.Show();
         }
 

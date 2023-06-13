@@ -30,7 +30,7 @@
         {
             menu1 = new Menu();
             panel1 = new Panel();
-            label1 = new Label();
+            labelClientes = new Label();
             labelNome = new Label();
             textBoxNome = new TextBox();
             labelID = new Label();
@@ -77,23 +77,23 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(51, 51, 51);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(labelClientes);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(684, 100);
             panel1.TabIndex = 1;
             // 
-            // label1
+            // labelClientes
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(32, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(284, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Cadastrar Clientes";
+            labelClientes.AutoSize = true;
+            labelClientes.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelClientes.ForeColor = SystemColors.ControlLightLight;
+            labelClientes.Location = new Point(32, 28);
+            labelClientes.Name = "labelClientes";
+            labelClientes.Size = new Size(284, 45);
+            labelClientes.TabIndex = 0;
+            labelClientes.Text = "Cadastrar Clientes";
             // 
             // labelNome
             // 
@@ -443,7 +443,7 @@
 
         private Menu menu1;
         private Panel panel1;
-        private Label label1;
+        private Label labelClientes;
         private Label labelNome;
         private TextBox textBoxNome;
         private Label labelID;

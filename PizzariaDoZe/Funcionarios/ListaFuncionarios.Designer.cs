@@ -142,6 +142,7 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 600);
             menu1.TabIndex = 4;
+            menu1.buttonFuncionarios.Enabled = false;
             // 
             // Funcionarios
             // 
