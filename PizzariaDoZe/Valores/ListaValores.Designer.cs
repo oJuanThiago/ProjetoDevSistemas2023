@@ -30,12 +30,14 @@
         {
             menu1 = new Menu();
             panel1 = new Panel();
-            panel2 = new Panel();
             buttonCadastrar = new Button();
+            panel2 = new Panel();
             buttonEditar = new Button();
             buttonFechar = new Button();
+            dataGridViewDados = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
             SuspendLayout();
             // 
             // menu1
@@ -44,7 +46,6 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 600);
             menu1.TabIndex = 0;
-            menu1.buttonValores.Enabled = false;
             // 
             // panel1
             // 
@@ -54,15 +55,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(684, 100);
             panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(buttonEditar);
-            panel2.Controls.Add(buttonFechar);
-            panel2.Location = new Point(200, 100);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(684, 500);
-            panel2.TabIndex = 2;
             // 
             // buttonCadastrar
             // 
@@ -81,6 +73,16 @@
             buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonCadastrar.UseVisualStyleBackColor = false;
             buttonCadastrar.Click += buttonCadastrar_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(dataGridViewDados);
+            panel2.Controls.Add(buttonEditar);
+            panel2.Controls.Add(buttonFechar);
+            panel2.Location = new Point(200, 100);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(684, 500);
+            panel2.TabIndex = 2;
             // 
             // buttonEditar
             // 
@@ -118,6 +120,16 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
+            // dataGridViewDados
+            // 
+            dataGridViewDados.AllowUserToOrderColumns = true;
+            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDados.Location = new Point(32, 28);
+            dataGridViewDados.Name = "dataGridViewDados";
+            dataGridViewDados.RowTemplate.Height = 25;
+            dataGridViewDados.Size = new Size(617, 370);
+            dataGridViewDados.TabIndex = 81;
+            // 
             // ListaValores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -131,6 +143,7 @@
             Text = "Valores";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
             ResumeLayout(false);
         }
 
@@ -142,5 +155,6 @@
         private Button buttonCadastrar;
         private Button buttonEditar;
         private Button buttonFechar;
+        internal DataGridView dataGridViewDados;
     }
 }

@@ -83,7 +83,7 @@ namespace PizzariaDoZe.DAO
             }
             conexao.Open();
             comando.CommandText =   @" " +
-                                    "SELECT id_valor AS ID, tamanho AS Tamanho, categoria AS Categoria, valor AS Valor, valor_borda AS 'Valor Borda' " +
+                                    "SELECT id_valor AS ID, tamanho AS Tamanho, categoria AS Categoria, valor AS 'Valor Pizza', valor_borda AS 'Valor Borda' " +
                                     "FROM tb_valor AS v " +
                                     auxSqlFiltro +
                                     ";";

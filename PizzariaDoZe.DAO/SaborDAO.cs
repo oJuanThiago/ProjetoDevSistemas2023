@@ -18,7 +18,7 @@ namespace PizzariaDoZe.DAO
         public byte[] Foto { get; set; }
         public List<Ingrediente> SaborIngredientes { get; set; }
 
-        public Sabor(int id = 0, string descricao = "", string categoria = "", string tipo = "", byte[] foto = null, List<Ingrediente> saborIngredientes = null)
+        public Sabor(int id = 0, string descricao = "", string categoria = "", string tipo = "", byte[] foto = null!, List<Ingrediente> saborIngredientes = null!)
         {
             ID = id;
             Descricao = descricao;
@@ -105,7 +105,9 @@ namespace PizzariaDoZe.DAO
             conexao.Open();
             comando.CommandText =   @" " +
                                     "SELECT s.id_sabor AS ID, s.descricao_sabor AS Nome, s.foto AS Foto, s.categoria AS Categoria, s.tipo AS Tipo, " +
-                                    "(SELECT GROUP_CONCAT(i.descricao_ingrediente SEPARATOR ', ') FROM itens_sabores AS iss, cad_ingredientes i WHERE iss.sabor_id = s.id_sabor AND i.id_ingrediente = iss.ingrediente_id ) AS Ingredientes " +
+                                    "(SELECT GROUP_CONCAT(i.descricao_ingrediente SEPARATOR ', ') " +
+                                    "FROM itens_sabores AS iss, cad_ingredientes i " +
+                                    "WHERE iss.sabor_id = s.id_sabor AND i.id_ingrediente = iss.ingrediente_id ) AS Ingredientes " +
                                     "FROM tb_sabores AS s " +
                                     auxSqlFiltro +
                                     "ORDER BY s.descricao_sabor;";
