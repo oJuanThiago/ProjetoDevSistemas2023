@@ -108,9 +108,9 @@
             labelImagem.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelImagem.Location = new Point(52, 176);
             labelImagem.Name = "labelImagem";
-            labelImagem.Size = new Size(31, 15);
+            labelImagem.Size = new Size(52, 15);
             labelImagem.TabIndex = 83;
-            labelImagem.Text = "Foto";
+            labelImagem.Text = "Imagem";
             // 
             // pictureBoxImagem
             // 

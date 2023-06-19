@@ -105,7 +105,7 @@
             buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonCadastrar.ForeColor = Color.White;
             buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCadastrar.Location = new Point(827, 35);
+            buttonCadastrar.Location = new Point(827, 32);
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(190, 38);
             buttonCadastrar.TabIndex = 2;
@@ -185,7 +185,7 @@
             panelEditar.Controls.Add(labelNome);
             panelEditar.Location = new Point(150, 15);
             panelEditar.Name = "panelEditar";
-            panelEditar.Size = new Size(653, 535);
+            panelEditar.Size = new Size(654, 535);
             panelEditar.TabIndex = 13;
             // 
             // buttonExcluir

@@ -19,12 +19,12 @@ namespace PizzariaDoZe.DAO
         public string Numero { get; set; }
         public string Complemento { get; set; }
 
-        public Cliente(int id = 0, string nome = "", string cpf = "", string email = "", string telefone = "", int enderecoId = 0, string numero = "", string complemento = "") 
+        public Cliente(int id = 0, string nome = "", string cpf = "", string email = "", string telefone = "", int enderecoId = 0, string numero = "", string complemento = "")
         {
             ID = id;
-            Nome = nome; 
-            CPF = cpf; 
-            Email = email; 
+            Nome = nome;
+            CPF = cpf;
+            Email = email;
             Telefone = telefone;
             EnderecoID = enderecoId;
             Numero = numero;
@@ -100,7 +100,7 @@ namespace PizzariaDoZe.DAO
                 auxSqlFiltro = "WHERE cc.nome_cliente like '%" + cliente.Nome + "%' ";
             }
             conexao.Open();
-            comando.CommandText =   @" " +
+            comando.CommandText = @" " +
                                     "SELECT cc.id_cliente AS ID, cc.nome_cliente AS Nome, cc.cpf AS CPF, cc.telefone AS Telefone, cc.email AS 'E-mail', " +
                                     " e.cep AS CEP, e.logradouro AS Logradouro, e.bairro AS Bairro, " +
                                     "c.nome_cidade AS Cidade, " +
@@ -118,6 +118,48 @@ namespace PizzariaDoZe.DAO
             DataTable linhas = new();
             linhas.Load(sdr);
             return linhas;
+        }
+        public void Editar(Cliente cliente)
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetro (@campo e valor)
+            var nome = comando.CreateParameter(); nome.ParameterName = "@nome";
+            nome.Value = cliente.Nome; comando.Parameters.Add(nome);
+
+            var cpf = comando.CreateParameter(); cpf.ParameterName = "@cpf";
+            cpf.Value = cliente.CPF; comando.Parameters.Add(cpf);
+
+            var telefone = comando.CreateParameter(); telefone.ParameterName = "@telefone";
+            telefone.Value = cliente.Telefone; comando.Parameters.Add(telefone);
+
+            var email = comando.CreateParameter(); email.ParameterName = "@email";
+            email.Value = cliente.Email; comando.Parameters.Add(email);
+
+            var endereco_id = comando.CreateParameter(); endereco_id.ParameterName = "@endereco_id";
+            endereco_id.Value = cliente.EnderecoID; comando.Parameters.Add(endereco_id);
+
+            var numero = comando.CreateParameter(); numero.ParameterName = "@numero";
+            numero.Value = cliente.Numero; comando.Parameters.Add(numero);
+
+            var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento";
+            complemento.Value = cliente.Complemento; comando.Parameters.Add(complemento);
+
+            conexao.Open();
+            //realiza o UPDATE
+            comando.CommandText = @"UPDATE tb_clientes SET " +
+            "nome_cliente = @nome, " +
+            "cpf = @cpf, " +
+            "telefone = @telefone, " +
+            "email = @email, " +
+            "endereco_id = @endereco_id, " +
+            "numero = @numero, " +
+            "complemento = @complemento " +
+            "WHERE id_cliente = @id;";
+            //executa o comando no banco de dados
+            _ = comando.ExecuteNonQuery();
         }
     }
 }

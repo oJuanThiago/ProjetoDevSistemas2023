@@ -47,5 +47,17 @@ namespace PizzariaDoZe
 
             return memoryStream.ToArray();
         }
+        public static Image? ConverteByteArrayParaImagem(byte[] pData)
+        {
+            try
+            {
+                ImageConverter imgConverter = new();
+                return imgConverter.ConvertFrom(pData) as Image;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

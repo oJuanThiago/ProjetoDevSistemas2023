@@ -34,7 +34,7 @@ namespace PizzariaDoZe
 
             if (!String.IsNullOrEmpty(textBoxDescricao.Text))
             {
-                ingrediente.Nome = textBoxDescricao.Text;
+                ingrediente.Descricao = textBoxDescricao.Text;
                 try
                 {
                     // chama o método para inserir da camada model

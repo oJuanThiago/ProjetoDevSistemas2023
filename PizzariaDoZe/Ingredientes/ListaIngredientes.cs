@@ -24,6 +24,8 @@ namespace PizzariaDoZe.Ingredientes
 
             // cria a instancia da classe da model
             ingredienteDAO = new(provider, strConnection);
+
+            panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
@@ -36,13 +38,11 @@ namespace PizzariaDoZe.Ingredientes
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
+            panelEditar.Visible = true;
 
         }
 
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
         private void AtualizarTela()
         {
 
@@ -91,7 +91,73 @@ namespace PizzariaDoZe.Ingredientes
                 e.Value = d.ToString("N2");
             }
         }
+        private void DataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dataGridViewDados.SelectedCells.Count > 0)
+            {
+                //pega a primeira coluna, que esta com o ID, da linha selecionada
+                DataGridViewRow selectedRow = dataGridViewDados.Rows[dataGridViewDados.SelectedCells[0].RowIndex];
+                int id = Convert.ToInt32(selectedRow.Cells[0].Value);
+                AtualizaTelaEditar(id);
+            }
+        }
 
+        private void AtualizaTelaEditar(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um ingrediente!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var ingrediente = new Ingrediente
+            {
+                ID = int.Parse(textBoxID.Text),
+                Descricao = textBoxDescricao.Text,
+            };
+            try
+            {
+                // chama o método para inserir da camada model
+                ingredienteDAO.Editar(ingrediente);
+                MessageBox.Show("Dados editados com sucesso!");
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um ingrediente!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var ingrediente = new Ingrediente
+            {
+                ID = int.Parse(textBoxID.Text),
+            };
+            try
+            {
+                // chama o método para inserir da camada model
+                ingredienteDAO.Excluir(ingrediente);
+                MessageBox.Show("Dados excluidos com sucesso!");
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
     }
 }

@@ -23,6 +23,8 @@ namespace PizzariaDoZe.Sabores
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             saborDAO = new SaborDAO(provider, strConnection);
+
+            panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
@@ -51,15 +53,10 @@ namespace PizzariaDoZe.Sabores
             formSabores.Show();
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
+        private void buttonEditar_Click(object sender, EventArgs e) => panelEditar.Visible = true;
 
-        }
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
 
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == this.dataGridViewDados.NewRowIndex || e.Value!.ToString()!.Trim().Length == 0)
@@ -89,11 +86,6 @@ namespace PizzariaDoZe.Sabores
             }
         }
 
-        private void buttonExcluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (dataGridViewDados.SelectedCells.Count > 0)
@@ -105,10 +97,101 @@ namespace PizzariaDoZe.Sabores
             }
         }
 
-        private void AtualizaTelaEditar(int id)
+        public void AtualizaTelaEditar(int id)
         {
-            throw new NotImplementedException();
+            //Instância e Preenche o objeto com os dados da view
+            var sabor = new Sabor
+            {
+                ID = id,
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = saborDAO.Buscar(sabor);
+                // seta os dados na tela
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxID.Text = row[0].ToString();
+                    textBoxDescricao.Text = row[1].ToString();
+                    pictureBoxImagem.Image = Funcoes.ConverteByteArrayParaImagem((byte[])row[2]);
+                    comboBoxCategoria.Text = row[3].ToString();
+                    comboBoxTipo.Text = row[4].ToString();
+                    // busca e seleciona os itens do sabor
+                    DataTable linhasIngredientes = saborDAO.BuscarItensSabor(sabor);
+                    foreach (DataRow dr in linhasIngredientes.Rows)
+                    {
+                        for (int i = 0; i < checkedListBoxIngredientes.Items.Count; i++)
+                        {
+                            if (dr[1].ToString() == ((Ingrediente)checkedListBoxIngredientes.Items[i]).Descricao.ToString())
+                            {
+                                checkedListBoxIngredientes.SetItemChecked(i, true);
+                            }
+                        }
+                    }
+                }
+                textBoxDescricao.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um sabor!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var sabor = new Sabor
+            {
+                ID = int.Parse(textBoxID.Text),
+                Descricao = textBoxDescricao.Text,
+                Foto = Funcoes.ConverteImagemParaByteArray(pictureBoxImagem.Image),
+                Categoria = comboBoxCategoria.Text,
+                Tipo = comboBoxTipo.Text,
+                SaborIngredientes = checkedListBoxIngredientes.CheckedItems.OfType<Ingrediente>().ToList(),
+            };
+            try
+            {
+                // chama o método para inserir da camada model
+                saborDAO.Editar(sabor);
+                MessageBox.Show("Dados editados com sucesso!");
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um sabor!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var sabor = new Sabor
+            {
+                ID = int.Parse(textBoxID.Text),
+            };
+            try
+            {
+                // chama o método para inserir da camada model
+                saborDAO.Excluir(sabor);
+                MessageBox.Show("Dados excluidos com sucesso!");
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
     }
 }
 
