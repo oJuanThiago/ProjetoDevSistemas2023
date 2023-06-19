@@ -33,10 +33,10 @@
             panel1 = new Panel();
             buttonCadastrar = new Button();
             panel2 = new Panel();
-            dataGridViewDados = new DataGridView();
-            buttonFechar = new Button();
-            buttonEditar = new Button();
             buttonExcluir = new Button();
+            buttonEditar = new Button();
+            buttonFechar = new Button();
+            dataGridViewDados = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
@@ -92,6 +92,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(51, 51, 51);
             panel2.Controls.Add(buttonExcluir);
             panel2.Controls.Add(buttonEditar);
             panel2.Controls.Add(buttonFechar);
@@ -102,35 +103,24 @@
             panel2.Size = new Size(684, 499);
             panel2.TabIndex = 4;
             // 
-            // dataGridViewDados
+            // buttonExcluir
             // 
-            dataGridViewDados.AllowUserToAddRows = false;
-            dataGridViewDados.AllowUserToOrderColumns = true;
-            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewDados.Location = new Point(0, 0);
-            dataGridViewDados.Name = "dataGridViewDados";
-            dataGridViewDados.RowTemplate.Height = 25;
-            dataGridViewDados.Size = new Size(684, 434);
-            dataGridViewDados.TabIndex = 1;
-            // 
-            // buttonFechar
-            // 
-            buttonFechar.BackColor = Color.Black;
-            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
-            buttonFechar.FlatAppearance.BorderSize = 0;
-            buttonFechar.FlatStyle = FlatStyle.Flat;
-            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFechar.ForeColor = Color.White;
-            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFechar.Location = new Point(569, 440);
-            buttonFechar.Name = "buttonFechar";
-            buttonFechar.Size = new Size(80, 38);
-            buttonFechar.TabIndex = 79;
-            buttonFechar.Text = "Fechar";
-            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonFechar.UseVisualStyleBackColor = false;
-            buttonFechar.Click += buttonFechar_Click;
+            buttonExcluir.BackColor = Color.Firebrick;
+            buttonExcluir.Enabled = false;
+            buttonExcluir.FlatAppearance.BorderColor = Color.Gray;
+            buttonExcluir.FlatAppearance.BorderSize = 0;
+            buttonExcluir.FlatStyle = FlatStyle.Flat;
+            buttonExcluir.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExcluir.ForeColor = Color.White;
+            buttonExcluir.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonExcluir.Location = new Point(397, 440);
+            buttonExcluir.Name = "buttonExcluir";
+            buttonExcluir.Size = new Size(80, 38);
+            buttonExcluir.TabIndex = 81;
+            buttonExcluir.Text = "Excluir";
+            buttonExcluir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExcluir.UseVisualStyleBackColor = false;
+            buttonExcluir.Click += buttonExcluir_Click;
             // 
             // buttonEditar
             // 
@@ -150,23 +140,38 @@
             buttonEditar.UseVisualStyleBackColor = false;
             buttonEditar.Click += buttonEditar_Click;
             // 
-            // buttonExcluir
+            // buttonFechar
             // 
-            buttonExcluir.BackColor = Color.Firebrick;
-            buttonExcluir.Enabled = false;
-            buttonExcluir.FlatAppearance.BorderColor = Color.Gray;
-            buttonExcluir.FlatAppearance.BorderSize = 0;
-            buttonExcluir.FlatStyle = FlatStyle.Flat;
-            buttonExcluir.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonExcluir.ForeColor = Color.White;
-            buttonExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonExcluir.Location = new Point(397, 440);
-            buttonExcluir.Name = "buttonExcluir";
-            buttonExcluir.Size = new Size(80, 38);
-            buttonExcluir.TabIndex = 81;
-            buttonExcluir.Text = "Excluir";
-            buttonExcluir.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonExcluir.UseVisualStyleBackColor = false;
+            buttonFechar.BackColor = Color.Black;
+            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderSize = 0;
+            buttonFechar.FlatStyle = FlatStyle.Flat;
+            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFechar.ForeColor = Color.White;
+            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonFechar.Location = new Point(569, 440);
+            buttonFechar.Name = "buttonFechar";
+            buttonFechar.Size = new Size(80, 38);
+            buttonFechar.TabIndex = 79;
+            buttonFechar.Text = "Fechar";
+            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonFechar.UseVisualStyleBackColor = false;
+            buttonFechar.Click += buttonFechar_Click;
+            // 
+            // dataGridViewDados
+            // 
+            dataGridViewDados.AllowUserToAddRows = false;
+            dataGridViewDados.AllowUserToOrderColumns = true;
+            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewDados.Location = new Point(0, 0);
+            dataGridViewDados.MultiSelect = false;
+            dataGridViewDados.Name = "dataGridViewDados";
+            dataGridViewDados.RowTemplate.Height = 25;
+            dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewDados.Size = new Size(684, 434);
+            dataGridViewDados.TabIndex = 1;
+            dataGridViewDados.MouseDoubleClick += DataGridViewDados_MouseDoubleClick;
             // 
             // ListaSabores
             // 

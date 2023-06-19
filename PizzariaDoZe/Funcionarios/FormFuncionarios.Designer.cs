@@ -83,7 +83,7 @@
             menu1.Dock = DockStyle.Left;
             menu1.Location = new Point(0, 0);
             menu1.Name = "menu1";
-            menu1.Size = new Size(200, 599);
+            menu1.Size = new Size(200, 681);
             menu1.TabIndex = 0;
             // 
             // panel1
@@ -93,7 +93,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(684, 100);
+            panel1.Size = new Size(1064, 100);
             panel1.TabIndex = 1;
             // 
             // labelFuncionarios
@@ -103,9 +103,9 @@
             labelFuncionarios.ForeColor = SystemColors.ControlLightLight;
             labelFuncionarios.Location = new Point(32, 28);
             labelFuncionarios.Name = "labelFuncionarios";
-            labelFuncionarios.Size = new Size(352, 45);
+            labelFuncionarios.Size = new Size(338, 45);
             labelFuncionarios.TabIndex = 0;
-            labelFuncionarios.Text = "Cadastrar Funcionários";
+            labelFuncionarios.Text = "Cadastrar Funcionário";
             labelFuncionarios.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -155,12 +155,12 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(200, 100);
             panel2.Name = "panel2";
-            panel2.Size = new Size(684, 499);
+            panel2.Size = new Size(1064, 581);
             panel2.TabIndex = 2;
             // 
             // textBoxEnderecoID
             // 
-            textBoxEnderecoID.Location = new Point(50, 272);
+            textBoxEnderecoID.Location = new Point(50, 324);
             textBoxEnderecoID.Name = "textBoxEnderecoID";
             textBoxEnderecoID.ReadOnly = true;
             textBoxEnderecoID.Size = new Size(50, 23);
@@ -170,8 +170,9 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(50, 254);
+            label1.Location = new Point(50, 306);
             label1.Name = "label1";
             label1.Size = new Size(20, 15);
             label1.TabIndex = 77;
@@ -179,7 +180,7 @@
             // 
             // maskedTextBoxTel
             // 
-            maskedTextBoxTel.Location = new Point(462, 393);
+            maskedTextBoxTel.Location = new Point(462, 445);
             maskedTextBoxTel.Mask = "(00) 000-000-000";
             maskedTextBoxTel.Name = "maskedTextBoxTel";
             maskedTextBoxTel.Size = new Size(133, 23);
@@ -188,7 +189,7 @@
             // 
             // maskedTextBoxCEP
             // 
-            maskedTextBoxCEP.Location = new Point(114, 272);
+            maskedTextBoxCEP.Location = new Point(114, 324);
             maskedTextBoxCEP.Mask = "00000-000";
             maskedTextBoxCEP.Name = "maskedTextBoxCEP";
             maskedTextBoxCEP.Size = new Size(63, 23);
@@ -223,20 +224,20 @@
             // comboBoxUF
             // 
             comboBoxUF.FormattingEnabled = true;
-            comboBoxUF.Location = new Point(50, 393);
+            comboBoxUF.Location = new Point(50, 445);
             comboBoxUF.Name = "comboBoxUF";
             comboBoxUF.Size = new Size(50, 23);
             comboBoxUF.TabIndex = 17;
             // 
             // buttonCadastrar
             // 
-            buttonCadastrar.BackColor = Color.DarkGreen;
+            buttonCadastrar.BackColor = Color.Green;
             buttonCadastrar.FlatAppearance.BorderColor = Color.Gray;
             buttonCadastrar.FlatStyle = FlatStyle.Flat;
             buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonCadastrar.ForeColor = Color.White;
             buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCadastrar.Location = new Point(400, 440);
+            buttonCadastrar.Location = new Point(400, 492);
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(110, 38);
             buttonCadastrar.TabIndex = 76;
@@ -257,6 +258,7 @@
             // labelFuncao
             // 
             labelFuncao.AutoSize = true;
+            labelFuncao.BackColor = Color.Transparent;
             labelFuncao.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelFuncao.Location = new Point(420, 146);
             labelFuncao.Name = "labelFuncao";
@@ -272,7 +274,7 @@
             buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonFechar.ForeColor = Color.White;
             buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFechar.Location = new Point(515, 440);
+            buttonFechar.Location = new Point(515, 492);
             buttonFechar.Name = "buttonFechar";
             buttonFechar.Size = new Size(80, 38);
             buttonFechar.TabIndex = 74;
@@ -284,6 +286,7 @@
             // labelCPF
             // 
             labelCPF.AutoSize = true;
+            labelCPF.BackColor = Color.Transparent;
             labelCPF.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelCPF.Location = new Point(117, 85);
             labelCPF.Name = "labelCPF";
@@ -301,6 +304,7 @@
             // labelMatricula
             // 
             labelMatricula.AutoSize = true;
+            labelMatricula.BackColor = Color.Transparent;
             labelMatricula.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelMatricula.Location = new Point(268, 30);
             labelMatricula.Name = "labelMatricula";
@@ -311,6 +315,7 @@
             // labelValidade
             // 
             labelValidade.AutoSize = true;
+            labelValidade.BackColor = Color.Transparent;
             labelValidade.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelValidade.Location = new Point(420, 85);
             labelValidade.Name = "labelValidade";
@@ -330,6 +335,7 @@
             // labelSenha
             // 
             labelSenha.AutoSize = true;
+            labelSenha.BackColor = Color.Transparent;
             labelSenha.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelSenha.Location = new Point(420, 30);
             labelSenha.Name = "labelSenha";
@@ -348,6 +354,7 @@
             // labelObs
             // 
             labelObs.AutoSize = true;
+            labelObs.BackColor = Color.Transparent;
             labelObs.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelObs.Location = new Point(50, 146);
             labelObs.Name = "labelObs";
@@ -358,8 +365,9 @@
             // labelTel
             // 
             labelTel.AutoSize = true;
+            labelTel.BackColor = Color.Transparent;
             labelTel.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTel.Location = new Point(462, 375);
+            labelTel.Location = new Point(462, 427);
             labelTel.Name = "labelTel";
             labelTel.Size = new Size(52, 15);
             labelTel.TabIndex = 61;
@@ -367,7 +375,7 @@
             // 
             // textBoxPais
             // 
-            textBoxPais.Location = new Point(117, 393);
+            textBoxPais.Location = new Point(117, 445);
             textBoxPais.Name = "textBoxPais";
             textBoxPais.Size = new Size(133, 23);
             textBoxPais.TabIndex = 18;
@@ -375,8 +383,9 @@
             // labelPais
             // 
             labelPais.AutoSize = true;
+            labelPais.BackColor = Color.Transparent;
             labelPais.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPais.Location = new Point(117, 375);
+            labelPais.Location = new Point(117, 427);
             labelPais.Name = "labelPais";
             labelPais.Size = new Size(28, 15);
             labelPais.TabIndex = 59;
@@ -385,8 +394,9 @@
             // labelUF
             // 
             labelUF.AutoSize = true;
+            labelUF.BackColor = Color.Transparent;
             labelUF.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelUF.Location = new Point(50, 375);
+            labelUF.Location = new Point(50, 427);
             labelUF.Name = "labelUF";
             labelUF.Size = new Size(21, 15);
             labelUF.TabIndex = 58;
@@ -394,7 +404,7 @@
             // 
             // textBoxBairro
             // 
-            textBoxBairro.Location = new Point(50, 330);
+            textBoxBairro.Location = new Point(50, 382);
             textBoxBairro.Name = "textBoxBairro";
             textBoxBairro.Size = new Size(127, 23);
             textBoxBairro.TabIndex = 14;
@@ -402,8 +412,9 @@
             // labelBairro
             // 
             labelBairro.AutoSize = true;
+            labelBairro.BackColor = Color.Transparent;
             labelBairro.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelBairro.Location = new Point(50, 312);
+            labelBairro.Location = new Point(50, 364);
             labelBairro.Name = "labelBairro";
             labelBairro.Size = new Size(38, 15);
             labelBairro.TabIndex = 57;
@@ -411,7 +422,7 @@
             // 
             // textBoxComplemento
             // 
-            textBoxComplemento.Location = new Point(194, 330);
+            textBoxComplemento.Location = new Point(194, 382);
             textBoxComplemento.Name = "textBoxComplemento";
             textBoxComplemento.Size = new Size(208, 23);
             textBoxComplemento.TabIndex = 15;
@@ -419,8 +430,9 @@
             // labelComplemento
             // 
             labelComplemento.AutoSize = true;
+            labelComplemento.BackColor = Color.Transparent;
             labelComplemento.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelComplemento.Location = new Point(194, 312);
+            labelComplemento.Location = new Point(194, 364);
             labelComplemento.Name = "labelComplemento";
             labelComplemento.Size = new Size(83, 15);
             labelComplemento.TabIndex = 56;
@@ -428,7 +440,7 @@
             // 
             // textBoxCidade
             // 
-            textBoxCidade.Location = new Point(420, 330);
+            textBoxCidade.Location = new Point(420, 382);
             textBoxCidade.Name = "textBoxCidade";
             textBoxCidade.Size = new Size(175, 23);
             textBoxCidade.TabIndex = 16;
@@ -436,8 +448,9 @@
             // labelCidade
             // 
             labelCidade.AutoSize = true;
+            labelCidade.BackColor = Color.Transparent;
             labelCidade.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCidade.Location = new Point(420, 312);
+            labelCidade.Location = new Point(420, 364);
             labelCidade.Name = "labelCidade";
             labelCidade.Size = new Size(43, 15);
             labelCidade.TabIndex = 55;
@@ -445,7 +458,7 @@
             // 
             // textBoxNumero
             // 
-            textBoxNumero.Location = new Point(545, 272);
+            textBoxNumero.Location = new Point(545, 324);
             textBoxNumero.Name = "textBoxNumero";
             textBoxNumero.Size = new Size(50, 23);
             textBoxNumero.TabIndex = 13;
@@ -453,8 +466,9 @@
             // labelNumero
             // 
             labelNumero.AutoSize = true;
+            labelNumero.BackColor = Color.Transparent;
             labelNumero.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNumero.Location = new Point(545, 254);
+            labelNumero.Location = new Point(545, 306);
             labelNumero.Name = "labelNumero";
             labelNumero.Size = new Size(51, 15);
             labelNumero.TabIndex = 53;
@@ -462,7 +476,7 @@
             // 
             // textBoxLograd
             // 
-            textBoxLograd.Location = new Point(194, 272);
+            textBoxLograd.Location = new Point(194, 324);
             textBoxLograd.Name = "textBoxLograd";
             textBoxLograd.Size = new Size(332, 23);
             textBoxLograd.TabIndex = 12;
@@ -470,8 +484,9 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
             label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(194, 254);
+            label2.Location = new Point(194, 306);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
             label2.TabIndex = 52;
@@ -480,8 +495,9 @@
             // labelCEP
             // 
             labelCEP.AutoSize = true;
+            labelCEP.BackColor = Color.Transparent;
             labelCEP.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCEP.Location = new Point(114, 254);
+            labelCEP.Location = new Point(114, 306);
             labelCEP.Name = "labelCEP";
             labelCEP.Size = new Size(27, 15);
             labelCEP.TabIndex = 51;
@@ -489,7 +505,7 @@
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(268, 393);
+            textBoxEmail.Location = new Point(268, 445);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(177, 23);
             textBoxEmail.TabIndex = 19;
@@ -497,8 +513,9 @@
             // labelEmail
             // 
             labelEmail.AutoSize = true;
+            labelEmail.BackColor = Color.Transparent;
             labelEmail.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelEmail.Location = new Point(268, 375);
+            labelEmail.Location = new Point(268, 427);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(41, 15);
             labelEmail.TabIndex = 49;
@@ -507,6 +524,7 @@
             // labelCNH
             // 
             labelCNH.AutoSize = true;
+            labelCNH.BackColor = Color.Transparent;
             labelCNH.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelCNH.Location = new Point(268, 85);
             labelCNH.Name = "labelCNH";
@@ -526,6 +544,7 @@
             // labelID
             // 
             labelID.AutoSize = true;
+            labelID.BackColor = Color.Transparent;
             labelID.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelID.Location = new Point(50, 85);
             labelID.Name = "labelID";
@@ -543,6 +562,7 @@
             // labelNome
             // 
             labelNome.AutoSize = true;
+            labelNome.BackColor = Color.Transparent;
             labelNome.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelNome.Location = new Point(50, 30);
             labelNome.Name = "labelNome";
@@ -556,7 +576,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
-            ClientSize = new Size(884, 599);
+            ClientSize = new Size(1264, 681);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menu1);

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PizzariaDoZe.DAO.Funcionario;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PizzariaDoZe.Sabores
 {
@@ -87,5 +89,26 @@ namespace PizzariaDoZe.Sabores
             }
         }
 
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dataGridViewDados.SelectedCells.Count > 0)
+            {
+                //pega a primeira coluna, que esta com o ID, da linha selecionada
+                DataGridViewRow selectedRow = dataGridViewDados.Rows[dataGridViewDados.SelectedCells[0].RowIndex];
+                int id = Convert.ToInt32(selectedRow.Cells[0].Value);
+                AtualizaTelaEditar(id);
+            }
+        }
+
+        private void AtualizaTelaEditar(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

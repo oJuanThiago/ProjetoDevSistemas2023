@@ -133,12 +133,26 @@ namespace PizzariaDoZe.DAO
                 }
                 conexao.Open();
                 comando.CommandText =   @" " +
-                                        "SELECT f.id_funcionario AS ID, f.nome_funcionario AS Nome, f.cpf AS CPF, f.matricula AS Matrícula, f.senha AS Senha, f.grupo AS Grupo, " +
-                                        "f.motorista AS Carteira, f.validade_motorista AS Validade, f.observacao AS Observação, f.telefone AS Telefone, f.email AS 'E-Mail', " +
-                                        "e.cep AS CEP, e.logradouro AS Logradouro, e.bairro AS Bairro, " +
+                                        "SELECT f.id_funcionario AS ID," +
+                                        "f.nome_funcionario AS Nome," +
+                                        "f.cpf AS CPF, " +
+                                        "f.matricula AS Matrícula," +
+                                        "f.senha AS Senha," +
+                                        "f.grupo AS Grupo, " +
+                                        "f.motorista AS Carteira," +
+                                        "f.validade_motorista AS Validade," +
+                                        "f.observacao AS Observação," +
+                                        "f.telefone AS Telefone," +
+                                        "f.email AS 'E-Mail', " +
+                                        "e.cep AS CEP," +
+                                        "e.logradouro AS Logradouro," +
+                                        "e.bairro AS Bairro, " +
                                         "c.nome_cidade AS Cidade, " +
                                         "u.nome_uf AS UF, " +
-                                        "f.numero AS Número, f.complemento AS Complemento " +
+                                        "f.numero AS Número," +
+                                        "f.complemento AS Complemento, " +
+                                        "f.endereco_id AS EnderecoID, " +
+                                        "p.nome_pais AS País " +
                                         "FROM tb_funcionarios AS f " +
                                         "INNER JOIN tb_enderecos AS e ON e.id_endereco = f.endereco_id " +
                                         "INNER JOIN cad_cidades AS c ON c.id_cidade = e.cidade_id " +
@@ -151,6 +165,67 @@ namespace PizzariaDoZe.DAO
                 DataTable linhas = new();
                 linhas.Load(sdr);
                 return linhas;
+            }
+
+            public void Editar(Funcionario funcionario)
+            {
+                using var conexao = factory.CreateConnection(); //Cria conexão
+                conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+                using var comando = factory.CreateCommand(); //Cria comando
+                comando!.Connection = conexao; //Atribui conexão
+                                               //Adiciona parâmetro (@campo e valor)
+                var id = comando.CreateParameter(); id.ParameterName = "@id"; id.Value = funcionario.ID; comando.Parameters.Add(id);
+                var nome = comando.CreateParameter(); nome.ParameterName = "@nome"; nome.Value = funcionario.Nome; comando.Parameters.Add(nome);
+                var cpf = comando.CreateParameter(); cpf.ParameterName = "@cpf"; cpf.Value = funcionario.CPF; comando.Parameters.Add(cpf);
+                var matricula = comando.CreateParameter(); matricula.ParameterName = "@matricula"; matricula.Value = funcionario.Matricula; comando.Parameters.Add(matricula);
+                var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = funcionario.Senha; comando.Parameters.Add(senha);
+                var grupo = comando.CreateParameter(); grupo.ParameterName = "@grupo"; grupo.Value = funcionario.Grupo; comando.Parameters.Add(grupo);
+                var motorista = comando.CreateParameter(); motorista.ParameterName = "@motorista"; motorista.Value = funcionario.CNH; comando.Parameters.Add(motorista);
+                var validade_motorista = comando.CreateParameter(); validade_motorista.ParameterName = "@validade_motorista"; validade_motorista.Value = funcionario.Validade;
+                comando.Parameters.Add(validade_motorista);
+                var observacao = comando.CreateParameter(); observacao.ParameterName = "@observacao"; observacao.Value = funcionario.Observacao; comando.Parameters.Add(observacao);
+                var telefone = comando.CreateParameter(); telefone.ParameterName = "@telefone"; telefone.Value = funcionario.Telefone; comando.Parameters.Add(telefone);
+                var email = comando.CreateParameter(); email.ParameterName = "@email"; email.Value = funcionario.Email; comando.Parameters.Add(email);
+                var endereco_id = comando.CreateParameter(); endereco_id.ParameterName = "@endereco_id"; endereco_id.Value = funcionario.EnderecoID; comando.Parameters.Add(endereco_id);
+                var numero = comando.CreateParameter(); numero.ParameterName = "@numero"; numero.Value = funcionario.Numero; comando.Parameters.Add(numero);
+                var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento"; complemento.Value = funcionario.Complemento; comando.Parameters.Add(complemento);
+                conexao.Open();
+                //realiza o UPDATE
+                comando.CommandText =   @"UPDATE tb_funcionarios SET " +
+                                        "nome_funcionario = @nome, " +
+                                        "cpf = @cpf, " +
+                                        "matricula = @matricula, " +
+                                        "senha = @senha, " +
+                                        "grupo = @grupo, " +
+                                        "motorista = @motorista, " +
+                                        "validade_motorista = @validade_motorista, " +
+                                        "observacao = @observacao, " +
+                                        "telefone = @telefone, " +
+                                        "email = @email, " +
+                                        "endereco_id = @endereco_id, " +
+                                        "numero = @numero, " +
+                                        "complemento = @complemento " +
+                                        "WHERE id_funcionario = @id;";
+                //executa o comando no banco de dados
+                _ = comando.ExecuteNonQuery();
+            }
+
+            public void Excluir(Funcionario funcionario)
+            {
+                using var conexao = factory.CreateConnection(); //Cria conexão
+                conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+                using var comando = factory.CreateCommand(); //Cria comando
+                comando!.Connection = conexao; //Atribui conexão
+                                               //Adiciona parâmetro (@campo e valor)
+                var id = comando.CreateParameter();
+                id.ParameterName = "@id";
+                id.Value = funcionario.ID;
+                comando.Parameters.Add(id);
+                conexao.Open();
+                //realiza o DELETE
+                comando.CommandText = @"DELETE FROM tb_funcionarios WHERE id_funcionario = @id;";
+                //executa o comando no banco de dados
+                _ = comando.ExecuteNonQuery();
             }
         }
     }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            buttonEnderecos = new Button();
             buttonSair = new Button();
             buttonValores = new Button();
             buttonProdutos = new Button();
@@ -41,7 +42,6 @@
             labelFuncaoUsuario = new Label();
             labelUsuario = new Label();
             pictureBox1 = new PictureBox();
-            buttonEnderecos = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -63,8 +63,25 @@
             panel1.ForeColor = SystemColors.ControlLightLight;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 600);
+            panel1.Size = new Size(200, 700);
             panel1.TabIndex = 0;
+            // 
+            // buttonEnderecos
+            // 
+            buttonEnderecos.FlatAppearance.BorderSize = 0;
+            buttonEnderecos.FlatStyle = FlatStyle.Flat;
+            buttonEnderecos.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEnderecos.ForeColor = Color.White;
+            buttonEnderecos.Image = Properties.Resources.atividades;
+            buttonEnderecos.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEnderecos.Location = new Point(0, 438);
+            buttonEnderecos.Name = "buttonEnderecos";
+            buttonEnderecos.Size = new Size(200, 38);
+            buttonEnderecos.TabIndex = 9;
+            buttonEnderecos.Text = "Endereços";
+            buttonEnderecos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEnderecos.UseVisualStyleBackColor = true;
+            buttonEnderecos.Click += buttonEnderecos_Click;
             // 
             // buttonSair
             // 
@@ -74,7 +91,7 @@
             buttonSair.ForeColor = Color.White;
             buttonSair.Image = Properties.Resources.logout;
             buttonSair.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSair.Location = new Point(0, 549);
+            buttonSair.Location = new Point(0, 635);
             buttonSair.Name = "buttonSair";
             buttonSair.Size = new Size(200, 48);
             buttonSair.TabIndex = 8;
@@ -244,30 +261,13 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // buttonEnderecos
-            // 
-            buttonEnderecos.FlatAppearance.BorderSize = 0;
-            buttonEnderecos.FlatStyle = FlatStyle.Flat;
-            buttonEnderecos.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEnderecos.ForeColor = Color.White;
-            buttonEnderecos.Image = Properties.Resources.atividades;
-            buttonEnderecos.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEnderecos.Location = new Point(0, 438);
-            buttonEnderecos.Name = "buttonEnderecos";
-            buttonEnderecos.Size = new Size(200, 38);
-            buttonEnderecos.TabIndex = 9;
-            buttonEnderecos.Text = "Endereços";
-            buttonEnderecos.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEnderecos.UseVisualStyleBackColor = true;
-            buttonEnderecos.Click += buttonEnderecos_Click;
-            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "Menu";
-            Size = new Size(200, 600);
+            Size = new Size(200, 700);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

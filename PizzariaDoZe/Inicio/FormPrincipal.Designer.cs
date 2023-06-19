@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             menu1 = new Menu();
             panel1 = new Panel();
-            labelInicio = new Label();
             buttonConfig = new Button();
+            labelInicio = new Label();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,9 +42,8 @@
             menu1.Dock = DockStyle.Left;
             menu1.Location = new Point(0, 0);
             menu1.Name = "menu1";
-            menu1.Size = new Size(200, 599);
+            menu1.Size = new Size(200, 681);
             menu1.TabIndex = 0;
-            menu1.buttonInicio.Enabled = false;
             // 
             // panel1
             // 
@@ -53,8 +53,26 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(200, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(684, 100);
+            panel1.Size = new Size(1064, 100);
             panel1.TabIndex = 1;
+            // 
+            // buttonConfig
+            // 
+            buttonConfig.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonConfig.BackColor = Color.Transparent;
+            buttonConfig.FlatAppearance.BorderSize = 0;
+            buttonConfig.FlatStyle = FlatStyle.Flat;
+            buttonConfig.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonConfig.ForeColor = Color.White;
+            buttonConfig.Image = (Image)resources.GetObject("buttonConfig.Image");
+            buttonConfig.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonConfig.Location = new Point(969, 28);
+            buttonConfig.Name = "buttonConfig";
+            buttonConfig.Size = new Size(48, 48);
+            buttonConfig.TabIndex = 8;
+            buttonConfig.TextImageRelation = TextImageRelation.ImageAboveText;
+            buttonConfig.UseVisualStyleBackColor = false;
+            buttonConfig.Click += buttonConfig_Click;
             // 
             // labelInicio
             // 
@@ -68,23 +86,13 @@
             labelInicio.Text = "Início";
             labelInicio.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // buttonConfig
+            // panel2
             // 
-            buttonConfig.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonConfig.BackColor = Color.Transparent;
-            buttonConfig.FlatAppearance.BorderSize = 0;
-            buttonConfig.FlatStyle = FlatStyle.Flat;
-            buttonConfig.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonConfig.ForeColor = Color.White;
-            buttonConfig.Image = (Image)resources.GetObject("buttonConfig.Image");
-            buttonConfig.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonConfig.Location = new Point(624, 28);
-            buttonConfig.Name = "buttonConfig";
-            buttonConfig.Size = new Size(48, 48);
-            buttonConfig.TabIndex = 8;
-            buttonConfig.TextImageRelation = TextImageRelation.ImageAboveText;
-            buttonConfig.UseVisualStyleBackColor = false;
-            buttonConfig.Click += buttonConfig_Click;
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(200, 100);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1064, 581);
+            panel2.TabIndex = 2;
             // 
             // FormPrincipal
             // 
@@ -92,7 +100,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
-            ClientSize = new Size(884, 599);
+            ClientSize = new Size(1264, 681);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menu1);
             ForeColor = SystemColors.ControlText;
@@ -111,7 +120,6 @@
         private Panel panel1;
         private Label labelInicio;
         private Button buttonConfig;
-
-        
+        private Panel panel2;
     }
 }
