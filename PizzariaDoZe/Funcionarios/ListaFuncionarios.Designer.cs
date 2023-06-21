@@ -689,7 +689,7 @@
             dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewDados.Size = new Size(985, 473);
             dataGridViewDados.TabIndex = 3;
-            dataGridViewDados.MouseDoubleClick += dataGridViewDados_MouseDoubleClick;
+            dataGridViewDados.MouseDoubleClick += DataGridViewDados_MouseDoubleClick;
             // 
             // menu
             // 

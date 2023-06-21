@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PizzariaDoZe
 {
@@ -21,9 +22,110 @@ namespace PizzariaDoZe
             Funcoes.AjustaResourcesControl(this);
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
+            panelEditar.Visible = false;
+
+            dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             produtoDAO = new ProdutoDAO(provider, strConnection);
             AtualizarTela();
         }
+
+        // Ações
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormProdutos formProdutos = new FormProdutos();
+            formProdutos.Show();
+        }
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            panelEditar.Visible = true;
+        }
+
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
+
+        // Tela Editar
+        private void AtualizaTelaEditar(int id)
+        {
+            var produto = new Produto
+            {
+                ID = id,
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = produtoDAO.Buscar(produto);
+                // seta os dados na tela
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxID.Text = row[0].ToString();
+                    textBoxDescricao.Text = row[1].ToString();
+                    textBoxValor.Text = row[2].ToString();
+                    comboBoxTipo.Text = row[3].ToString();
+                    comboBoxML.Text = row[4].ToString();
+                }
+                textBoxDescricao.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um produto válido!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var produto = new Produto
+            {
+                ID = int.Parse(textBoxID.Text),
+                Descricao = textBoxDescricao.Text,
+                Valor = decimal.Parse(textBoxValor.Text),
+                Tipo = comboBoxTipo.Text,
+                ML = comboBoxML.Text,
+            };
+            try
+            {
+                // chama o método da model para editar
+                produtoDAO.Editar(produto);
+                MessageBox.Show("Dados editados com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um produto!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var produto = new Produto
+            {
+                ID = int.Parse(textBoxID.Text),
+            };
+            try
+            {
+                // chama o método da model para excluir
+                produtoDAO.Excluir(produto);
+                MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
+
+        // Lista
         private void AtualizarTela()
         {
             //Instância e Preenche o objeto com os dados da view
@@ -43,20 +145,6 @@ namespace PizzariaDoZe
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-            FormProdutos formProdutos = new FormProdutos();
-            formProdutos.Show();
-        }
-
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonFechar_Click(object sender, EventArgs e) => Close();
-
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == this.dataGridViewDados.NewRowIndex || e.Value!.ToString()!.Trim().Length == 0)
@@ -99,11 +187,5 @@ namespace PizzariaDoZe
                 AtualizaTelaEditar(id);
             }
         }
-
-        private void AtualizaTelaEditar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

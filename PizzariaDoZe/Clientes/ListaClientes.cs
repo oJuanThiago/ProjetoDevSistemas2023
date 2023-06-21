@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PizzariaDoZe.DAO.Funcionario;
 
 namespace PizzariaDoZe
 {
@@ -21,6 +22,8 @@ namespace PizzariaDoZe
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             clienteDAO = new ClienteDAO(provider, strConnection);
+
+            panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
@@ -51,15 +54,6 @@ namespace PizzariaDoZe
             clientes.Show();
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
         private void DataGridViewDados_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == this.dataGridViewDados.NewRowIndex || e.Value!.ToString()!.Trim().Length == 0)
@@ -101,8 +95,102 @@ namespace PizzariaDoZe
 
         private void AtualizaTelaEditar(int id)
         {
-            throw new NotImplementedException();
+            var cliente = new Cliente
+            {
+                ID = id,
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = clienteDAO.Buscar(cliente);
+                // seta os dados na tela
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxID.Text = row[0].ToString();
+                    textBoxNome.Text = row[1].ToString();
+                    maskedTextBoxCPF.Text = row[2].ToString();
+                    maskedTextBoxTel.Text = row[3].ToString();
+                    textBoxEmail.Text = row[4].ToString();
+                    maskedTextBoxCEP.Text = row[5].ToString();
+                    textBoxLogradouro.Text = row[6].ToString();
+                    textBoxBairro.Text = row[7].ToString();
+                    textBoxCidade.Text = row[8].ToString();
+                    comboBoxUF.Text = row[9].ToString();
+                    textBoxNumero.Text = row[10].ToString();
+                    textBoxComplemento.Text = row[11].ToString();
+                    textBoxEnderecoID.Text = row[12].ToString();
+                    textBoxPais.Text = row[13].ToString();
+                }
+                textBoxNome.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        private void buttonEditar_Click(object sender, EventArgs e) => panelEditar.Visible = true;
+
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0 || textBoxEnderecoID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um cliente e endereço valido!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var cliente = new Cliente
+            {
+                ID = int.Parse(textBoxID.Text),
+                Nome = textBoxNome.Text,
+                CPF = maskedTextBoxCPF.Text,
+                Telefone = maskedTextBoxTel.Text,
+                Email = textBoxEmail.Text,
+                EnderecoID = int.Parse(textBoxEnderecoID.Text),
+                Numero = textBoxNumero.Text,
+                Complemento = textBoxComplemento.Text,
+            };
+            try
+            {
+                // chama o método da model para editar
+                clienteDAO.Editar(cliente);
+                MessageBox.Show("Dados editados com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um cliente!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var cliente = new Cliente
+            {
+                ID = int.Parse(textBoxID.Text),
+            };
+            try
+            {
+                // chama o método da model para excluir
+                clienteDAO.Excluir(cliente);
+                MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
     }
 }

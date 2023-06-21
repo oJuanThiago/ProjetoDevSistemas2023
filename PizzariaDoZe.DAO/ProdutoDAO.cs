@@ -44,14 +44,18 @@ namespace PizzariaDoZe.DAO
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
                                            //Adiciona parâmetro (@campo e valor)
-            var descricao = comando.CreateParameter(); descricao.ParameterName = "@descricao";
-            descricao.Value = produto.Descricao; comando.Parameters.Add(descricao);
-            var valorProduto = comando.CreateParameter(); valorProduto.ParameterName = "@valorProduto";
-            valorProduto.Value = produto.Valor; comando.Parameters.Add(valorProduto);
-            var tipo = comando.CreateParameter(); tipo.ParameterName = "@tipo";
-            tipo.Value = produto.Tipo; comando.Parameters.Add(tipo);
-            var ml = comando.CreateParameter(); ml.ParameterName = "@ml";
-            ml.Value = produto.ML; comando.Parameters.Add(ml);
+            var descricao = comando.CreateParameter(); descricao.ParameterName = "@descricao"; descricao.Value = produto.Descricao; 
+            comando.Parameters.Add(descricao);
+
+            var valorProduto = comando.CreateParameter(); valorProduto.ParameterName = "@valorProduto"; valorProduto.Value = produto.Valor; 
+            comando.Parameters.Add(valorProduto);
+
+            var tipo = comando.CreateParameter(); tipo.ParameterName = "@tipo"; tipo.Value = produto.Tipo; 
+            comando.Parameters.Add(tipo);
+
+            var ml = comando.CreateParameter(); ml.ParameterName = "@ml"; ml.Value = produto.ML; 
+            comando.Parameters.Add(ml);
+
             conexao.Open();
             //ajusta o comando SQL para capturar o ID gerado tanto do MySQL como do SQLServer
             string auxSQL_ID = Provider.Contains("MySql") ? "SELECT LAST_INSERT_ID();" : "SELECT SCOPE_IDENTITY();";
@@ -91,5 +95,84 @@ namespace PizzariaDoZe.DAO
 
             return linhas;
         }
+
+        public void Editar(Produto produto)
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetro (@campo e valor)
+            var descricao = comando.CreateParameter(); descricao.ParameterName = "@descricao"; descricao.Value = produto.Descricao; 
+            comando.Parameters.Add(descricao);
+            
+            var valorProduto = comando.CreateParameter(); valorProduto.ParameterName = "@valorProduto"; valorProduto.Value = produto.Valor; 
+            comando.Parameters.Add(valorProduto);
+
+            var tipo = comando.CreateParameter(); tipo.ParameterName = "@tipo"; tipo.Value = produto.Tipo; 
+            comando.Parameters.Add(tipo);
+
+            var ml = comando.CreateParameter(); ml.ParameterName = "@ml"; ml.Value = produto.ML; 
+            comando.Parameters.Add(ml);
+
+            conexao.Open();
+
+            DbTransaction transacao = conexao.BeginTransaction();
+            // Associa o command com o controle de Transação
+            comando.Transaction = transacao;
+            try
+            {
+                //realiza o UPDATE
+                comando.CommandText = @"UPDATE cad_produtos SET descricao_produto = @descricao, valor = @valorProduto,  tipo = @tipo, ml = @ml WHERE id_produto = @id;";
+                //executa o comando no banco de dados e captura o ID gerado
+                _ = comando.ExecuteNonQuery();
+                // Como não ocorreu nenhum erro, confirma as transações através do Commit()
+                transacao.Commit();
+            }
+            catch (Exception ex)
+            {
+                // Alguns dos comandos SQL acima gerou erro, dessa forma, todos os comandos serão desfeitos através do Rollback()
+                transacao.Rollback();
+                // retorna uma exceção para quem chamou a execução
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Excluir(Produto produto)
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetro (@campo e valor)
+            var id = comando.CreateParameter();
+            id.ParameterName = "@id";
+            id.Value = produto.ID;
+            comando.Parameters.Add(id);
+            conexao.Open();
+            // Inicia o controle de Transação LOCAL
+            DbTransaction transacao = conexao.BeginTransaction();
+            // Associa o command com o controle de Transação
+            comando.Transaction = transacao;
+            try
+            {
+                //limpa todos os ingredientes do valor
+                comando.CommandText = @"DELETE FROM lista_produtos WHERE produto_id = @id;";
+                _ = comando.ExecuteNonQuery();
+                //realiza o UPDATE
+                comando.CommandText = @"DELETE FROM cad_produtos WHERE id_produto = @id;";
+                _ = comando.ExecuteNonQuery();
+                // Como não ocorreu nenhum erro, confirma as transações através do Commit()
+                transacao.Commit();
+            }
+            catch (Exception ex)
+            {
+                // Alguns dos comandos SQL acima gerou erro, dessa forma, todos os comandos serão desfeitos através do Rollback()
+                transacao.Rollback();
+                // retorna uma exceção para quem chamou a execução
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

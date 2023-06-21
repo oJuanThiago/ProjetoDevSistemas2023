@@ -88,7 +88,7 @@ namespace PizzariaDoZe
             }
         }
 
-        private void dataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void DataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (dataGridViewDados.SelectedCells.Count > 0)
             {
@@ -183,29 +183,29 @@ namespace PizzariaDoZe
 
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
-            {
-                if (textBoxID.Text.Length <= 0)
-                {
-                    MessageBox.Show("Selecione um funcionário!");
-                    return;
-                }
-                //Instância e Preenche o objeto com os dados da view
-                var funcionario = new Funcionario
-                {
-                    ID = int.Parse(textBoxID.Text),
-                };
-                try
-                {
-                    // chama o método da model para excluir
-                    funcionarioDAO.Excluir(funcionario);
-                    MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
-                    panelEditar.Visible = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+        
+           if (textBoxID.Text.Length <= 0)
+           {
+               MessageBox.Show("Selecione um funcionário!");
+               return;
+           }
+           //Instância e Preenche o objeto com os dados da view
+           var funcionario = new Funcionario
+           {
+               ID = int.Parse(textBoxID.Text),
+           };
+           try
+           {
+               // chama o método da model para excluir
+               funcionarioDAO.Excluir(funcionario);
+               MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
+               panelEditar.Visible = false;
+           }
+           catch (Exception ex)
+           {
+               MessageBox.Show(ex.Message);
+           }
+        
         }
 
         private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;

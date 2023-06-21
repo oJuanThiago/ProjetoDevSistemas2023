@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PizzariaDoZe
 {
@@ -21,6 +22,8 @@ namespace PizzariaDoZe
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             valorDAO = new ValorDAO(provider, strConnection);
+            panelEditar.Visible = false;
+
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
         }
@@ -51,11 +54,7 @@ namespace PizzariaDoZe
             FormValores formValores = new FormValores();
             formValores.Show();
         }
-
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void buttonEditar_Click(object sender, EventArgs e) => panelEditar.Visible = true;
 
         private void buttonFechar_Click(object sender, EventArgs e) => Close();
 
@@ -100,8 +99,88 @@ namespace PizzariaDoZe
 
         private void AtualizaTelaEditar(int id)
         {
-            throw new NotImplementedException();
+            var valor = new Valor
+            {
+                ID = id,
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = valorDAO.Buscar(valor);
+                // seta os dados na tela
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxID.Text = row[0].ToString();
+                    comboBoxTamanho.Text = row[1].ToString();
+                    comboBoxCategoria.Text = row[2].ToString();
+                    textBoxValor.Text = row[3].ToString();
+                    textBoxValorBorda.Text = row[4].ToString();
+                }
+                comboBoxTamanho.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um valor válido!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var valor = new Valor
+            {
+                ID = int.Parse(textBoxID.Text),
+                Tamanho = comboBoxTamanho.Text,
+                Categoria = comboBoxCategoria.Text,
+                ValorPizza = decimal.Parse(textBoxValor.Text),
+                ValorBorda = decimal.Parse(textBoxValorBorda.Text),
+
+            };
+            try
+            {
+                // chama o método da model para editar
+                valorDAO.Editar(valor);
+                MessageBox.Show("Dados editados com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (textBoxID.Text.Length <= 0)
+            {
+                MessageBox.Show("Selecione um valor!");
+                return;
+            }
+            //Instância e Preenche o objeto com os dados da view
+            var valor = new Valor
+            {
+                ID = int.Parse(textBoxID.Text),
+            };
+            try
+            {
+                // chama o método da model para excluir
+                valorDAO.Excluir(valor);
+                MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
+                panelEditar.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
     }
 }

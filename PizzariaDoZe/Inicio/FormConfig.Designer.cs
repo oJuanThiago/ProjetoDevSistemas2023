@@ -34,10 +34,11 @@
             comboBoxIdioma = new ComboBox();
             buttonSalvar = new Button();
             groupBoxBD = new GroupBox();
+            labelStringConexao = new Label();
+            textBoxStringConexao = new TextBox();
             labelProvider = new Label();
             comboBoxProvider = new ComboBox();
-            textBoxStringConexao = new TextBox();
-            labelStringConexao = new Label();
+            buttonFechar = new Button();
             groupBoxIdioma.SuspendLayout();
             groupBoxBD.SuspendLayout();
             SuspendLayout();
@@ -58,6 +59,7 @@
             // checkBoxReiniciar
             // 
             checkBoxReiniciar.AutoSize = true;
+            checkBoxReiniciar.ForeColor = SystemColors.ActiveCaptionText;
             checkBoxReiniciar.Location = new Point(186, 49);
             checkBoxReiniciar.Name = "checkBoxReiniciar";
             checkBoxReiniciar.Size = new Size(236, 19);
@@ -68,6 +70,7 @@
             // labelIdioma
             // 
             labelIdioma.AutoSize = true;
+            labelIdioma.ForeColor = SystemColors.ActiveCaptionText;
             labelIdioma.Location = new Point(36, 30);
             labelIdioma.Name = "labelIdioma";
             labelIdioma.Size = new Size(45, 15);
@@ -85,15 +88,16 @@
             // 
             // buttonSalvar
             // 
-            buttonSalvar.BackColor = Color.DarkGreen;
+            buttonSalvar.BackColor = Color.Green;
             buttonSalvar.FlatAppearance.BorderColor = Color.Gray;
+            buttonSalvar.FlatAppearance.BorderSize = 0;
             buttonSalvar.FlatStyle = FlatStyle.Flat;
             buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSalvar.ForeColor = Color.White;
             buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSalvar.Location = new Point(669, 429);
+            buttonSalvar.Location = new Point(613, 424);
             buttonSalvar.Name = "buttonSalvar";
-            buttonSalvar.Size = new Size(110, 38);
+            buttonSalvar.Size = new Size(80, 38);
             buttonSalvar.TabIndex = 71;
             buttonSalvar.Text = "Salvar";
             buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -113,9 +117,27 @@
             groupBoxBD.TabStop = false;
             groupBoxBD.Text = "Banco de Dados";
             // 
+            // labelStringConexao
+            // 
+            labelStringConexao.AutoSize = true;
+            labelStringConexao.ForeColor = SystemColors.ActiveCaptionText;
+            labelStringConexao.Location = new Point(36, 92);
+            labelStringConexao.Name = "labelStringConexao";
+            labelStringConexao.Size = new Size(104, 15);
+            labelStringConexao.TabIndex = 3;
+            labelStringConexao.Text = "String de Conexão";
+            // 
+            // textBoxStringConexao
+            // 
+            textBoxStringConexao.Location = new Point(36, 110);
+            textBoxStringConexao.Name = "textBoxStringConexao";
+            textBoxStringConexao.Size = new Size(500, 23);
+            textBoxStringConexao.TabIndex = 2;
+            // 
             // labelProvider
             // 
             labelProvider.AutoSize = true;
+            labelProvider.ForeColor = SystemColors.ActiveCaptionText;
             labelProvider.Location = new Point(36, 30);
             labelProvider.Name = "labelProvider";
             labelProvider.Size = new Size(51, 15);
@@ -131,29 +153,31 @@
             comboBoxProvider.Size = new Size(118, 23);
             comboBoxProvider.TabIndex = 0;
             // 
-            // textBoxStringConexao
+            // buttonFechar
             // 
-            textBoxStringConexao.Location = new Point(36, 110);
-            textBoxStringConexao.Name = "textBoxStringConexao";
-            textBoxStringConexao.Size = new Size(500, 23);
-            textBoxStringConexao.TabIndex = 2;
-            // 
-            // labelStringConexao
-            // 
-            labelStringConexao.AutoSize = true;
-            labelStringConexao.Location = new Point(36, 92);
-            labelStringConexao.Name = "labelStringConexao";
-            labelStringConexao.Size = new Size(104, 15);
-            labelStringConexao.TabIndex = 3;
-            labelStringConexao.Text = "String de Conexão";
+            buttonFechar.BackColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderSize = 0;
+            buttonFechar.FlatStyle = FlatStyle.Flat;
+            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFechar.ForeColor = Color.White;
+            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonFechar.Location = new Point(699, 424);
+            buttonFechar.Name = "buttonFechar";
+            buttonFechar.Size = new Size(80, 38);
+            buttonFechar.TabIndex = 72;
+            buttonFechar.Text = "Fechar";
+            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonFechar.UseVisualStyleBackColor = false;
             // 
             // FormConfig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.FromArgb(51, 51, 51);
-            ClientSize = new Size(884, 599);
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(881, 533);
+            Controls.Add(buttonFechar);
             Controls.Add(groupBoxBD);
             Controls.Add(buttonSalvar);
             Controls.Add(groupBoxIdioma);
@@ -182,5 +206,6 @@
         private TextBox textBoxStringConexao;
         private Label labelProvider;
         private ComboBox comboBoxProvider;
+        private Button buttonFechar;
     }
 }

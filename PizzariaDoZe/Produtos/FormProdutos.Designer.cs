@@ -55,7 +55,6 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
-            menu1.buttonProdutos.Enabled = false;
             // 
             // panel1
             // 
@@ -137,7 +136,7 @@
             // 
             // textBoxID
             // 
-            textBoxID.Location = new Point(272, 68);
+            textBoxID.Location = new Point(50, 68);
             textBoxID.Name = "textBoxID";
             textBoxID.ReadOnly = true;
             textBoxID.Size = new Size(50, 23);
@@ -148,7 +147,7 @@
             // 
             labelID.AutoSize = true;
             labelID.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelID.Location = new Point(272, 50);
+            labelID.Location = new Point(50, 50);
             labelID.Name = "labelID";
             labelID.Size = new Size(20, 15);
             labelID.TabIndex = 83;
@@ -209,7 +208,7 @@
             // 
             // textBoxDescricao
             // 
-            textBoxDescricao.Location = new Point(50, 68);
+            textBoxDescricao.Location = new Point(112, 68);
             textBoxDescricao.Name = "textBoxDescricao";
             textBoxDescricao.Size = new Size(200, 23);
             textBoxDescricao.TabIndex = 5;
@@ -218,7 +217,7 @@
             // 
             labelDescricao.AutoSize = true;
             labelDescricao.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDescricao.Location = new Point(50, 50);
+            labelDescricao.Location = new Point(112, 50);
             labelDescricao.Name = "labelDescricao";
             labelDescricao.Size = new Size(59, 15);
             labelDescricao.TabIndex = 4;

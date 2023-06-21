@@ -33,9 +33,6 @@
             labelIngredientes = new Label();
             menu1 = new Menu();
             panelLista = new Panel();
-            buttonEditar = new Button();
-            buttonFechar = new Button();
-            dataGridViewDados = new DataGridView();
             panelEditar = new Panel();
             labelEditarIngrediente = new Label();
             buttonExcluir = new Button();
@@ -45,10 +42,13 @@
             labelID = new Label();
             textBoxDescricao = new TextBox();
             labelNome = new Label();
+            buttonEditar = new Button();
+            buttonFechar = new Button();
+            dataGridViewDados = new DataGridView();
             panel1.SuspendLayout();
             panelLista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
             panelEditar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -109,56 +109,6 @@
             panelLista.Size = new Size(1069, 600);
             panelLista.TabIndex = 9;
             // 
-            // buttonEditar
-            // 
-            buttonEditar.BackColor = Color.DodgerBlue;
-            buttonEditar.FlatAppearance.BorderColor = Color.Gray;
-            buttonEditar.FlatAppearance.BorderSize = 0;
-            buttonEditar.FlatStyle = FlatStyle.Flat;
-            buttonEditar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditar.ForeColor = Color.White;
-            buttonEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEditar.Location = new Point(851, 497);
-            buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(80, 38);
-            buttonEditar.TabIndex = 4;
-            buttonEditar.Text = "Editar";
-            buttonEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEditar.UseVisualStyleBackColor = false;
-            buttonEditar.Click += buttonEditar_Click;
-            // 
-            // buttonFechar
-            // 
-            buttonFechar.BackColor = Color.Gray;
-            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
-            buttonFechar.FlatAppearance.BorderSize = 0;
-            buttonFechar.FlatStyle = FlatStyle.Flat;
-            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFechar.ForeColor = Color.White;
-            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFechar.Location = new Point(937, 497);
-            buttonFechar.Name = "buttonFechar";
-            buttonFechar.Size = new Size(80, 38);
-            buttonFechar.TabIndex = 5;
-            buttonFechar.Text = "Fechar";
-            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonFechar.UseVisualStyleBackColor = false;
-            buttonFechar.Click += buttonFechar_Click;
-            // 
-            // dataGridViewDados
-            // 
-            dataGridViewDados.AllowUserToAddRows = false;
-            dataGridViewDados.AllowUserToOrderColumns = true;
-            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewDados.Location = new Point(32, 0);
-            dataGridViewDados.MultiSelect = false;
-            dataGridViewDados.Name = "dataGridViewDados";
-            dataGridViewDados.RowTemplate.Height = 25;
-            dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDados.Size = new Size(985, 473);
-            dataGridViewDados.TabIndex = 3;
-            // 
             // panelEditar
             // 
             panelEditar.BackColor = Color.FromArgb(51, 51, 51);
@@ -180,7 +130,7 @@
             labelEditarIngrediente.AutoSize = true;
             labelEditarIngrediente.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             labelEditarIngrediente.ForeColor = SystemColors.ControlLightLight;
-            labelEditarIngrediente.Location = new Point(51, 22);
+            labelEditarIngrediente.Location = new Point(50, 30);
             labelEditarIngrediente.Name = "labelEditarIngrediente";
             labelEditarIngrediente.Size = new Size(282, 45);
             labelEditarIngrediente.TabIndex = 84;
@@ -242,7 +192,7 @@
             // 
             // textBoxID
             // 
-            textBoxID.Location = new Point(51, 103);
+            textBoxID.Location = new Point(50, 135);
             textBoxID.Name = "textBoxID";
             textBoxID.ReadOnly = true;
             textBoxID.Size = new Size(50, 23);
@@ -255,7 +205,7 @@
             labelID.BackColor = Color.Transparent;
             labelID.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelID.ForeColor = SystemColors.ButtonHighlight;
-            labelID.Location = new Point(51, 85);
+            labelID.Location = new Point(50, 117);
             labelID.Name = "labelID";
             labelID.Size = new Size(20, 15);
             labelID.TabIndex = 42;
@@ -263,7 +213,7 @@
             // 
             // textBoxDescricao
             // 
-            textBoxDescricao.Location = new Point(123, 103);
+            textBoxDescricao.Location = new Point(122, 135);
             textBoxDescricao.Name = "textBoxDescricao";
             textBoxDescricao.Size = new Size(240, 23);
             textBoxDescricao.TabIndex = 1;
@@ -274,11 +224,61 @@
             labelNome.BackColor = Color.Transparent;
             labelNome.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelNome.ForeColor = SystemColors.ButtonHighlight;
-            labelNome.Location = new Point(123, 85);
+            labelNome.Location = new Point(122, 117);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(59, 15);
             labelNome.TabIndex = 40;
             labelNome.Text = "Descrição";
+            // 
+            // buttonEditar
+            // 
+            buttonEditar.BackColor = Color.DodgerBlue;
+            buttonEditar.FlatAppearance.BorderColor = Color.Gray;
+            buttonEditar.FlatAppearance.BorderSize = 0;
+            buttonEditar.FlatStyle = FlatStyle.Flat;
+            buttonEditar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditar.ForeColor = Color.White;
+            buttonEditar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEditar.Location = new Point(851, 497);
+            buttonEditar.Name = "buttonEditar";
+            buttonEditar.Size = new Size(80, 38);
+            buttonEditar.TabIndex = 4;
+            buttonEditar.Text = "Editar";
+            buttonEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
+            // 
+            // buttonFechar
+            // 
+            buttonFechar.BackColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderSize = 0;
+            buttonFechar.FlatStyle = FlatStyle.Flat;
+            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFechar.ForeColor = Color.White;
+            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonFechar.Location = new Point(937, 497);
+            buttonFechar.Name = "buttonFechar";
+            buttonFechar.Size = new Size(80, 38);
+            buttonFechar.TabIndex = 5;
+            buttonFechar.Text = "Fechar";
+            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonFechar.UseVisualStyleBackColor = false;
+            buttonFechar.Click += buttonFechar_Click;
+            // 
+            // dataGridViewDados
+            // 
+            dataGridViewDados.AllowUserToAddRows = false;
+            dataGridViewDados.AllowUserToOrderColumns = true;
+            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewDados.Location = new Point(32, 0);
+            dataGridViewDados.MultiSelect = false;
+            dataGridViewDados.Name = "dataGridViewDados";
+            dataGridViewDados.RowTemplate.Height = 25;
+            dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewDados.Size = new Size(985, 473);
+            dataGridViewDados.TabIndex = 3;
             // 
             // ListaIngredientes
             // 
@@ -294,9 +294,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelLista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
             panelEditar.ResumeLayout(false);
             panelEditar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
             ResumeLayout(false);
         }
 

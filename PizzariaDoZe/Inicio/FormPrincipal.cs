@@ -26,5 +26,7 @@ namespace PizzariaDoZe
             FormConfig formConfig = new FormConfig();
             formConfig.Show();
         }
+
+        private void buttonFechar_Click(object sender, EventArgs e) => Close();
     }
 }

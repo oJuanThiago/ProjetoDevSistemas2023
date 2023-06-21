@@ -34,7 +34,9 @@
             buttonConfig = new Button();
             labelInicio = new Label();
             panel2 = new Panel();
+            buttonFechar = new Button();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // menu1
@@ -60,17 +62,19 @@
             // 
             buttonConfig.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             buttonConfig.BackColor = Color.Transparent;
-            buttonConfig.FlatAppearance.BorderSize = 0;
+            buttonConfig.FlatAppearance.BorderColor = Color.Gray;
+            buttonConfig.FlatAppearance.BorderSize = 2;
             buttonConfig.FlatStyle = FlatStyle.Flat;
             buttonConfig.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonConfig.ForeColor = Color.White;
             buttonConfig.Image = (Image)resources.GetObject("buttonConfig.Image");
             buttonConfig.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonConfig.Location = new Point(969, 28);
+            buttonConfig.Location = new Point(827, 20);
             buttonConfig.Name = "buttonConfig";
-            buttonConfig.Size = new Size(48, 48);
+            buttonConfig.Size = new Size(190, 60);
             buttonConfig.TabIndex = 8;
-            buttonConfig.TextImageRelation = TextImageRelation.ImageAboveText;
+            buttonConfig.Text = "Configurações";
+            buttonConfig.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonConfig.UseVisualStyleBackColor = false;
             buttonConfig.Click += buttonConfig_Click;
             // 
@@ -88,11 +92,31 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(51, 51, 51);
+            panel2.Controls.Add(buttonFechar);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(200, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(1064, 581);
             panel2.TabIndex = 2;
+            // 
+            // buttonFechar
+            // 
+            buttonFechar.BackColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderSize = 0;
+            buttonFechar.FlatStyle = FlatStyle.Flat;
+            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFechar.ForeColor = Color.White;
+            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonFechar.Location = new Point(937, 497);
+            buttonFechar.Name = "buttonFechar";
+            buttonFechar.Size = new Size(80, 38);
+            buttonFechar.TabIndex = 5;
+            buttonFechar.Text = "Fechar";
+            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonFechar.UseVisualStyleBackColor = false;
+            buttonFechar.Click += buttonFechar_Click;
             // 
             // FormPrincipal
             // 
@@ -111,6 +135,7 @@
             Text = "Tela Principal";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -121,5 +146,6 @@
         private Label labelInicio;
         private Button buttonConfig;
         private Panel panel2;
+        private Button buttonFechar;
     }
 }

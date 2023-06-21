@@ -44,30 +44,30 @@ namespace PizzariaDoZe
             Close();
             //dispara msg para usuário
             _ = MessageBox.Show("Dados alterados com sucesso!");
+            if ((string)comboBoxIdioma.SelectedItem == "pt-br" && checkBoxReiniciar.Checked == true)
+            {
+                if (MessageBox.Show("Você quer mesmo mudar o idioma para Português(Brasil)?", "Português(BR)",
+                   MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+            else if ((string)comboBoxIdioma.SelectedItem == "en-us" && checkBoxReiniciar.Checked == true)
+            {
+                if (MessageBox.Show("Do you want to change the language to english?", "English(US)",
+                   MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+            else if ((string)comboBoxIdioma.SelectedItem == "es" && checkBoxReiniciar.Checked == true)
+            {
+                if (MessageBox.Show("¿De verdad quieres cambiar el idioma a español?", "Español(ES)",
+                   MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
         }
-            //if ((string)comboBoxIdioma.SelectedItem == "pt-BR" && checkBoxReiniciar.Checked == true)
-            //{
-            //    if (MessageBox.Show("Você quer mesmo mudar o idioma para Português(Brasil)?", "Português(BR)",
-            //       MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        Application.Exit();
-            //    }
-            //}
-            //else if ((string)comboBoxIdioma.SelectedItem == "en-US" && checkBoxReiniciar.Checked == true)
-            //{
-            //    if (MessageBox.Show("Do you want to change the language to English?", "English(US)",
-            //       MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        Application.Exit();
-            //    }
-            //}
-            //else if ((string)comboBoxIdioma.SelectedItem == "es" && checkBoxReiniciar.Checked == true)
-            //{
-            //    if (MessageBox.Show("¿De verdad quieres cambiar el idioma a Español?", "Español(ES)",
-            //       MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        Application.Exit();
-            //    }
-            //}
     }
 }
