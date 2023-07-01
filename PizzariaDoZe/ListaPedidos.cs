@@ -13,29 +13,31 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PizzariaDoZe
 {
-    public partial class ListaValores : Form
+    public partial class ListaPedidos : Form
     {
-        private readonly PizzaDAO pizzaDAO;
-        public ListaValores()
+        private readonly PedidoDAO pedidoDAO;
+
+        public ListaPedidos()
         {
             InitializeComponent();
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            pizzaDAO = new PizzaDAO(provider, strConnection);
-            panelEditar.Visible = false;
+            pedidoDAO = new PedidoDAO(provider, strConnection);
 
+            panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
+
         }
+
         private void AtualizarTela()
         {
             //Instância e Preenche o objeto com os dados da view
-            var pizza = new Pizza();
-
+            var pedido = new Pedido();
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = pizzaDAO.Buscar(pizza);
+                DataTable linhas = pedidoDAO.Buscar(pedido);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -48,13 +50,10 @@ namespace PizzariaDoZe
             }
         }
 
-
-        private void buttonCadastrar_Click(object sender, EventArgs e)
+        private void buttonEditar_Click(object sender, EventArgs e)
         {
-            FormValores formValores = new FormValores();
-            formValores.Show();
+
         }
-        private void buttonEditar_Click(object sender, EventArgs e) => panelEditar.Visible = true;
 
         private void buttonFechar_Click(object sender, EventArgs e) => Close();
 
@@ -86,6 +85,7 @@ namespace PizzariaDoZe
                 e.Value = d.ToString("N2");
             }
         }
+
         private void DataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (dataGridViewDados.SelectedCells.Count > 0)
@@ -97,92 +97,93 @@ namespace PizzariaDoZe
             }
         }
 
-        private void AtualizaTelaEditar(int id)
+        public void AtualizaTelaEditar(int id)
         {
-            var pizza = new Pizza
+            var pedido = new Pedido
             {
                 ID = id,
             };
-            try
-            {
-                // chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = pizzaDAO.Buscar(pizza);
-                // seta os dados na tela
-                foreach (DataRow row in linhas.Rows)
-                {
-                    textBoxID.Text = row[0].ToString();
-                    comboBoxTamanho.Text = row[1].ToString();
-                    comboBoxCategoria.Text = row[2].ToString();
-                    checkBoxComBorda.Checked = bool.Parse(row[3].ToString()!);
-                    textBoxValorBorda.Text = row[4].ToString();
-                    textBoxValor.Text = row[5].ToString();
-                }
-                comboBoxTamanho.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    // chama o método para buscar todos os dados da nossa camada model
+            //    DataTable linhas = pedidoDAO.Buscar(pedido);
+            //    // seta os dados na tela
+            //    foreach (DataRow row in linhas.Rows)
+            //    {
+            //        textBoxID.Text = row[0].ToString();
+            //        textBoxDescricao.Text = row[1].ToString();
+            //        pictureBoxImagem.Image = Funcoes.ConverteByteArrayParaImagem((byte[])row[2]);
+            //        comboBoxCategoria.Text = row[3].ToString();
+            //        comboBoxTipo.Text = row[4].ToString();
+            //        // busca e seleciona os itens do sabor
+            //        DataTable linhasIngredientes = saborDAO.BuscarItensSabor(pedido);
+            //        foreach (DataRow dr in linhasIngredientes.Rows)
+            //        {
+            //            for (int i = 0; i < checkedListBoxIngredientes.Items.Count; i++)
+            //            {
+            //                if (dr[1].ToString() == ((Ingrediente)checkedListBoxIngredientes.Items[i]).Descricao.ToString())
+            //                {
+            //                    checkedListBoxIngredientes.SetItemChecked(i, true);
+            //                }
+            //            }
+            //        }
+            //    }
+            //    textBoxDescricao.Focus();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            if (textBoxID.Text.Length <= 0)
-            {
-                MessageBox.Show("Selecione um valor válido!");
-                return;
-            }
-            //Instância e Preenche o objeto com os dados da view
-            var pizza = new Pizza
-            {
-                ID = int.Parse(textBoxID.Text),
-                Tamanho = comboBoxTamanho.Text,
-                Categoria = comboBoxCategoria.Text,
-                ComBorda = checkBoxComBorda.Checked ? true : false,
-                ValorBorda = decimal.Parse(textBoxValorBorda.Text),
-                ValorTotal = decimal.Parse(textBoxValor.Text),
-
-            };
-            try
-            {
-                // chama o método da model para editar
-                pizzaDAO.Editar(pizza);
-                MessageBox.Show("Dados editados com sucesso! " + textBoxID.Text);
-                panelEditar.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
         }
 
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
-            if (textBoxID.Text.Length <= 0)
+            if (textBoxIDPedido.Text.Length <= 0)
             {
-                MessageBox.Show("Selecione um valor!");
+                MessageBox.Show("Selecione um sabor!");
                 return;
             }
             //Instância e Preenche o objeto com os dados da view
-            var pizza = new Pizza
+            var pedido = new Pedido
             {
-                ID = int.Parse(textBoxID.Text),
+                ID = int.Parse(textBoxIDPedido.Text),
             };
             try
             {
-                // chama o método da model para excluir
-                pizzaDAO.Excluir(pizza);
-                MessageBox.Show("Dados excluidos com sucesso! " + textBoxID.Text);
+                // chama o método para inserir da camada model
+                pedidoDAO.Excluir(pedido);
+                MessageBox.Show("Dados excluidos com sucesso!");
                 panelEditar.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void buttonEditarFechar_Click(object sender, EventArgs e) => panelEditar.Visible = false;
+
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            FormPedidos formPedidos = new FormPedidos();
+            formPedidos.Show();
+        }
+
+        private void buttonProximoProduto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonProximaPizza_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

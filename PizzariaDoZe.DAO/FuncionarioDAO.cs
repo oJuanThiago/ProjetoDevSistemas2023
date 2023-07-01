@@ -65,45 +65,7 @@ namespace PizzariaDoZe.DAO
                 using var comando = factory.CreateCommand(); //Cria comando
                 comando!.Connection = conexao; //Atribui conexão
                                                //Adiciona parâmetro (@campo e valor)
-                var nome = comando.CreateParameter(); nome.ParameterName = "@nome";
-                nome.Value = funcionario.Nome; comando.Parameters.Add(nome);
-
-                var cpf = comando.CreateParameter(); cpf.ParameterName = "@cpf";
-                cpf.Value = funcionario.CPF; comando.Parameters.Add(cpf);
-
-                var matricula = comando.CreateParameter(); matricula.ParameterName = "@matricula";
-                matricula.Value = funcionario.Matricula; comando.Parameters.Add(matricula);
-
-                var senha = comando.CreateParameter(); senha.ParameterName = "@senha";
-                senha.Value = funcionario.Senha; comando.Parameters.Add(senha);
-
-                var grupo = comando.CreateParameter(); grupo.ParameterName = "@grupo";
-                grupo.Value = funcionario.Grupo; comando.Parameters.Add(grupo);
-
-                var motorista = comando.CreateParameter(); motorista.ParameterName = "@motorista";
-                motorista.Value = funcionario.CNH; comando.Parameters.Add(motorista);
-
-                var validade_motorista = comando.CreateParameter(); validade_motorista.ParameterName = "@validade_motorista";
-                validade_motorista.Value = funcionario.Validade; comando.Parameters.Add(validade_motorista);
-
-                var observacao = comando.CreateParameter(); observacao.ParameterName = "@observacao";
-                observacao.Value = funcionario.Observacao; comando.Parameters.Add(observacao);
-
-                var telefone = comando.CreateParameter(); telefone.ParameterName = "@telefone";
-                telefone.Value = funcionario.Telefone; comando.Parameters.Add(telefone);
-
-                var email = comando.CreateParameter(); email.ParameterName = "@email";
-                email.Value = funcionario.Email; comando.Parameters.Add(email);
-
-                var endereco_id = comando.CreateParameter(); endereco_id.ParameterName = "@endereco_id";
-                endereco_id.Value = funcionario.EnderecoID; comando.Parameters.Add(endereco_id);
-
-                var numero = comando.CreateParameter(); numero.ParameterName = "@numero";
-                numero.Value = funcionario.Numero; comando.Parameters.Add(numero);
-
-                var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento";
-                complemento.Value = funcionario.Complemento; comando.Parameters.Add(complemento);
-
+                ConverterObjetoParaSql(funcionario, comando);
                 conexao.Open();
                 //ajusta o comando SQL para capturar o ID gerado tanto do MySQL como do SQLServer
                 string auxSQL_ID = Provider.Contains("MySql") ? "SELECT LAST_INSERT_ID();" : "SELECT SCOPE_IDENTITY();";
@@ -174,21 +136,7 @@ namespace PizzariaDoZe.DAO
                 using var comando = factory.CreateCommand(); //Cria comando
                 comando!.Connection = conexao; //Atribui conexão
                                                //Adiciona parâmetro (@campo e valor)
-                var id = comando.CreateParameter(); id.ParameterName = "@id"; id.Value = funcionario.ID; comando.Parameters.Add(id);
-                var nome = comando.CreateParameter(); nome.ParameterName = "@nome"; nome.Value = funcionario.Nome; comando.Parameters.Add(nome);
-                var cpf = comando.CreateParameter(); cpf.ParameterName = "@cpf"; cpf.Value = funcionario.CPF; comando.Parameters.Add(cpf);
-                var matricula = comando.CreateParameter(); matricula.ParameterName = "@matricula"; matricula.Value = funcionario.Matricula; comando.Parameters.Add(matricula);
-                var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = funcionario.Senha; comando.Parameters.Add(senha);
-                var grupo = comando.CreateParameter(); grupo.ParameterName = "@grupo"; grupo.Value = funcionario.Grupo; comando.Parameters.Add(grupo);
-                var motorista = comando.CreateParameter(); motorista.ParameterName = "@motorista"; motorista.Value = funcionario.CNH; comando.Parameters.Add(motorista);
-                var validade_motorista = comando.CreateParameter(); validade_motorista.ParameterName = "@validade_motorista"; validade_motorista.Value = funcionario.Validade;
-                comando.Parameters.Add(validade_motorista);
-                var observacao = comando.CreateParameter(); observacao.ParameterName = "@observacao"; observacao.Value = funcionario.Observacao; comando.Parameters.Add(observacao);
-                var telefone = comando.CreateParameter(); telefone.ParameterName = "@telefone"; telefone.Value = funcionario.Telefone; comando.Parameters.Add(telefone);
-                var email = comando.CreateParameter(); email.ParameterName = "@email"; email.Value = funcionario.Email; comando.Parameters.Add(email);
-                var endereco_id = comando.CreateParameter(); endereco_id.ParameterName = "@endereco_id"; endereco_id.Value = funcionario.EnderecoID; comando.Parameters.Add(endereco_id);
-                var numero = comando.CreateParameter(); numero.ParameterName = "@numero"; numero.Value = funcionario.Numero; comando.Parameters.Add(numero);
-                var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento"; complemento.Value = funcionario.Complemento; comando.Parameters.Add(complemento);
+                ConverterObjetoParaSql(funcionario, comando);
                 conexao.Open();
                 //realiza o UPDATE
                 comando.CommandText =   @"UPDATE tb_funcionarios SET " +
@@ -226,6 +174,25 @@ namespace PizzariaDoZe.DAO
                 comando.CommandText = @"DELETE FROM tb_funcionarios WHERE id_funcionario = @id;";
                 //executa o comando no banco de dados
                 _ = comando.ExecuteNonQuery();
+            }
+
+            private void ConverterObjetoParaSql(Funcionario funcionario, DbCommand comando)
+            {
+                var id = comando.CreateParameter(); id.ParameterName = "@id"; id.Value = funcionario.ID; comando.Parameters.Add(id);
+                var nome = comando.CreateParameter(); nome.ParameterName = "@nome"; nome.Value = funcionario.Nome; comando.Parameters.Add(nome);
+                var cpf = comando.CreateParameter(); cpf.ParameterName = "@cpf"; cpf.Value = funcionario.CPF; comando.Parameters.Add(cpf);
+                var matricula = comando.CreateParameter(); matricula.ParameterName = "@matricula"; matricula.Value = funcionario.Matricula; comando.Parameters.Add(matricula);
+                var senha = comando.CreateParameter(); senha.ParameterName = "@senha"; senha.Value = funcionario.Senha; comando.Parameters.Add(senha);
+                var grupo = comando.CreateParameter(); grupo.ParameterName = "@grupo"; grupo.Value = funcionario.Grupo; comando.Parameters.Add(grupo);
+                var CNH = comando.CreateParameter(); CNH.ParameterName = "@motorista"; CNH.Value = funcionario.CNH; comando.Parameters.Add(CNH);
+                var validadeCNH = comando.CreateParameter(); validadeCNH.ParameterName = "@validade_motorista"; validadeCNH.Value = funcionario.Validade; comando.Parameters.Add(validadeCNH);
+                var observacao = comando.CreateParameter(); observacao.ParameterName = "@observacao"; observacao.Value = funcionario.Observacao; comando.Parameters.Add(observacao);
+                var telefone = comando.CreateParameter(); telefone.ParameterName = "@telefone"; telefone.Value = funcionario.Telefone; comando.Parameters.Add(telefone);
+                var email = comando.CreateParameter(); email.ParameterName = "@email"; email.Value = funcionario.Email; comando.Parameters.Add(email);
+                var endereco_id = comando.CreateParameter(); endereco_id.ParameterName = "@endereco_id"; endereco_id.Value = funcionario.EnderecoID; comando.Parameters.Add(endereco_id);
+                var numero = comando.CreateParameter(); numero.ParameterName = "@numero"; numero.Value = funcionario.Numero; comando.Parameters.Add(numero);
+                var complemento = comando.CreateParameter(); complemento.ParameterName = "@complemento"; complemento.Value = funcionario.Complemento; comando.Parameters.Add(complemento);
+
             }
         }
     }

@@ -51,6 +51,7 @@
             buttonEditar = new Button();
             buttonFechar = new Button();
             dataGridViewDados = new DataGridView();
+            checkBoxComBorda = new CheckBox();
             panel1.SuspendLayout();
             panelLista.SuspendLayout();
             panelEditar.SuspendLayout();
@@ -118,6 +119,7 @@
             // panelEditar
             // 
             panelEditar.BackColor = Color.FromArgb(51, 51, 51);
+            panelEditar.Controls.Add(checkBoxComBorda);
             panelEditar.Controls.Add(textBoxValorBorda);
             panelEditar.Controls.Add(labelValorBorda);
             panelEditar.Controls.Add(labelTamanho);
@@ -349,6 +351,17 @@
             dataGridViewDados.Size = new Size(985, 473);
             dataGridViewDados.TabIndex = 2;
             // 
+            // checkBoxComBorda
+            // 
+            checkBoxComBorda.AutoSize = true;
+            checkBoxComBorda.ForeColor = SystemColors.ButtonHighlight;
+            checkBoxComBorda.Location = new Point(121, 251);
+            checkBoxComBorda.Name = "checkBoxComBorda";
+            checkBoxComBorda.Size = new Size(86, 19);
+            checkBoxComBorda.TabIndex = 94;
+            checkBoxComBorda.Text = "Com borda";
+            checkBoxComBorda.UseVisualStyleBackColor = true;
+            // 
             // ListaValores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -394,5 +407,6 @@
         internal DataGridView dataGridViewDados;
         private TextBox textBoxValorBorda;
         private Label labelValorBorda;
+        private CheckBox checkBoxComBorda;
     }
 }

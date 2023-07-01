@@ -204,7 +204,6 @@
             maskedTextBoxCEP.Size = new Size(61, 23);
             maskedTextBoxCEP.TabIndex = 5;
             maskedTextBoxCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            maskedTextBoxCEP.Leave += MaskedTextBoxCep_Leave;
             // 
             // label2
             // 

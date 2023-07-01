@@ -44,6 +44,7 @@
             textBoxID = new TextBox();
             labelID = new Label();
             buttonFechar = new Button();
+            checkBoxComBorda = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -55,7 +56,6 @@
             menu1.Name = "menu1";
             menu1.Size = new Size(200, 599);
             menu1.TabIndex = 0;
-            menu1.buttonValores.Enabled = false;
             // 
             // panel1
             // 
@@ -81,6 +81,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(checkBoxComBorda);
             panel2.Controls.Add(maskedTextBoxValor);
             panel2.Controls.Add(buttonCadastrar);
             panel2.Controls.Add(textBoxValorBorda);
@@ -147,9 +148,9 @@
             labelValor.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelValor.Location = new Point(124, 95);
             labelValor.Name = "labelValor";
-            labelValor.Size = new Size(35, 15);
+            labelValor.Size = new Size(64, 15);
             labelValor.TabIndex = 65;
-            labelValor.Text = "Valor";
+            labelValor.Text = "Valor Total";
             // 
             // labelCategoria
             // 
@@ -225,6 +226,16 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
+            // checkBoxComBorda
+            // 
+            checkBoxComBorda.AutoSize = true;
+            checkBoxComBorda.Location = new Point(124, 166);
+            checkBoxComBorda.Name = "checkBoxComBorda";
+            checkBoxComBorda.Size = new Size(86, 19);
+            checkBoxComBorda.TabIndex = 71;
+            checkBoxComBorda.Text = "Com borda";
+            checkBoxComBorda.UseVisualStyleBackColor = true;
+            // 
             // FormValores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -263,5 +274,6 @@
         private Label labelValor;
         private Button buttonCadastrar;
         private MaskedTextBox maskedTextBoxValor;
+        private CheckBox checkBoxComBorda;
     }
 }

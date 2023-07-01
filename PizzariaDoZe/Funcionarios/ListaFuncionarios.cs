@@ -17,6 +17,8 @@ namespace PizzariaDoZe
     public partial class ListaFuncionarios : Form
     {
         private readonly FuncionarioDAO funcionarioDAO;
+        private readonly EnderecoDAO enderecoDAO;
+
         public ListaFuncionarios()
         {
             InitializeComponent();
@@ -24,10 +26,51 @@ namespace PizzariaDoZe
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             funcionarioDAO = new FuncionarioDAO(provider, strConnection);
+            enderecoDAO = new EnderecoDAO(provider, strConnection);
+
 
             panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
+            maskedTextBoxCEP.Leave += MaskedTextBoxCep_Leave;
             AtualizarTela();
+        }
+
+        private void MaskedTextBoxCep_Leave(object? sender, EventArgs e)
+        {
+            if (maskedTextBoxCEP.Text.Trim().Length <= 0)
+            {
+                return;
+            }
+            var endereco = new Endereco
+            {
+                CEP = maskedTextBoxCEP.Text.Trim(),
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = enderecoDAO.Buscar(endereco);
+                // seta os dados na tela
+                maskedTextBoxCEP.Text = "";
+                textBoxLogradouro.Text = "";
+                textBoxBairro.Text = "";
+                textBoxCidade.Text = "";
+                comboBoxUF.Text = "";
+                textBoxPais.Text = "";
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxEnderecoID.Text = row["id"].ToString();
+                    maskedTextBoxCEP.Text = row["cep"].ToString();
+                    textBoxLogradouro.Text = row["logradouro"].ToString();
+                    textBoxBairro.Text = row["bairro"].ToString();
+                    textBoxCidade.Text = row["cidade"].ToString();
+                    comboBoxUF.Text = row["uf"].ToString();
+                    textBoxPais.Text = row["pais"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Pizzaria do Zé", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
@@ -126,12 +169,12 @@ namespace PizzariaDoZe
                     maskedTextBoxTel.Text = row[9].ToString();
                     textBoxEmail.Text = row[10].ToString();
                     maskedTextBoxCEP.Text = row[11].ToString();
-                    textBoxLogradouro.Text = row[12].ToString();/*12*/
-                    textBoxBairro.Text = row[13].ToString();/*13*/
-                    textBoxCidade.Text = row[14].ToString();/*14*/
-                    comboBoxUF.Text = row[15].ToString();/*15*/
-                    textBoxNumero.Text = row[16].ToString();/*16*/
-                    textBoxComplemento.Text = row[17].ToString();/*17*/
+                    textBoxLogradouro.Text = row[12].ToString();
+                    textBoxBairro.Text = row[13].ToString();
+                    textBoxCidade.Text = row[14].ToString();
+                    comboBoxUF.Text = row[15].ToString();
+                    textBoxNumero.Text = row[16].ToString();
+                    textBoxComplemento.Text = row[17].ToString();
                     textBoxEnderecoID.Text = row[18].ToString();
                     textBoxPais.Text = row[19].ToString();
                 }

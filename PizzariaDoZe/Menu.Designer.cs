@@ -42,6 +42,7 @@
             labelFuncaoUsuario = new Label();
             labelUsuario = new Label();
             pictureBox1 = new PictureBox();
+            buttonPedidos = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -50,6 +51,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Firebrick;
+            panel1.Controls.Add(buttonPedidos);
             panel1.Controls.Add(buttonEnderecos);
             panel1.Controls.Add(buttonSair);
             panel1.Controls.Add(buttonValores);
@@ -74,7 +76,7 @@
             buttonEnderecos.ForeColor = Color.White;
             buttonEnderecos.Image = Properties.Resources.atividades;
             buttonEnderecos.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEnderecos.Location = new Point(0, 438);
+            buttonEnderecos.Location = new Point(0, 476);
             buttonEnderecos.Name = "buttonEnderecos";
             buttonEnderecos.Size = new Size(200, 38);
             buttonEnderecos.TabIndex = 9;
@@ -261,6 +263,23 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // buttonPedidos
+            // 
+            buttonPedidos.FlatAppearance.BorderSize = 0;
+            buttonPedidos.FlatStyle = FlatStyle.Flat;
+            buttonPedidos.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonPedidos.ForeColor = Color.White;
+            buttonPedidos.Image = Properties.Resources.atividades;
+            buttonPedidos.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonPedidos.Location = new Point(0, 438);
+            buttonPedidos.Name = "buttonPedidos";
+            buttonPedidos.Size = new Size(200, 38);
+            buttonPedidos.TabIndex = 10;
+            buttonPedidos.Text = "Pedidos";
+            buttonPedidos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonPedidos.UseVisualStyleBackColor = true;
+            buttonPedidos.Click += buttonPedidos_Click;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -291,5 +310,6 @@
         internal PictureBox pictureBox1;
         private Label labelFuncaoUsuario;
         internal Button buttonEnderecos;
+        internal Button buttonPedidos;
     }
 }

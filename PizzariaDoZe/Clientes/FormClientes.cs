@@ -26,7 +26,6 @@ namespace PizzariaDoZe
             clienteDAO = new ClienteDAO(provider, strConnection);
             enderecoDAO = new EnderecoDAO(provider, strConnection);
             maskedTextBoxCEP.Leave += MaskedTextBoxCep_Leave;
-
         }
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace PizzariaDoZe
 
         private void MaskedTextBoxCep_Leave(object? sender, EventArgs e)
         {
-            if (textBoxEnderecoID.Text.Trim().Length <= 0)
+            if (maskedTextBoxCEP.Text.Trim().Length <= 0)
             {
                 return;
             }
@@ -86,13 +85,13 @@ namespace PizzariaDoZe
                 textBoxPais.Text = "";
                 foreach (DataRow row in linhas.Rows)
                 {
-                    textBoxEnderecoID.Text = row["id"].ToString(); ;
-                    maskedTextBoxCEP.Text = row["cep"].ToString(); ;
-                    textBoxLograd.Text = row["logradouro"].ToString(); ;
-                    textBoxBairro.Text = row["bairro"].ToString(); ;
-                    textBoxCidade.Text = row["cidade"].ToString(); ;
-                    comboBoxUF.Text = row["uf"].ToString(); ;
-                    textBoxPais.Text = row["pais"].ToString(); ;
+                    textBoxEnderecoID.Text = row["id"].ToString();
+                    maskedTextBoxCEP.Text = row["cep"].ToString();
+                    textBoxLograd.Text = row["logradouro"].ToString();
+                    textBoxBairro.Text = row["bairro"].ToString();
+                    textBoxCidade.Text = row["cidade"].ToString();
+                    comboBoxUF.Text = row["uf"].ToString();
+                    textBoxPais.Text = row["pais"].ToString();
                 }
             }
             catch (Exception ex)

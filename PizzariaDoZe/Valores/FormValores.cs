@@ -14,32 +14,33 @@ namespace PizzariaDoZe
 {
     public partial class FormValores : Form
     {
-        private ValorDAO valorDAO;
+        private PizzaDAO pizzaDAO;
         public FormValores()
         {
             InitializeComponent();
             Funcoes.AjustaResourcesControl(this);
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            valorDAO = new ValorDAO(provider, strConnection);
+            pizzaDAO = new PizzaDAO(provider, strConnection);
 
 
         }
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-            var valor = new Valor
+            var pizza = new Pizza
             {
                 ID = 0,
                 Tamanho = comboBoxTamanho.Text,
                 Categoria = comboBoxCategoria.Text,
-                ValorPizza = decimal.Parse(maskedTextBoxValor.Text),
+                ComBorda = checkBoxComBorda.Checked ? true : false,
+                ValorTotal = decimal.Parse(maskedTextBoxValor.Text),
                 ValorBorda = decimal.Parse(textBoxValorBorda.Text),
             };
             try
             {
                 // chama o método para inserir da camada model
-                valorDAO.Inserir(valor);
+                pizzaDAO.Inserir(pizza);
                 MessageBox.Show("Dados inseridos com sucesso!");
                 comboBoxTamanho.Text = string.Empty;
                 comboBoxCategoria.Text = string.Empty;

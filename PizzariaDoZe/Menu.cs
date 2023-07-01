@@ -56,15 +56,18 @@ namespace PizzariaDoZe
             valores.Show();
         }
 
-        private void buttonSair_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void buttonEnderecos_Click(object sender, EventArgs e)
         {
             Enderecos enderecos = new Enderecos();
             enderecos.Show();
         }
+
+        private void buttonPedidos_Click(object sender, EventArgs e)
+        {
+            ListaPedidos pedidos = new ListaPedidos(); 
+            pedidos.Show();
+        }
+        private void buttonSair_Click(object sender, EventArgs e) => Application.Exit();
     }
 }

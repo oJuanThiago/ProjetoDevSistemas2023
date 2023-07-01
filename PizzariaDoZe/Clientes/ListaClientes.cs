@@ -9,23 +9,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static PizzariaDoZe.DAO.Funcionario;
 
 namespace PizzariaDoZe
 {
     public partial class ListaClientes : Form
     {
         private readonly ClienteDAO clienteDAO;
+        private readonly EnderecoDAO enderecoDAO;
+
         public ListaClientes()
         {
             InitializeComponent();
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             clienteDAO = new ClienteDAO(provider, strConnection);
+            enderecoDAO = new EnderecoDAO(provider, strConnection);
+            maskedTextBoxCEP.Leave += MaskedTextBoxCep_Leave;
 
             panelEditar.Visible = false;
             dataGridViewDados.CellFormatting += DataGridViewDados_CellFormatting;
             AtualizarTela();
+        }
+
+        private void MaskedTextBoxCep_Leave(object? sender, EventArgs e)
+        {
+            if (maskedTextBoxCEP.Text.Trim().Length <= 0)
+            {
+                return;
+            }
+            var endereco = new Endereco
+            {
+                CEP = maskedTextBoxCEP.Text.Trim(),
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = enderecoDAO.Buscar(endereco);
+                // seta os dados na tela
+                maskedTextBoxCEP.Text = "";
+                textBoxLogradouro.Text = "";
+                textBoxBairro.Text = "";
+                textBoxCidade.Text = "";
+                comboBoxUF.Text = "";
+                textBoxPais.Text = "";
+                foreach (DataRow row in linhas.Rows)
+                {
+                    textBoxEnderecoID.Text = row["id"].ToString();
+                    maskedTextBoxCEP.Text = row["cep"].ToString();
+                    textBoxLogradouro.Text = row["logradouro"].ToString();
+                    textBoxBairro.Text = row["bairro"].ToString();
+                    textBoxCidade.Text = row["cidade"].ToString();
+                    comboBoxUF.Text = row["uf"].ToString();
+                    textBoxPais.Text = row["pais"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Pizzaria do Zé", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AtualizarTela()

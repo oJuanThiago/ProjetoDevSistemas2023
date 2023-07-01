@@ -112,10 +112,10 @@ namespace PizzariaDoZe.DAO
                                     "c.nome_cidade AS Cidade, " +
                                     "u.nome_uf AS UF, " +
                                     "cc.numero AS Número, " +
-                                    "cc.complemento AS Complemento " +
-                                    "cc.endereco_id AS 'ID_Endereço'" +
-                                    "p.nome_pais AS País" +
-                                    "FROM tb_clientes AS cc " +
+                                    "cc.complemento AS Complemento, " +
+                                    "cc.endereco_id AS 'ID_Endereço'," +
+                                    "p.nome_pais AS País " +
+                                    "FROM tb_clientes cc " +
                                     "INNER JOIN tb_enderecos AS e ON e.id_endereco = cc.endereco_id " +
                                     "INNER JOIN cad_cidades AS c ON c.id_cidade = e.cidade_id " +
                                     "INNER JOIN cad_uf AS u ON u.id_uf = c.uf_id " +
@@ -135,6 +135,9 @@ namespace PizzariaDoZe.DAO
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
                                            //Adiciona parâmetro (@campo e valor)
+            var id = comando.CreateParameter(); id.ParameterName = "@id"; 
+            id.Value = cliente.ID; comando.Parameters.Add(id);
+
             var nome = comando.CreateParameter(); nome.ParameterName = "@nome";
             nome.Value = cliente.Nome; comando.Parameters.Add(nome);
 
@@ -173,7 +176,7 @@ namespace PizzariaDoZe.DAO
 
         public void Excluir(Cliente cliente)
         {
-                        using var conexao = factory.CreateConnection(); //Cria conexão
+            using var conexao = factory.CreateConnection(); //Cria conexão
             conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
@@ -189,7 +192,8 @@ namespace PizzariaDoZe.DAO
             comando.Transaction = transacao;
             try
             {
-                //realiza o UPDATE
+                comando.CommandText = @"DELETE FROM tb_pedidos WHERE cliente_id = @id;";
+
                 comando.CommandText = @"DELETE FROM tb_clientes WHERE id_cliente = @id;";
                 _ = comando.ExecuteNonQuery();
                 // Como não ocorreu nenhum erro, confirma as transações através do Commit()
