@@ -76,7 +76,7 @@ namespace PizzariaDoZe
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = clienteDAO.Buscar(cliente);
+                (DataTable linhas, Cliente clienteBuscado) = clienteDAO.Buscar(cliente);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -143,7 +143,7 @@ namespace PizzariaDoZe
             try
             {
                 // chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = clienteDAO.Buscar(cliente);
+                (DataTable linhas, Cliente clienteBuscado) = clienteDAO.Buscar(cliente);
                 // seta os dados na tela
                 foreach (DataRow row in linhas.Rows)
                 {

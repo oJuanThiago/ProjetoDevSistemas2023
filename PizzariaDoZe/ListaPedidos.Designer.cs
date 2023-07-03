@@ -30,28 +30,28 @@
         {
             panelLista = new Panel();
             panelEditar = new Panel();
-            buttonExcluir = new Button();
-            buttonSalvar = new Button();
-            buttonEditarFechar = new Button();
-            buttonEditar = new Button();
-            buttonFechar = new Button();
-            dataGridViewDados = new DataGridView();
-            panel1 = new Panel();
-            buttonCadastrar = new Button();
-            labelPedido = new Label();
-            menu1 = new Menu();
+            textBoxIDPedido = new TextBox();
+            labelIDPedido = new Label();
             groupBoxProduto = new GroupBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
             labelML = new Label();
             comboBoxML = new ComboBox();
             labelProduto = new Label();
-            buttonProximoProduto = new Button();
+            buttonAddProduto = new Button();
             label1 = new Label();
             comboBoxProduto = new ComboBox();
             groupBoxAddPizza = new GroupBox();
-            buttonProximaPizza = new Button();
+            buttonAddPizza = new Button();
             groupBoxIngredientes = new GroupBox();
             checkedListBoxIngredientes = new CheckedListBox();
             groupBoxSabor = new GroupBox();
+            textBoxIDSabor3 = new TextBox();
+            label5 = new Label();
+            textBoxIDSabor2 = new TextBox();
+            label4 = new Label();
+            textBoxIDSabor1 = new TextBox();
+            label3 = new Label();
             checkBoxBorda = new CheckBox();
             checkBoxInteira = new CheckBox();
             labelSabor3 = new Label();
@@ -61,6 +61,7 @@
             labelSabor1 = new Label();
             comboBoxSabor1 = new ComboBox();
             groupBoxTamanhoPizza = new GroupBox();
+            labelObsTamanho = new Label();
             labelTamanho = new Label();
             comboBoxTamanho = new ComboBox();
             groupBoxEndereco = new GroupBox();
@@ -86,25 +87,22 @@
             labelTel = new Label();
             maskedTextBoxCPF = new MaskedTextBox();
             labelCPF = new Label();
-            textBoxID = new TextBox();
+            textBoxIDCliente = new TextBox();
             labelID = new Label();
             textBoxNome = new TextBox();
             labelNome = new Label();
-            textBoxIDPedido = new TextBox();
-            labelIDPedido = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            textBoxIDSabor1 = new TextBox();
-            label3 = new Label();
-            textBoxIDSabor2 = new TextBox();
-            label4 = new Label();
-            textBoxIDSabor3 = new TextBox();
-            label5 = new Label();
-            labelObsTamanho = new Label();
+            buttonExcluir = new Button();
+            buttonSalvar = new Button();
+            buttonEditarFechar = new Button();
+            buttonEditar = new Button();
+            buttonFechar = new Button();
+            dataGridViewDados = new DataGridView();
+            panel1 = new Panel();
+            buttonCadastrar = new Button();
+            labelPedido = new Label();
+            menu1 = new Menu();
             panelLista.SuspendLayout();
             panelEditar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
-            panel1.SuspendLayout();
             groupBoxProduto.SuspendLayout();
             groupBoxAddPizza.SuspendLayout();
             groupBoxIngredientes.SuspendLayout();
@@ -112,6 +110,8 @@
             groupBoxTamanhoPizza.SuspendLayout();
             groupBoxEndereco.SuspendLayout();
             groupBoxCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panelLista
@@ -144,155 +144,26 @@
             panelEditar.TabIndex = 7;
             panelEditar.Visible = false;
             // 
-            // buttonExcluir
+            // textBoxIDPedido
             // 
-            buttonExcluir.BackColor = Color.Firebrick;
-            buttonExcluir.FlatAppearance.BorderColor = Color.Gray;
-            buttonExcluir.FlatAppearance.BorderSize = 0;
-            buttonExcluir.FlatStyle = FlatStyle.Flat;
-            buttonExcluir.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonExcluir.ForeColor = Color.White;
-            buttonExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonExcluir.Location = new Point(794, 497);
-            buttonExcluir.Name = "buttonExcluir";
-            buttonExcluir.Size = new Size(80, 38);
-            buttonExcluir.TabIndex = 6;
-            buttonExcluir.Text = "Excluir";
-            buttonExcluir.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonExcluir.UseVisualStyleBackColor = false;
-            buttonExcluir.Click += buttonExcluir_Click;
+            textBoxIDPedido.Location = new Point(322, 489);
+            textBoxIDPedido.Name = "textBoxIDPedido";
+            textBoxIDPedido.ReadOnly = true;
+            textBoxIDPedido.Size = new Size(50, 23);
+            textBoxIDPedido.TabIndex = 82;
+            textBoxIDPedido.TabStop = false;
             // 
-            // buttonSalvar
+            // labelIDPedido
             // 
-            buttonSalvar.BackColor = Color.Green;
-            buttonSalvar.FlatAppearance.BorderColor = Color.Gray;
-            buttonSalvar.FlatAppearance.BorderSize = 0;
-            buttonSalvar.FlatStyle = FlatStyle.Flat;
-            buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSalvar.ForeColor = Color.White;
-            buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSalvar.Location = new Point(707, 497);
-            buttonSalvar.Name = "buttonSalvar";
-            buttonSalvar.Size = new Size(81, 38);
-            buttonSalvar.TabIndex = 5;
-            buttonSalvar.Text = "Salvar";
-            buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonSalvar.UseVisualStyleBackColor = false;
-            buttonSalvar.Click += buttonSalvar_Click;
-            // 
-            // buttonEditarFechar
-            // 
-            buttonEditarFechar.BackColor = Color.Gray;
-            buttonEditarFechar.FlatAppearance.BorderColor = Color.Gray;
-            buttonEditarFechar.FlatAppearance.BorderSize = 0;
-            buttonEditarFechar.FlatStyle = FlatStyle.Flat;
-            buttonEditarFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditarFechar.ForeColor = Color.White;
-            buttonEditarFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEditarFechar.Location = new Point(880, 497);
-            buttonEditarFechar.Name = "buttonEditarFechar";
-            buttonEditarFechar.Size = new Size(80, 38);
-            buttonEditarFechar.TabIndex = 7;
-            buttonEditarFechar.Text = "Fechar";
-            buttonEditarFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEditarFechar.UseVisualStyleBackColor = false;
-            buttonEditarFechar.Click += buttonEditarFechar_Click;
-            // 
-            // buttonEditar
-            // 
-            buttonEditar.BackColor = Color.DodgerBlue;
-            buttonEditar.FlatAppearance.BorderColor = Color.Gray;
-            buttonEditar.FlatAppearance.BorderSize = 0;
-            buttonEditar.FlatStyle = FlatStyle.Flat;
-            buttonEditar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditar.ForeColor = Color.White;
-            buttonEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEditar.Location = new Point(851, 497);
-            buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(80, 38);
-            buttonEditar.TabIndex = 4;
-            buttonEditar.Text = "Editar";
-            buttonEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEditar.UseVisualStyleBackColor = false;
-            buttonEditar.Click += buttonEditar_Click;
-            // 
-            // buttonFechar
-            // 
-            buttonFechar.BackColor = Color.Gray;
-            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
-            buttonFechar.FlatAppearance.BorderSize = 0;
-            buttonFechar.FlatStyle = FlatStyle.Flat;
-            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFechar.ForeColor = Color.White;
-            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonFechar.Location = new Point(937, 497);
-            buttonFechar.Name = "buttonFechar";
-            buttonFechar.Size = new Size(80, 38);
-            buttonFechar.TabIndex = 5;
-            buttonFechar.Text = "Fechar";
-            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonFechar.UseVisualStyleBackColor = false;
-            buttonFechar.Click += buttonFechar_Click;
-            // 
-            // dataGridViewDados
-            // 
-            dataGridViewDados.AllowUserToAddRows = false;
-            dataGridViewDados.AllowUserToOrderColumns = true;
-            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewDados.Location = new Point(32, 0);
-            dataGridViewDados.MultiSelect = false;
-            dataGridViewDados.Name = "dataGridViewDados";
-            dataGridViewDados.RowTemplate.Height = 25;
-            dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDados.Size = new Size(985, 473);
-            dataGridViewDados.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(51, 51, 51);
-            panel1.Controls.Add(buttonCadastrar);
-            panel1.Controls.Add(labelPedido);
-            panel1.Location = new Point(198, -10);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1069, 100);
-            panel1.TabIndex = 11;
-            // 
-            // buttonCadastrar
-            // 
-            buttonCadastrar.BackColor = Color.FromArgb(51, 51, 51);
-            buttonCadastrar.FlatAppearance.BorderColor = Color.Gray;
-            buttonCadastrar.FlatAppearance.BorderSize = 2;
-            buttonCadastrar.FlatStyle = FlatStyle.Flat;
-            buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonCadastrar.ForeColor = Color.White;
-            buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCadastrar.Location = new Point(827, 32);
-            buttonCadastrar.Name = "buttonCadastrar";
-            buttonCadastrar.Size = new Size(190, 38);
-            buttonCadastrar.TabIndex = 79;
-            buttonCadastrar.Text = "Cadastrar Pedido";
-            buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonCadastrar.UseVisualStyleBackColor = false;
-            buttonCadastrar.Click += buttonCadastrar_Click;
-            // 
-            // labelPedido
-            // 
-            labelPedido.AutoSize = true;
-            labelPedido.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPedido.ForeColor = SystemColors.ControlLightLight;
-            labelPedido.Location = new Point(32, 28);
-            labelPedido.Name = "labelPedido";
-            labelPedido.Size = new Size(134, 45);
-            labelPedido.TabIndex = 1;
-            labelPedido.Text = "Pedidos";
-            // 
-            // menu1
-            // 
-            menu1.Location = new Point(-2, -10);
-            menu1.Name = "menu1";
-            menu1.Size = new Size(200, 687);
-            menu1.TabIndex = 10;
+            labelIDPedido.AutoSize = true;
+            labelIDPedido.BackColor = Color.Transparent;
+            labelIDPedido.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelIDPedido.ForeColor = SystemColors.ActiveCaptionText;
+            labelIDPedido.Location = new Point(322, 471);
+            labelIDPedido.Name = "labelIDPedido";
+            labelIDPedido.Size = new Size(20, 15);
+            labelIDPedido.TabIndex = 81;
+            labelIDPedido.Text = "ID";
             // 
             // groupBoxProduto
             // 
@@ -301,7 +172,7 @@
             groupBoxProduto.Controls.Add(labelML);
             groupBoxProduto.Controls.Add(comboBoxML);
             groupBoxProduto.Controls.Add(labelProduto);
-            groupBoxProduto.Controls.Add(buttonProximoProduto);
+            groupBoxProduto.Controls.Add(buttonAddProduto);
             groupBoxProduto.Controls.Add(label1);
             groupBoxProduto.Controls.Add(comboBoxProduto);
             groupBoxProduto.Location = new Point(0, 412);
@@ -310,6 +181,27 @@
             groupBoxProduto.TabIndex = 10;
             groupBoxProduto.TabStop = false;
             groupBoxProduto.Text = "Produto";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(20, 40);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(50, 23);
+            textBox1.TabIndex = 87;
+            textBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(20, 22);
+            label2.Name = "label2";
+            label2.Size = new Size(20, 15);
+            label2.TabIndex = 86;
+            label2.Text = "ID";
             // 
             // labelML
             // 
@@ -344,23 +236,23 @@
             labelProduto.TabIndex = 83;
             labelProduto.Text = "Produto";
             // 
-            // buttonProximoProduto
+            // buttonAddProduto
             // 
-            buttonProximoProduto.BackColor = Color.DodgerBlue;
-            buttonProximoProduto.FlatAppearance.BorderColor = Color.Gray;
-            buttonProximoProduto.FlatAppearance.BorderSize = 0;
-            buttonProximoProduto.FlatStyle = FlatStyle.Flat;
-            buttonProximoProduto.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonProximoProduto.ForeColor = Color.White;
-            buttonProximoProduto.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonProximoProduto.Location = new Point(118, 78);
-            buttonProximoProduto.Name = "buttonProximoProduto";
-            buttonProximoProduto.Size = new Size(173, 32);
-            buttonProximoProduto.TabIndex = 16;
-            buttonProximoProduto.Text = "Próximo Produto >>";
-            buttonProximoProduto.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonProximoProduto.UseVisualStyleBackColor = false;
-            buttonProximoProduto.Click += buttonProximoProduto_Click;
+            buttonAddProduto.BackColor = Color.DodgerBlue;
+            buttonAddProduto.FlatAppearance.BorderColor = Color.Gray;
+            buttonAddProduto.FlatAppearance.BorderSize = 0;
+            buttonAddProduto.FlatStyle = FlatStyle.Flat;
+            buttonAddProduto.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddProduto.ForeColor = Color.White;
+            buttonAddProduto.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAddProduto.Location = new Point(118, 78);
+            buttonAddProduto.Name = "buttonAddProduto";
+            buttonAddProduto.Size = new Size(173, 32);
+            buttonAddProduto.TabIndex = 16;
+            buttonAddProduto.Text = "Adicionar";
+            buttonAddProduto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonAddProduto.UseVisualStyleBackColor = false;
+            buttonAddProduto.Click += buttonAddProduto_Click;
             // 
             // label1
             // 
@@ -384,7 +276,7 @@
             // 
             // groupBoxAddPizza
             // 
-            groupBoxAddPizza.Controls.Add(buttonProximaPizza);
+            groupBoxAddPizza.Controls.Add(buttonAddPizza);
             groupBoxAddPizza.Controls.Add(groupBoxIngredientes);
             groupBoxAddPizza.Controls.Add(groupBoxSabor);
             groupBoxAddPizza.Controls.Add(groupBoxTamanhoPizza);
@@ -395,23 +287,23 @@
             groupBoxAddPizza.TabStop = false;
             groupBoxAddPizza.Text = "Adicionar Pizza";
             // 
-            // buttonProximaPizza
+            // buttonAddPizza
             // 
-            buttonProximaPizza.BackColor = Color.DodgerBlue;
-            buttonProximaPizza.FlatAppearance.BorderColor = Color.Gray;
-            buttonProximaPizza.FlatAppearance.BorderSize = 0;
-            buttonProximaPizza.FlatStyle = FlatStyle.Flat;
-            buttonProximaPizza.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonProximaPizza.ForeColor = Color.White;
-            buttonProximaPizza.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonProximaPizza.Location = new Point(469, 365);
-            buttonProximaPizza.Name = "buttonProximaPizza";
-            buttonProximaPizza.Size = new Size(175, 32);
-            buttonProximaPizza.TabIndex = 8;
-            buttonProximaPizza.Text = "Próxima Pizza >>";
-            buttonProximaPizza.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonProximaPizza.UseVisualStyleBackColor = false;
-            buttonProximaPizza.Click += buttonProximaPizza_Click;
+            buttonAddPizza.BackColor = Color.DodgerBlue;
+            buttonAddPizza.FlatAppearance.BorderColor = Color.Gray;
+            buttonAddPizza.FlatAppearance.BorderSize = 0;
+            buttonAddPizza.FlatStyle = FlatStyle.Flat;
+            buttonAddPizza.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddPizza.ForeColor = Color.White;
+            buttonAddPizza.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAddPizza.Location = new Point(469, 365);
+            buttonAddPizza.Name = "buttonAddPizza";
+            buttonAddPizza.Size = new Size(175, 32);
+            buttonAddPizza.TabIndex = 8;
+            buttonAddPizza.Text = "Adicionar";
+            buttonAddPizza.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonAddPizza.UseVisualStyleBackColor = false;
+            buttonAddPizza.Click += buttonAddPizza_Click;
             // 
             // groupBoxIngredientes
             // 
@@ -452,6 +344,69 @@
             groupBoxSabor.Size = new Size(320, 224);
             groupBoxSabor.TabIndex = 6;
             groupBoxSabor.TabStop = false;
+            // 
+            // textBoxIDSabor3
+            // 
+            textBoxIDSabor3.Location = new Point(25, 136);
+            textBoxIDSabor3.Name = "textBoxIDSabor3";
+            textBoxIDSabor3.ReadOnly = true;
+            textBoxIDSabor3.Size = new Size(50, 23);
+            textBoxIDSabor3.TabIndex = 92;
+            textBoxIDSabor3.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(25, 118);
+            label5.Name = "label5";
+            label5.Size = new Size(20, 15);
+            label5.TabIndex = 91;
+            label5.Text = "ID";
+            // 
+            // textBoxIDSabor2
+            // 
+            textBoxIDSabor2.Location = new Point(25, 92);
+            textBoxIDSabor2.Name = "textBoxIDSabor2";
+            textBoxIDSabor2.ReadOnly = true;
+            textBoxIDSabor2.Size = new Size(50, 23);
+            textBoxIDSabor2.TabIndex = 90;
+            textBoxIDSabor2.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(25, 74);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 15);
+            label4.TabIndex = 89;
+            label4.Text = "ID";
+            // 
+            // textBoxIDSabor1
+            // 
+            textBoxIDSabor1.Location = new Point(25, 48);
+            textBoxIDSabor1.Name = "textBoxIDSabor1";
+            textBoxIDSabor1.ReadOnly = true;
+            textBoxIDSabor1.Size = new Size(50, 23);
+            textBoxIDSabor1.TabIndex = 88;
+            textBoxIDSabor1.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(25, 30);
+            label3.Name = "label3";
+            label3.Size = new Size(20, 15);
+            label3.TabIndex = 87;
+            label3.Text = "ID";
             // 
             // checkBoxBorda
             // 
@@ -546,6 +501,15 @@
             groupBoxTamanhoPizza.Size = new Size(320, 100);
             groupBoxTamanhoPizza.TabIndex = 5;
             groupBoxTamanhoPizza.TabStop = false;
+            // 
+            // labelObsTamanho
+            // 
+            labelObsTamanho.AutoSize = true;
+            labelObsTamanho.Location = new Point(168, 49);
+            labelObsTamanho.Name = "labelObsTamanho";
+            labelObsTamanho.Size = new Size(123, 15);
+            labelObsTamanho.TabIndex = 78;
+            labelObsTamanho.Text = "Pode Escolher 1 Sabor";
             // 
             // labelTamanho
             // 
@@ -765,7 +729,7 @@
             groupBoxCliente.Controls.Add(labelTel);
             groupBoxCliente.Controls.Add(maskedTextBoxCPF);
             groupBoxCliente.Controls.Add(labelCPF);
-            groupBoxCliente.Controls.Add(textBoxID);
+            groupBoxCliente.Controls.Add(textBoxIDCliente);
             groupBoxCliente.Controls.Add(labelID);
             groupBoxCliente.Controls.Add(textBoxNome);
             groupBoxCliente.Controls.Add(labelNome);
@@ -818,14 +782,14 @@
             labelCPF.TabIndex = 81;
             labelCPF.Text = "CPF";
             // 
-            // textBoxID
+            // textBoxIDCliente
             // 
-            textBoxID.Location = new Point(20, 48);
-            textBoxID.Name = "textBoxID";
-            textBoxID.ReadOnly = true;
-            textBoxID.Size = new Size(50, 23);
-            textBoxID.TabIndex = 78;
-            textBoxID.TabStop = false;
+            textBoxIDCliente.Location = new Point(20, 48);
+            textBoxIDCliente.Name = "textBoxIDCliente";
+            textBoxIDCliente.ReadOnly = true;
+            textBoxIDCliente.Size = new Size(50, 23);
+            textBoxIDCliente.TabIndex = 78;
+            textBoxIDCliente.TabStop = false;
             // 
             // labelID
             // 
@@ -858,119 +822,155 @@
             labelNome.TabIndex = 76;
             labelNome.Text = "Nome Completo";
             // 
-            // textBoxIDPedido
+            // buttonExcluir
             // 
-            textBoxIDPedido.Location = new Point(322, 489);
-            textBoxIDPedido.Name = "textBoxIDPedido";
-            textBoxIDPedido.ReadOnly = true;
-            textBoxIDPedido.Size = new Size(50, 23);
-            textBoxIDPedido.TabIndex = 82;
-            textBoxIDPedido.TabStop = false;
+            buttonExcluir.BackColor = Color.Firebrick;
+            buttonExcluir.FlatAppearance.BorderColor = Color.Gray;
+            buttonExcluir.FlatAppearance.BorderSize = 0;
+            buttonExcluir.FlatStyle = FlatStyle.Flat;
+            buttonExcluir.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExcluir.ForeColor = Color.White;
+            buttonExcluir.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonExcluir.Location = new Point(794, 497);
+            buttonExcluir.Name = "buttonExcluir";
+            buttonExcluir.Size = new Size(80, 38);
+            buttonExcluir.TabIndex = 6;
+            buttonExcluir.Text = "Excluir";
+            buttonExcluir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExcluir.UseVisualStyleBackColor = false;
+            buttonExcluir.Click += buttonExcluir_Click;
             // 
-            // labelIDPedido
+            // buttonSalvar
             // 
-            labelIDPedido.AutoSize = true;
-            labelIDPedido.BackColor = Color.Transparent;
-            labelIDPedido.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelIDPedido.ForeColor = SystemColors.ActiveCaptionText;
-            labelIDPedido.Location = new Point(322, 471);
-            labelIDPedido.Name = "labelIDPedido";
-            labelIDPedido.Size = new Size(20, 15);
-            labelIDPedido.TabIndex = 81;
-            labelIDPedido.Text = "ID";
+            buttonSalvar.BackColor = Color.Green;
+            buttonSalvar.FlatAppearance.BorderColor = Color.Gray;
+            buttonSalvar.FlatAppearance.BorderSize = 0;
+            buttonSalvar.FlatStyle = FlatStyle.Flat;
+            buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSalvar.ForeColor = Color.White;
+            buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSalvar.Location = new Point(707, 497);
+            buttonSalvar.Name = "buttonSalvar";
+            buttonSalvar.Size = new Size(81, 38);
+            buttonSalvar.TabIndex = 5;
+            buttonSalvar.Text = "Salvar";
+            buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonSalvar.UseVisualStyleBackColor = false;
+            buttonSalvar.Click += buttonSalvar_Click;
             // 
-            // textBox1
+            // buttonEditarFechar
             // 
-            textBox1.Location = new Point(20, 40);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(50, 23);
-            textBox1.TabIndex = 87;
-            textBox1.TabStop = false;
+            buttonEditarFechar.BackColor = Color.Gray;
+            buttonEditarFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonEditarFechar.FlatAppearance.BorderSize = 0;
+            buttonEditarFechar.FlatStyle = FlatStyle.Flat;
+            buttonEditarFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditarFechar.ForeColor = Color.White;
+            buttonEditarFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEditarFechar.Location = new Point(880, 497);
+            buttonEditarFechar.Name = "buttonEditarFechar";
+            buttonEditarFechar.Size = new Size(80, 38);
+            buttonEditarFechar.TabIndex = 7;
+            buttonEditarFechar.Text = "Fechar";
+            buttonEditarFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEditarFechar.UseVisualStyleBackColor = false;
+            buttonEditarFechar.Click += buttonEditarFechar_Click;
             // 
-            // label2
+            // buttonEditar
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(20, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(20, 15);
-            label2.TabIndex = 86;
-            label2.Text = "ID";
+            buttonEditar.BackColor = Color.DodgerBlue;
+            buttonEditar.FlatAppearance.BorderColor = Color.Gray;
+            buttonEditar.FlatAppearance.BorderSize = 0;
+            buttonEditar.FlatStyle = FlatStyle.Flat;
+            buttonEditar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditar.ForeColor = Color.White;
+            buttonEditar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEditar.Location = new Point(851, 497);
+            buttonEditar.Name = "buttonEditar";
+            buttonEditar.Size = new Size(80, 38);
+            buttonEditar.TabIndex = 4;
+            buttonEditar.Text = "Editar";
+            buttonEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
-            // textBoxIDSabor1
+            // buttonFechar
             // 
-            textBoxIDSabor1.Location = new Point(25, 48);
-            textBoxIDSabor1.Name = "textBoxIDSabor1";
-            textBoxIDSabor1.ReadOnly = true;
-            textBoxIDSabor1.Size = new Size(50, 23);
-            textBoxIDSabor1.TabIndex = 88;
-            textBoxIDSabor1.TabStop = false;
+            buttonFechar.BackColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonFechar.FlatAppearance.BorderSize = 0;
+            buttonFechar.FlatStyle = FlatStyle.Flat;
+            buttonFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFechar.ForeColor = Color.White;
+            buttonFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonFechar.Location = new Point(937, 497);
+            buttonFechar.Name = "buttonFechar";
+            buttonFechar.Size = new Size(80, 38);
+            buttonFechar.TabIndex = 5;
+            buttonFechar.Text = "Fechar";
+            buttonFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonFechar.UseVisualStyleBackColor = false;
+            buttonFechar.Click += buttonFechar_Click;
             // 
-            // label3
+            // dataGridViewDados
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(25, 30);
-            label3.Name = "label3";
-            label3.Size = new Size(20, 15);
-            label3.TabIndex = 87;
-            label3.Text = "ID";
+            dataGridViewDados.AllowUserToAddRows = false;
+            dataGridViewDados.AllowUserToOrderColumns = true;
+            dataGridViewDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDados.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewDados.Location = new Point(32, 0);
+            dataGridViewDados.MultiSelect = false;
+            dataGridViewDados.Name = "dataGridViewDados";
+            dataGridViewDados.RowTemplate.Height = 25;
+            dataGridViewDados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewDados.Size = new Size(985, 473);
+            dataGridViewDados.TabIndex = 3;
             // 
-            // textBoxIDSabor2
+            // panel1
             // 
-            textBoxIDSabor2.Location = new Point(25, 92);
-            textBoxIDSabor2.Name = "textBoxIDSabor2";
-            textBoxIDSabor2.ReadOnly = true;
-            textBoxIDSabor2.Size = new Size(50, 23);
-            textBoxIDSabor2.TabIndex = 90;
-            textBoxIDSabor2.TabStop = false;
+            panel1.BackColor = Color.FromArgb(51, 51, 51);
+            panel1.Controls.Add(buttonCadastrar);
+            panel1.Controls.Add(labelPedido);
+            panel1.Location = new Point(198, -10);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1069, 100);
+            panel1.TabIndex = 11;
             // 
-            // label4
+            // buttonCadastrar
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(25, 74);
-            label4.Name = "label4";
-            label4.Size = new Size(20, 15);
-            label4.TabIndex = 89;
-            label4.Text = "ID";
+            buttonCadastrar.BackColor = Color.FromArgb(51, 51, 51);
+            buttonCadastrar.FlatAppearance.BorderColor = Color.Gray;
+            buttonCadastrar.FlatAppearance.BorderSize = 2;
+            buttonCadastrar.FlatStyle = FlatStyle.Flat;
+            buttonCadastrar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCadastrar.ForeColor = Color.White;
+            buttonCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCadastrar.Location = new Point(827, 32);
+            buttonCadastrar.Name = "buttonCadastrar";
+            buttonCadastrar.Size = new Size(190, 38);
+            buttonCadastrar.TabIndex = 79;
+            buttonCadastrar.Text = "Cadastrar Pedido";
+            buttonCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonCadastrar.UseVisualStyleBackColor = false;
+            buttonCadastrar.Click += buttonCadastrar_Click;
             // 
-            // textBoxIDSabor3
+            // labelPedido
             // 
-            textBoxIDSabor3.Location = new Point(25, 136);
-            textBoxIDSabor3.Name = "textBoxIDSabor3";
-            textBoxIDSabor3.ReadOnly = true;
-            textBoxIDSabor3.Size = new Size(50, 23);
-            textBoxIDSabor3.TabIndex = 92;
-            textBoxIDSabor3.TabStop = false;
+            labelPedido.AutoSize = true;
+            labelPedido.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPedido.ForeColor = SystemColors.ControlLightLight;
+            labelPedido.Location = new Point(32, 28);
+            labelPedido.Name = "labelPedido";
+            labelPedido.Size = new Size(134, 45);
+            labelPedido.TabIndex = 1;
+            labelPedido.Text = "Pedidos";
             // 
-            // label5
+            // menu1
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(25, 118);
-            label5.Name = "label5";
-            label5.Size = new Size(20, 15);
-            label5.TabIndex = 91;
-            label5.Text = "ID";
-            // 
-            // labelObsTamanho
-            // 
-            labelObsTamanho.AutoSize = true;
-            labelObsTamanho.Location = new Point(168, 49);
-            labelObsTamanho.Name = "labelObsTamanho";
-            labelObsTamanho.Size = new Size(123, 15);
-            labelObsTamanho.TabIndex = 78;
-            labelObsTamanho.Text = "Pode Escolher 1 Sabor";
+            menu1.Location = new Point(-2, -10);
+            menu1.Name = "menu1";
+            menu1.Size = new Size(200, 700);
+            menu1.TabIndex = 10;
             // 
             // ListaPedidos
             // 
@@ -981,13 +981,11 @@
             Controls.Add(panel1);
             Controls.Add(menu1);
             Name = "ListaPedidos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ListaPedidos";
             panelLista.ResumeLayout(false);
             panelEditar.ResumeLayout(false);
             panelEditar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             groupBoxProduto.ResumeLayout(false);
             groupBoxProduto.PerformLayout();
             groupBoxAddPizza.ResumeLayout(false);
@@ -1000,6 +998,9 @@
             groupBoxEndereco.PerformLayout();
             groupBoxCliente.ResumeLayout(false);
             groupBoxCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDados).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1021,11 +1022,11 @@
         internal Label labelML;
         private ComboBox comboBoxML;
         internal Label labelProduto;
-        internal Button buttonProximoProduto;
+        internal Button buttonAddProduto;
         internal Label label1;
         private ComboBox comboBoxProduto;
         private GroupBox groupBoxAddPizza;
-        internal Button buttonProximaPizza;
+        internal Button buttonAddPizza;
         private GroupBox groupBoxIngredientes;
         private CheckedListBox checkedListBoxIngredientes;
         private GroupBox groupBoxSabor;
@@ -1063,7 +1064,7 @@
         internal Label labelTel;
         internal MaskedTextBox maskedTextBoxCPF;
         internal Label labelCPF;
-        internal TextBox textBoxID;
+        internal TextBox textBoxIDCliente;
         internal Label labelID;
         internal TextBox textBoxNome;
         internal Label labelNome;

@@ -9,12 +9,14 @@ namespace PizzariaDoZe.DAO
 {
     public class Pizza
     {
-        public Pizza( int id = 0, string tamanho = "", string categoria = "",  bool comBorda = false, decimal valorBorda = 0, decimal valorTotal = 0)
+        public Pizza( int id = 0, string tamanho = "", string categoria = "", List<Sabor> listaSabores = null!, bool comBorda = false, string saborBorda = "", decimal valorBorda = 0, decimal valorTotal = 0)
         {
             ID = id;
             Tamanho = tamanho;
             Categoria = categoria;
+            ListaSabores = listaSabores;
             ComBorda = comBorda;
+            SaborBorda = saborBorda;
             ValorBorda = valorBorda;
             ValorTotal = valorTotal;
         }
@@ -22,7 +24,9 @@ namespace PizzariaDoZe.DAO
         public int ID { get; set; }
         public string Tamanho { get; set; }
         public string Categoria { get; set; }
+        public List<Sabor> ListaSabores { get; set; }        
         public bool ComBorda { get; set; }
+        public string SaborBorda { get; set; }
         public decimal ValorBorda { get; set; }
         public decimal ValorTotal { get; set; }
     }
@@ -73,14 +77,18 @@ namespace PizzariaDoZe.DAO
             {
                 auxSqlFiltro = "WHERE p.id_pizza = " + pizza.ID + " ";
             }
+            else if (pizza.Categoria.Length > 0 && pizza.Tamanho.Length > 0)
+            {
+                auxSqlFiltro = "WHERE p.categoria = like '%" + pizza.Categoria + "%' AND p.tamanho = like '%" + pizza.Tamanho + "%' ";
+            }
             conexao.Open();
             comando.CommandText =   @" " +
-                                    "SELECT id_valor AS ID, " +
+                                    "SELECT id_pizza AS ID, " +
                                     "tamanho AS Tamanho, " +
                                     "categoria AS Categoria, " +
-                                    "com_borda AS 'Com Borda' " +
-                                    "valor_borda AS 'Valor Borda' " +
-                                    "valor_total AS 'Valor Pizza', " +
+                                    "com_borda AS Com_Borda, " +
+                                    "valor_borda AS Valor_Borda, " +
+                                    "valor_total AS Valor_Pizza " +
                                     "FROM tb_pizza AS p " +
                                     auxSqlFiltro +
                                     ";";
@@ -90,6 +98,42 @@ namespace PizzariaDoZe.DAO
             linhas.Load(sdr);
 
             return linhas;
+        }
+        public List<Sabor> BuscarSaboresPizza(Pizza pizza)
+        {
+            var listaSabores = new List<Sabor>();
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //verifica se tem filtro e personaliza o SQL do filtro
+            string auxSqlFiltro = "";
+
+            if (pizza.ID > 0)
+            {
+                auxSqlFiltro = "WHERE p.id_pizza = " + pizza.ID + " ";
+            }
+            comando.CommandText = @" " +
+                                    "SELECT s.id_sabor AS ID, s.descricao_sabor AS Nome, s.foto AS Foto, s.categoria AS Categoria, s.tipo AS Tipo, " +
+                                    "FROM tb_sabores AS s " +
+                                    "INNER JOIN sabores_pizza AS sp on s.id_sabor = sp.sabor_id " +
+                                    "INNER JOIN tb_pizza AS p on p.id_pizza = sp.pizza_id " +
+                                    "FROM tb_sabores AS s " +
+                                    auxSqlFiltro +
+                                    "ORDER BY s.descricao_sabor;";
+            //Executa o script na conexão e retorna as linhas afetadas.
+            var sdr = comando.ExecuteReader();
+            while (sdr.Read())
+            {
+                var sabor = new Sabor();
+                sabor.ID = int.Parse(sdr["ID"].ToString()!);
+                sabor.Descricao = sdr["Nome"].ToString()!;
+                sabor.Categoria = sdr["Categoria"].ToString()!;
+                sabor.Descricao = sdr["Tipo"].ToString()!;
+                sabor.Foto = (byte[])sdr["Foto"]!;
+                listaSabores.Add(sabor);
+            }
+            return listaSabores;
         }        
         public void Editar(Pizza pizza)
         {

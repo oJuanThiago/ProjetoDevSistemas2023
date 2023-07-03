@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,7 +87,7 @@ namespace PizzariaDoZe.DAO
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable Buscar(Sabor sabor)
+        public (DataTable, Sabor) Buscar(Sabor sabor)
         {
             using var conexao = factory.CreateConnection(); //Cria conexão
             conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
@@ -113,9 +114,33 @@ namespace PizzariaDoZe.DAO
                                     "ORDER BY s.descricao_sabor;";
             //Executa o script na conexão e retorna as linhas afetadas.
             var sdr = comando.ExecuteReader();
+            while (sdr.Read())
+            {
+                sabor.ID = int.Parse(sdr["ID"].ToString()!);
+                sabor.Descricao = sdr["Nome"].ToString()!;
+                sabor.Categoria = sdr["Categoria"].ToString()!;
+                sabor.Descricao = sdr["Tipo"].ToString()!;
+                sabor.Foto = (byte[])sdr["Foto"]!;
+            }
+            DataTable linhas = new();
+            linhas.Load(sdr);
+            return (linhas, sabor);
+        }
+        public DataTable BuscarDescricaoTodos()
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+            conexao.Open();
+            comando.CommandText = @" " +
+                                    "SELECT s.descricao_sabor AS Descricao FROM tb_sabores s";
+            var sdr = comando.ExecuteReader();
             DataTable linhas = new();
             linhas.Load(sdr);
             return linhas;
+
+
         }
         public DataTable BuscarItensSabor(Sabor sabor)
         {

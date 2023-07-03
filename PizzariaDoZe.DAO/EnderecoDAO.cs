@@ -64,7 +64,7 @@ namespace PizzariaDoZe.DAO
             string auxSqlFiltro = "";
             if (endereco.ID > 0)
             {
-                auxSqlFiltro = "WHERE e.id = " + endereco.ID + " ";
+                auxSqlFiltro = "WHERE e.id_endereco = " + endereco.ID + " ";
             }
             else if (endereco.CEP.Length > 0)
             {

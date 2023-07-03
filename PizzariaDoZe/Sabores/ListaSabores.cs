@@ -35,7 +35,7 @@ namespace PizzariaDoZe.Sabores
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = saborDAO.Buscar(sabor);
+                (DataTable linhas, Sabor saborBuscado) = saborDAO.Buscar(sabor);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -107,17 +107,17 @@ namespace PizzariaDoZe.Sabores
             try
             {
                 // chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = saborDAO.Buscar(sabor);
+                (DataTable linhas, Sabor saborBuscado) = saborDAO.Buscar(sabor);
                 // seta os dados na tela
                 foreach (DataRow row in linhas.Rows)
                 {
-                    textBoxID.Text = row[0].ToString();
-                    textBoxDescricao.Text = row[1].ToString();
-                    pictureBoxImagem.Image = Funcoes.ConverteByteArrayParaImagem((byte[])row[2]);
-                    comboBoxCategoria.Text = row[3].ToString();
-                    comboBoxTipo.Text = row[4].ToString();
+                    textBoxID.Text = saborBuscado.ID.ToString();
+                    textBoxDescricao.Text = saborBuscado.Descricao;
+                    pictureBoxImagem.Image = Funcoes.ConverteByteArrayParaImagem(saborBuscado.Foto);
+                    comboBoxCategoria.Text = saborBuscado.Categoria;
+                    comboBoxTipo.Text = saborBuscado.Tipo;
                     // busca e seleciona os itens do sabor
-                    DataTable linhasIngredientes = saborDAO.BuscarItensSabor(sabor);
+                    DataTable linhasIngredientes = saborDAO.BuscarItensSabor(saborBuscado);
                     foreach (DataRow dr in linhasIngredientes.Rows)
                     {
                         for (int i = 0; i < checkedListBoxIngredientes.Items.Count; i++)

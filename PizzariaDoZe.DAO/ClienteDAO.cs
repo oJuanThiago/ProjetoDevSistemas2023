@@ -83,7 +83,7 @@ namespace PizzariaDoZe.DAO
             return Convert.ToInt32(IdGerado);
         }
 
-        public DataTable Buscar(Cliente cliente)
+        public (DataTable, Cliente) Buscar(Cliente cliente)
         {
             using var conexao = factory.CreateConnection(); //Cria conexão
             conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
@@ -99,6 +99,14 @@ namespace PizzariaDoZe.DAO
             {
                 auxSqlFiltro = "WHERE cc.nome_cliente like '%" + cliente.Nome + "%' ";
             }
+            else if (cliente.CPF.Length == 11)
+            {
+                auxSqlFiltro = "WHERE cc.cpf = " + cliente.CPF + " ";
+            }
+            else if (cliente.Telefone.Length >= 11)
+            {
+                auxSqlFiltro = "WHERE cc.telefone = " + cliente.Telefone + " ";
+            }
             conexao.Open();
             comando.CommandText = @" " +
                                     "SELECT cc.id_cliente AS ID, " +
@@ -111,9 +119,9 @@ namespace PizzariaDoZe.DAO
                                     "e.bairro AS Bairro, " +
                                     "c.nome_cidade AS Cidade, " +
                                     "u.nome_uf AS UF, " +
-                                    "cc.numero AS Número, " +
+                                    "cc.numero AS Numero, " +
                                     "cc.complemento AS Complemento, " +
-                                    "cc.endereco_id AS 'ID_Endereço'," +
+                                    "cc.endereco_id AS EnderecoID," +
                                     "p.nome_pais AS País " +
                                     "FROM tb_clientes cc " +
                                     "INNER JOIN tb_enderecos AS e ON e.id_endereco = cc.endereco_id " +
@@ -124,9 +132,21 @@ namespace PizzariaDoZe.DAO
                                     "ORDER BY cc.nome_cliente;";
             //Executa o script na conexão e retorna as linhas afetadas.
             var sdr = comando.ExecuteReader();
+            
+            while (sdr.Read())
+            {
+                cliente.ID = int.Parse(sdr["ID"].ToString()!);
+                cliente.Nome = sdr["Nome"].ToString()!;  
+                cliente.CPF = sdr["CPF"].ToString()!;  
+                cliente.Telefone = sdr["Telefone"].ToString()!;  
+                cliente.Email = sdr["E-mail"].ToString()!;  
+                cliente.EnderecoID = int.Parse(sdr["EnderecoID"].ToString()!);
+                cliente.Numero = sdr["Numero"].ToString()!;  
+                cliente.Complemento = sdr["Complemento"].ToString()!;  
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
-            return linhas;
+            return (linhas, cliente);
         }
         public void Editar(Cliente cliente)
         {

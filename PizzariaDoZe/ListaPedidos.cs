@@ -110,8 +110,8 @@ namespace PizzariaDoZe
             //    // seta os dados na tela
             //    foreach (DataRow row in linhas.Rows)
             //    {
-            //        textBoxID.Text = row[0].ToString();
-            //        textBoxDescricao.Text = row[1].ToString();
+            //        textBoxIDPedido.Text = row[0].ToString();
+            //        menu1.labelUsuario.Text = row[1].ToString();
             //        pictureBoxImagem.Image = Funcoes.ConverteByteArrayParaImagem((byte[])row[2]);
             //        comboBoxCategoria.Text = row[3].ToString();
             //        comboBoxTipo.Text = row[4].ToString();
@@ -176,12 +176,12 @@ namespace PizzariaDoZe
             formPedidos.Show();
         }
 
-        private void buttonProximoProduto_Click(object sender, EventArgs e)
+        private void buttonAddProduto_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonProximaPizza_Click(object sender, EventArgs e)
+        private void buttonAddPizza_Click(object sender, EventArgs e)
         {
 
         }

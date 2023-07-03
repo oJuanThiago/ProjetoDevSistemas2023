@@ -12,17 +12,21 @@ namespace PizzariaDoZe.DAO
     {
         public int ID { get; set; }
         public string Descricao { get; set; }
+        public string ML { get; set; }
         public decimal Valor { get; set; }
         public string Tipo { get; set; }
-        public string ML { get; set; }
 
-        public Produto(int id = 0, string descricao = "", decimal valor = 0, string tipo = "", string ml = "")
+        public Produto(int id = 0, string descricao = "", string ml = "", decimal valor = 0, string tipo = "")
         {
             ID = id;
             Descricao = descricao;
+            ML = ml;
             Valor = valor;
             Tipo = tipo;
-            ML = ml;
+        }
+        public override string ToString()
+        {
+            return Descricao + " " + ML + " ml/g";
         }
     }
     public class ProdutoDAO
@@ -69,7 +73,7 @@ namespace PizzariaDoZe.DAO
 
             return Convert.ToInt32(IdSaborGerado);
         }
-        public DataTable Buscar(Produto produto)
+        public (DataTable, Produto) Buscar(Produto produto)
         {
 
             using var conexao = factory.CreateConnection(); //Cria conexão
@@ -82,18 +86,31 @@ namespace PizzariaDoZe.DAO
             {
                 auxSqlFiltro = "WHERE p.id_produto = " + produto.ID + " ";
             }
+            else if (produto.Descricao.Length > 0)
+            {
+                auxSqlFiltro = "WHERE p.descricao_produto = like '%" + produto.Descricao + "%' ";
+            }
             conexao.Open();
             comando.CommandText =   @" " +
-                                    "SELECT id_produto AS ID, descricao_produto AS Descrição, valor AS Valor, tipo AS 'Tipo Produto',medida_unitaria AS ML " +
+                                    "SELECT id_produto AS ID, descricao_produto AS Descricao, valor AS Valor, tipo AS Tipo, medida_unitaria AS ML " +
                                     "FROM cad_produtos AS p " +
                                     auxSqlFiltro +
                                     "ORDER BY p.descricao_produto;";
             //Executa o script na conexão e retorna as linhas afetadas.
             var sdr = comando.ExecuteReader();
+            while (sdr.Read())
+            {
+                produto.ID = int.Parse(sdr["ID"].ToString()!);
+                produto.Descricao = sdr["Descricao"].ToString()!;
+                produto.Valor = decimal.Parse(sdr["Valor"].ToString()!);
+                produto.Tipo = sdr["Tipo"].ToString()!;
+                produto.ML = sdr["ML"].ToString()!;
+
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
 
-            return linhas;
+            return (linhas, produto);
         }
 
         public void Editar(Produto produto)
@@ -174,5 +191,34 @@ namespace PizzariaDoZe.DAO
             }
         }
 
+        public (DataTable, List<Produto>) BuscarTodos()
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+            conexao.Open();
+            comando.CommandText = @" " +
+                                    "SELECT pd.id_produto AS ID, pd.descricao_produto AS Descricao, pd.valor AS Valor, pd.tipo AS Tipo, pd.medida_unitaria AS ML FROM cad_produtos pd ORDER BY pd.descricao_produto ";
+
+            var sdr = comando.ExecuteReader();
+            var todosProdutos = new List<Produto>();
+            while (sdr.Read())
+            {
+                var produto = new Produto();
+                produto.ID = int.Parse(sdr["ID"].ToString()!);
+                produto.Descricao = sdr["Descricao"].ToString()!;
+                produto.Valor = decimal.Parse(sdr["Valor"].ToString()!);
+                produto.Tipo = sdr["Tipo"].ToString()!;
+                produto.ML = sdr["ML"].ToString()!;
+
+                todosProdutos.Add(produto);
+            }
+
+            DataTable linhas = new();
+            linhas.Load(sdr);
+            return (linhas, todosProdutos);
+
+        }
     }
 }

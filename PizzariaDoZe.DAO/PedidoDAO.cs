@@ -117,28 +117,55 @@ namespace PizzariaDoZe.DAO
             }
             comando.CommandText = @" " + 
                                     "SELECT pe.id_pedido AS ID, " +
-                                    "cc.nome_cliente AS Cliente, " +
                                     "f.nome_funcionario AS Funcionario, " +
                                     "pe.valor_total AS 'Valor Total', " +
                                     "pe.status AS Status, " +
                                     "pe.entrega AS Entregar, " +
                                     "pe.pago AS Pago, " +
-                                    "pe.data_pedido AS 'Realizado em:' " +
-                                    //     "(SELECT GROUP_CONCAT(s.descricao_sabor SEPARATOR ', ')" +
-                                    //     "FROM tb_sabores s, sabores_pizza sp, tb_pizza pz " +
-                                    //     "WHERE s.id_sabor = sp.sabores_id AND pz.id_pizza = sp.pizza_id ) AS Sabores," +
-                                    //     "(select group_concat(CONCAT(p.descricao_produto,' ', p.medida_unitaria, ' ml/g') separator ', ')" +
-                                    //     "FROM cad_produtos AS p " +
-                                    //     "INNER JOIN tb_pedidos pe on lp.pedido_id = pe.id_pedido " +
-                                    //      auxSqlFiltro + ") AS Produtos " +
+                                    "pe.data_pedido AS 'Realizado em:', " +
+                                    "e.cep AS CEP, " +
+                                    "e.logradouro AS Logradouro, " +
+                                    "e.bairro AS Bairro, " +
+                                    "c.nome_cidade AS Cidade, " +
+                                    "u.nome_uf AS UF, " +
+                                    "p.nome_pais AS País, " +
+                                    "cc.id_cliente AS ID, " +
+                                    "cc.nome_cliente AS Cliente, " +
+                                    "cc.cpf AS CPF, " +
+                                    "cc.telefone AS Telefone, " +
+                                    "cc.email AS 'E-mail', " +
+                                    "cc.numero AS Número, " +
+                                    "cc.complemento AS Complemento, " +
+                                    "cc.endereco_id AS 'ID_Endereço' " +
+
+                                    // "(SELECT GROUP_CONCAT(i.descricao_ingrediente SEPARATOR ', ') " +
+                                    // "FROM itens_sabores AS iss " +
+                                    // "INNER JOIN cad_ingredientes i on iss.ingrediente_id = i.id_ingrediente " +
+                                    // "WHERE iss.sabor_id = s.id_sabor AND i.id_ingrediente = iss.ingrediente_id ) AS Sabores " +
+
+                                    // "(SELECT GROUP_CONCAT(i.descricao_ingrediente SEPARATOR ', ') " +
+                                    // "FROM itens_sabores AS iss, cad_ingredientes i " +
+                                    // "WHERE iss.sabor_id = s.id_sabor AND i.id_ingrediente = iss.ingrediente_id ) AS Ingredientes " +
+
                                     "FROM tb_pedidos pe " +
-                                    "INNER JOIN lista_produtos lp on p.id_produto = lp.produto_id " +
+
+
+                                    "INNER JOIN lista_pizzas lpi on pe.id_pedido = lpi.pedido_id " +
+                                    "INNER JOIN tb_pizza pi on pi.id_pizza = lpi.pizza_id " +
+                                    "INNER JOIN sabores_pizza spi on spi.pizza_id = pi.id_pizza " +
+                                    "INNER JOIN tb_sabores s on s.id_sabor = spi.sabor_id " +
+                                    "INNER JOIN itens_sabores iss on s.id_sabor = iss.sabor_id " +
+
+                                    "INNER JOIN lista_produtos lpd on pe.id_pedido = lpd.pedido_id " +
+                                    "INNER JOIN cad_produtos pd on pd.id_produto = lpd.produto_id " +
+
                                     "INNER JOIN tb_clientes cc on cc.id_cliente = pe.cliente_id " +
+                                    "INNER JOIN tb_funcionarios f  on f.id_funcionario = pe.funcionario_id " +
+
                                     "INNER JOIN tb_enderecos AS e ON e.id_endereco = cc.endereco_id " +
                                     "INNER JOIN cad_cidades AS c ON c.id_cidade = e.cidade_id " +
                                     "INNER JOIN cad_uf AS u ON u.id_uf = c.uf_id " +
                                     "INNER JOIN cad_paises AS p ON p.id_pais = u.pais_id " +
-                                    "INNER JOIN tb_funcionarios f  on f.id_funcionario = pe.funcionario_id " +
                                     auxSqlFiltro + 
                                     "ORDER BY pe.data_pedido desc;";
 
@@ -147,7 +174,7 @@ namespace PizzariaDoZe.DAO
             linhas.Load(sdr);
             return linhas;
         }
-        public DataTable BuscarProdutosPorPedido(Pedido pedido)
+        public (DataTable, List<Produto>) BuscarProdutosPorPedido(Pedido pedido)
         {
             var auxSqlFiltro = "";
 
@@ -161,20 +188,30 @@ namespace PizzariaDoZe.DAO
                 auxSqlFiltro = "WHERE pe.id_pedido = " + pedido.ID + " ";
             }
             comando.CommandText = @" " +
-                                    "SELECT CONCAT(p.descricao_produto, ' ' p.medida_unitaria) " +
-                                    "FROM cad_produtos AS p " +
-                                    "INNER JOIN lista_produtos lp on p.id_produto = lp.produto_id " +
-                                    "INNER JOIN tb_pedidos pe on lp.pedido_id = pe.id_pedido " +
+                                    "SELECT pd.descricao_produto as Descricao, pd.medida_unitaria as ML, pd.valor as Valor, tipo AS Tipo, " +
+                                    "FROM tb_pedidos pe " +
+                                    "INNER JOIN lista_produtos lpd on pe.id_pedido = lpd.pedido_id " +
+                                    "INNER JOIN cad_produtos AS pd on lpd.produto_id = pd.id_produto " +
                                     auxSqlFiltro +
-                                    "ORDER BY p.descricao_produto;";
+                                    "ORDER BY pd.descricao_produto;";
 
             var sdr = comando.ExecuteReader();
+            var listaProdutos = new List<Produto>();
+            while (sdr.Read())
+            {
+                var produto = new Produto();
+                produto.ID = int.Parse(sdr["ID"].ToString()!);
+                produto.Descricao = sdr["Descricao"].ToString()!;
+                produto.Valor = decimal.Parse(sdr["Valor"].ToString()!);
+                produto.Tipo = sdr["Tipo"].ToString()!;
+                produto.ML = sdr["ML"].ToString()!;
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
-            return linhas;
+            return (linhas, listaProdutos);
         }
 
-        public DataTable BuscarPizzasPorPedido(Pedido pedido)
+        public (DataTable,List<Pizza>) BuscarPizzasPorPedido(Pedido pedido)
         {
             var auxSqlFiltro = "";
 
@@ -188,10 +225,13 @@ namespace PizzariaDoZe.DAO
                 auxSqlFiltro = "WHERE pe.id_pedido = " + pedido.ID + " ";
             }
             comando.CommandText = @" " +
-                                    "SELECT pz.id_pizza AS ID, (select group_concat(s.descricao_sabor SEPARATOR ', ')" +
-                                    "FROM tb_sabores s, sabores_pizza sp, tb_pizza pz " +
-                                    "WHERE s.id_sabor = sp.sabores_id AND pz.id_pizza = sp.pizza_id ) AS Sabores, " +
-                                    "valor AS Valor, tipo AS 'Tipo Produto',medida_unitaria AS ML " +
+                                    "SELECT pz.id_pizza AS ID, " +
+                                    "pz.tamanho AS Tamanho, " +
+                                    "pz.categoria AS Categoria, " +
+                                    "pz.com_borda AS Com_Borda, " +
+                                    "pz.valor_borda AS Valor_Borda, " +
+                                    "pz.valor_total AS Valor_Pizza, " +
+                                    "pz.sabor_borda AS Sabor_Borda " +
                                     "FROM tb_pizza pz " +
                                     "INNER JOIN lista_pizzas lp on pz.id_pizza = lp.pizza_id " +
                                     "INNER JOIN tb_pedidos pe on lp.pedido_id = pe.id_pedido " +
@@ -199,9 +239,23 @@ namespace PizzariaDoZe.DAO
                                     "ORDER BY pe.data_pedido desc;";
 
             var sdr = comando.ExecuteReader();
+            var listaPizzas = new List<Pizza>();
+            while (sdr.Read())
+            {
+                var pizza = new Pizza();
+                pizza.ID = int.Parse(sdr["ID"].ToString()!);
+                pizza.Tamanho = sdr["Tamanho"].ToString()!;
+                pizza.Categoria = sdr["Categoria"].ToString()!;
+                pizza.ComBorda = bool.Parse(sdr["Valor_Borda"].ToString()!);
+                pizza.ValorBorda = decimal.Parse(sdr["Valor_Borda"].ToString()!);
+                pizza.ValorTotal = decimal.Parse(sdr["Valor_Pizza"].ToString()!);
+                pizza.SaborBorda = sdr["Sabor_Borda"].ToString()!;
+                
+                listaPizzas.Add(pizza);
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
-            return linhas;
+            return (linhas, listaPizzas);
         }
         public void Editar(Pedido pedido)
         {
