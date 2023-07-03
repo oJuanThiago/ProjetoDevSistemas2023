@@ -103,31 +103,34 @@ namespace PizzariaDoZe
             {
                 comboBoxProduto.Items.Add(produto.Descricao);
             }
-
         }
-
-
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
-            var pedido = new Pedido
-            {
-                ID = int.Parse(textBoxIDPedido.Text),
-                ListaPizzas = listaPizzas,
-                ListaProdutos = listaProdutos,
-            };
             try
             {
                 if (!String.IsNullOrEmpty(textBoxNome.Text) && !String.IsNullOrEmpty(maskedTextBoxCPF.Text) &&
                     !String.IsNullOrEmpty(comboBoxSabor1.Text) && !String.IsNullOrEmpty(comboBoxTamanho.Text))
                 {
+                    var pedido = new Pedido
+                    {
+                        ID = int.Parse(textBoxIDPedido.Text),
+                        Status = "Cadastrado",
+                        Entrega = checkBoxEntregar.Checked,
+                        Pago = false,
+                        ListaPizzas = listaPizzas,
+                        ListaProdutos = listaProdutos
+                    };
+                    pedido.AtribuirValorTotal(AtualizarValorTotal());
 
+                    pedidoDAO.Inserir(pedido);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
+            listaProdutos.Clear();
+            listaPizzas.Clear();
         }
 
         private void buttonFechar_Click(object sender, EventArgs e) => Close();
@@ -278,6 +281,7 @@ namespace PizzariaDoZe
             }
             else if (comboBoxTamanho.Text == "Média")
             {
+                comboBoxSabor2.Enabled = true;
                 comboBoxSabor3.Enabled = false;
             }
         }
@@ -440,7 +444,6 @@ namespace PizzariaDoZe
             //Instância e Preenche o objeto com os dados da view
             var cliente = new Cliente
             {
-                ID = int.Parse(textBoxID.Text),
                 Nome = textBoxNome.Text,
                 CPF = maskedTextBoxCPF.Text,
                 Telefone = maskedTextBoxTel.Text,
@@ -452,7 +455,7 @@ namespace PizzariaDoZe
             {
                 // chama o método da model para editar
                 clienteDAO.Editar(cliente);
-                MessageBox.Show("Dados editados com sucesso! " + textBoxID.Text);
+                MessageBox.Show("Dados cadastrados com sucesso! " + textBoxID.Text);
                 panelCadastrarCliente.Visible = false;
             }
             catch (Exception ex)

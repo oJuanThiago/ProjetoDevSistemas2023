@@ -34,7 +34,7 @@ namespace PizzariaDoZe.DAO
         public decimal ValorTotal { get; private set; }
         public DateTime DataPedido { get; set; }
 
-        internal void AtribuirValorTotal(decimal valor) => this.ValorTotal = valor;
+        public void AtribuirValorTotal(decimal valor) => this.ValorTotal = valor;
         
     } 
     public class PedidoDAO
@@ -250,7 +250,7 @@ namespace PizzariaDoZe.DAO
                 pizza.ValorBorda = decimal.Parse(sdr["Valor_Borda"].ToString()!);
                 pizza.ValorTotal = decimal.Parse(sdr["Valor_Pizza"].ToString()!);
                 pizza.SaborBorda = sdr["Sabor_Borda"].ToString()!;
-                
+
                 listaPizzas.Add(pizza);
             }
             DataTable linhas = new();

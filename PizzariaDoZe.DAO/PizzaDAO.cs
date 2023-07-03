@@ -61,6 +61,14 @@ namespace PizzariaDoZe.DAO
             //executa o comando no banco de dados e captura o ID gerado
             var IdvalorGerado = comando.ExecuteScalar();
 
+            foreach (Sabor sabor in pizza.ListaSabores)
+            {
+                // salvar os ingredientes do sabor
+                comando.CommandText = @"INSERT INTO sabores_pizza(sabor_id, pizza_id) VALUES (" + sabor.ID + "," + pizza.ID + ")";
+                //Executa o script na conexão
+                _ = comando.ExecuteNonQuery();
+            }
+
             return Convert.ToInt32(IdvalorGerado);
         }
         public DataTable Buscar(Pizza pizza)
@@ -88,7 +96,8 @@ namespace PizzariaDoZe.DAO
                                     "categoria AS Categoria, " +
                                     "com_borda AS Com_Borda, " +
                                     "valor_borda AS Valor_Borda, " +
-                                    "valor_total AS Valor_Pizza " +
+                                    "valor_total AS Valor_Pizza, " +
+                                    "sabor_borda AS Sabor_Borda " +
                                     "FROM tb_pizza AS p " +
                                     auxSqlFiltro +
                                     ";";
@@ -151,7 +160,7 @@ namespace PizzariaDoZe.DAO
             try
             {
                 //realiza o UPDATE
-                comando.CommandText = @"UPDATE tb_pizza SET tamanho = @tamanho, categoria = @categoria, com_borda = @com_borda, valor_borda = @valor_borda, valor_total = @valor_total " +
+                comando.CommandText = @"UPDATE tb_pizza SET tamanho = @tamanho, categoria = @categoria, com_borda = @com_borda, valor_borda = @valor_borda, valor_total = @valor_total, sabor_borda = @sabor_borda " +
                                         "WHERE id_pizza = @id;";
                 //executa o comando no banco de dados e captura o ID gerado
                 _ = comando.ExecuteNonQuery();
@@ -211,6 +220,7 @@ namespace PizzariaDoZe.DAO
             var ComBorda = comando.CreateParameter(); ComBorda.ParameterName = "@com_borda"; ComBorda.Value = pizza.ComBorda; comando.Parameters.Add(ComBorda);
             var ValorBorda = comando.CreateParameter(); ValorBorda.ParameterName = "@valor_borda"; ValorBorda.Value = pizza.ValorBorda; comando.Parameters.Add(ValorBorda);
             var ValorTotal = comando.CreateParameter(); ValorTotal.ParameterName = "@valor_total"; ValorTotal.Value = pizza.ValorTotal; comando.Parameters.Add(ValorTotal);
+            var SaborBorda = comando.CreateParameter(); SaborBorda.ParameterName = "@sabor_borda"; SaborBorda.Value = pizza.SaborBorda; comando.Parameters.Add(SaborBorda);
         }
     }
 }

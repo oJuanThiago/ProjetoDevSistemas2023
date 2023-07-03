@@ -88,7 +88,7 @@ namespace PizzariaDoZe.DAO
             }
             else if (produto.Descricao.Length > 0)
             {
-                auxSqlFiltro = "WHERE p.descricao_produto = like '%" + produto.Descricao + "%' ";
+                auxSqlFiltro = "WHERE p.descricao_produto like '%" + produto.Descricao + "%' ";
             }
             conexao.Open();
             comando.CommandText =   @" " +
