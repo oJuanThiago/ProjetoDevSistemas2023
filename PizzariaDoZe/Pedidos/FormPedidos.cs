@@ -17,6 +17,7 @@ namespace PizzariaDoZe
     {
         private readonly PedidoDAO pedidoDAO;
         private readonly ProdutoDAO produtoDAO;
+        private readonly PizzaDAO pizzaDAO;
         private readonly ClienteDAO clienteDAO;
         private readonly EnderecoDAO enderecoDAO;
         private readonly SaborDAO saborDAO;
@@ -40,47 +41,30 @@ namespace PizzariaDoZe
             enderecoDAO = new EnderecoDAO(provider, strConnection);
             saborDAO = new SaborDAO(provider, strConnection);
             produtoDAO = new ProdutoDAO(provider, strConnection);
+            pizzaDAO = new PizzaDAO(provider, strConnection);
 
             listaProdutos = new List<Produto>();
             listaPizzas = new List<Pizza>();
             listaSabores = new List<Sabor>();
 
             textBoxNome.Leave += TextBoxNome_Leave;
-            maskedTextBoxCPF.Leave += MaskedTextBoxCPF_Leave;
-            maskedTextBoxTel.Leave += MaskedTextBoxTel_Leave;
             comboBoxTamanho.Leave += ComboBoxTamanho_Leave;
 
             CarregarSabores();
             CarregarProdutos();
 
         }
-
-        private void MaskedTextBoxTel_Leave(object? sender, EventArgs e)
-        {
-            var cliente = new Cliente
-            {
-                Telefone = maskedTextBoxTel.Text.Trim()
-            };
-            BuscarCliente(cliente);
-        }
-
         private void TextBoxNome_Leave(object? sender, EventArgs e)
         {
             var cliente = new Cliente
             {
+                Telefone = maskedTextBoxTel.Text.Trim(),
+                CPF = maskedTextBoxCPF.Text.Trim(),
                 Nome = textBoxNome.Text
             };
             BuscarCliente(cliente);
         }
 
-        private void MaskedTextBoxCPF_Leave(object? sender, EventArgs e)
-        {
-            var cliente = new Cliente
-            {
-                CPF = maskedTextBoxCPF.Text.Trim()
-            };
-            BuscarCliente(cliente);
-        }
 
         private void CarregarSabores()
         {
@@ -108,21 +92,23 @@ namespace PizzariaDoZe
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxNome.Text) && !String.IsNullOrEmpty(maskedTextBoxCPF.Text) &&
-                    !String.IsNullOrEmpty(comboBoxSabor1.Text) && !String.IsNullOrEmpty(comboBoxTamanho.Text))
+                if (!String.IsNullOrEmpty(textBoxNome.Text) && !String.IsNullOrEmpty(maskedTextBoxCPF.Text))
                 {
                     var pedido = new Pedido
                     {
-                        ID = int.Parse(textBoxIDPedido.Text),
+                        IDCliente = int.Parse(textBoxIDCliente.Text),
                         Status = "Cadastrado",
                         Entrega = checkBoxEntregar.Checked,
                         Pago = false,
                         ListaPizzas = listaPizzas,
-                        ListaProdutos = listaProdutos
+                        ListaProdutos = listaProdutos,
+                        DataPedido = DateTime.Now
                     };
                     pedido.AtribuirValorTotal(AtualizarValorTotal());
 
                     pedidoDAO.Inserir(pedido);
+                    MessageBox.Show("Pedido realizado com sucesso!");
+
                 }
             }
             catch (Exception ex)
@@ -173,12 +159,14 @@ namespace PizzariaDoZe
                 ListaSabores = listaSabores,
                 ComBorda = checkBoxBorda.Checked,
                 SaborBorda = comboBoxSaborBorda.Text
+
             };
             if (!String.IsNullOrEmpty(comboBoxTamanho.Text) && !String.IsNullOrEmpty(comboBoxSabor1.Text))
             {
                 try
                 {
-                    this.listaPizzas.Add(pizza);
+                    (DataTable linhas, Pizza pizzaBuscada) = pizzaDAO.Buscar(pizza);
+                    this.listaPizzas.Add(pizzaBuscada);
                     MessageBox.Show("Pizza adicionada com sucesso!");
                     comboBoxTamanho.Text = string.Empty;
                     comboBoxSabor1.Text = string.Empty;

@@ -51,27 +51,21 @@ namespace PizzariaDoZe.DAO
             comando!.Connection = conexao; //Atribui conexão
                                            //Adiciona parâmetro (@campo e valor)
             conexao.Open();
+            ConverterObjetoParaSql(pizza, comando);//Adiciona parâmetro (@campo e valor)
+
 
             string auxSQL_ID = Provider.Contains("MySql") ? "SELECT LAST_INSERT_ID();" : "SELECT SCOPE_IDENTITY();";
             //realiza o INSERT e retorna o ID gerado, algo que vai ser necessário na sequencia
             comando.CommandText = @"" +
-            "INSERT INTO tb_pizza (tamanho, categoria, com_borda, valor_borda, valor_total) " +
-            "VALUES (@tamanho, @categoria, @com_borda, @valor_total, @valor_borda);" +
+            "INSERT INTO tb_pizza (tamanho, categoria, com_borda, valor_borda, valor_total, sabor_borda) " +
+            "VALUES (@tamanho, @categoria, @com_borda, @valor_total, @valor_borda, @sabor_borda);" +
             auxSQL_ID;
             //executa o comando no banco de dados e captura o ID gerado
             var IdvalorGerado = comando.ExecuteScalar();
 
-            foreach (Sabor sabor in pizza.ListaSabores)
-            {
-                // salvar os ingredientes do sabor
-                comando.CommandText = @"INSERT INTO sabores_pizza(sabor_id, pizza_id) VALUES (" + sabor.ID + "," + pizza.ID + ")";
-                //Executa o script na conexão
-                _ = comando.ExecuteNonQuery();
-            }
-
             return Convert.ToInt32(IdvalorGerado);
         }
-        public DataTable Buscar(Pizza pizza)
+        public (DataTable, Pizza) Buscar(Pizza pizza)
         {
 
             using var conexao = factory.CreateConnection(); //Cria conexão
@@ -87,7 +81,7 @@ namespace PizzariaDoZe.DAO
             }
             else if (pizza.Categoria.Length > 0 && pizza.Tamanho.Length > 0)
             {
-                auxSqlFiltro = "WHERE p.categoria = like '%" + pizza.Categoria + "%' AND p.tamanho = like '%" + pizza.Tamanho + "%' ";
+                auxSqlFiltro = "WHERE p.categoria like '%" + pizza.Categoria + "%' AND p.tamanho like '%" + pizza.Tamanho + "%' ";
             }
             conexao.Open();
             comando.CommandText =   @" " +
@@ -96,17 +90,28 @@ namespace PizzariaDoZe.DAO
                                     "categoria AS Categoria, " +
                                     "com_borda AS Com_Borda, " +
                                     "valor_borda AS Valor_Borda, " +
-                                    "valor_total AS Valor_Pizza, " +
+                                    "valor_total AS Valor, " +
                                     "sabor_borda AS Sabor_Borda " +
                                     "FROM tb_pizza AS p " +
                                     auxSqlFiltro +
                                     ";";
             //Executa o script na conexão e retorna as linhas afetadas.
             var sdr = comando.ExecuteReader();
+            while (sdr.Read())
+            {
+                pizza.ID = int.Parse(sdr["ID"].ToString()!);
+                pizza.Tamanho = sdr["Tamanho"].ToString()!;
+                pizza.Categoria = sdr["Categoria"].ToString()!;
+                pizza.ComBorda = (sdr["Com_Borda"].ToString()! == "1" ? true : false);
+                pizza.ValorBorda = decimal.Parse(sdr["Valor_Borda"].ToString()!);
+                pizza.ValorTotal = decimal.Parse(sdr["Valor"].ToString()!);
+                pizza.SaborBorda = sdr["Sabor_Borda"].ToString()!;
+                pizza.ListaSabores = BuscarSaboresPizza(pizza);
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
 
-            return linhas;
+            return (linhas, pizza);
         }
         public List<Sabor> BuscarSaboresPizza(Pizza pizza)
         {
@@ -122,12 +127,12 @@ namespace PizzariaDoZe.DAO
             {
                 auxSqlFiltro = "WHERE p.id_pizza = " + pizza.ID + " ";
             }
+            conexao.Open();
             comando.CommandText = @" " +
-                                    "SELECT s.id_sabor AS ID, s.descricao_sabor AS Nome, s.foto AS Foto, s.categoria AS Categoria, s.tipo AS Tipo, " +
+                                    "SELECT s.id_sabor AS ID, s.descricao_sabor AS Nome, s.foto AS Foto, s.categoria AS Categoria, s.tipo AS Tipo " +
                                     "FROM tb_sabores AS s " +
                                     "INNER JOIN sabores_pizza AS sp on s.id_sabor = sp.sabor_id " +
                                     "INNER JOIN tb_pizza AS p on p.id_pizza = sp.pizza_id " +
-                                    "FROM tb_sabores AS s " +
                                     auxSqlFiltro +
                                     "ORDER BY s.descricao_sabor;";
             //Executa o script na conexão e retorna as linhas afetadas.
@@ -151,8 +156,8 @@ namespace PizzariaDoZe.DAO
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
                                            
-            ConverterObjetoParaSql(pizza, comando);//Adiciona parâmetro (@campo e valor)
             conexao.Open();
+            ConverterObjetoParaSql(pizza, comando);//Adiciona parâmetro (@campo e valor)
             // Inicia o controle de Transação LOCAL
             DbTransaction transacao = conexao.BeginTransaction();
             // Associa o command com o controle de Transação

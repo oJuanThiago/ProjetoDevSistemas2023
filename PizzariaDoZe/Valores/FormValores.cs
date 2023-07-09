@@ -14,7 +14,8 @@ namespace PizzariaDoZe
 {
     public partial class FormValores : Form
     {
-        private PizzaDAO pizzaDAO;
+        private readonly PizzaDAO pizzaDAO;
+        private readonly SaborDAO saborDAO;
         public FormValores()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace PizzariaDoZe
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string strConnection = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
             pizzaDAO = new PizzaDAO(provider, strConnection);
-
+            saborDAO = new SaborDAO(provider, strConnection);
 
         }
 

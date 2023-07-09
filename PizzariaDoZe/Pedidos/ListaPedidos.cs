@@ -85,7 +85,7 @@ namespace PizzariaDoZe
             try
             {
                 //chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = pedidoDAO.Buscar(pedido);
+                (DataTable linhas, Pedido pedidoBuscado) = pedidoDAO.Buscar(pedido);
                 // seta o datasouce do dataGridView com os dados retornados
                 dataGridViewDados.Columns.Clear();
                 dataGridViewDados.AutoGenerateColumns = true;
@@ -208,25 +208,27 @@ namespace PizzariaDoZe
             try
             {
                 // chama o método para buscar todos os dados da nossa camada model
-                DataTable linhas = pedidoDAO.Buscar(pedido);
+                (DataTable linhas, Pedido pedidoBuscado) = pedidoDAO.Buscar(pedido);
                 // seta os dados na tela
                 foreach (DataRow row in linhas.Rows)
                 {
                     textBoxIDPedido.Text = row[0].ToString();
-                    // busca e seleciona os itens do sabor
-                    DataTable linhasIngredientes = saborDAO.BuscarItensSabor(pedido);
-                    foreach (DataRow dr in linhasIngredientes.Rows)
-                    {
-                        for (int i = 0; i < checkedListBoxIngredientes.Items.Count; i++)
-                        {
-                            if (dr[1].ToString() == ((Ingrediente)checkedListBoxIngredientes.Items[i]).Descricao.ToString())
-                            {
-                                checkedListBoxIngredientes.SetItemChecked(i, true);
-                            }
-                        }
-                    }
+                    maskedTextBoxValorPedido.Text = row[3].ToString();
+                    checkBoxEntregar.Checked = bool.Parse(row[4].ToString()!);
+                    maskedTextBoxCEP.Text = row[7].ToString();
+                    textBoxLogradouro.Text = row[8].ToString();
+                    textBoxBairro.Text = row[9].ToString();
+                    textBoxCidade.Text = row[10].ToString();
+                    comboBoxUF.Text = row[11].ToString();
+                    textBoxPais.Text = row[12].ToString();
+                    textBoxIDCliente.Text = row[13].ToString();
+                    textBoxNome.Text = row[14].ToString();
+                    maskedTextBoxCPF.Text = row[15].ToString();
+                    maskedTextBoxTel.Text = row[16].ToString();
+                    textBoxNumero.Text = row[17].ToString();
+                    textBoxComplemento.Text = row[18].ToString();
+                    textBoxEnderecoID.Text = row[19].ToString();
                 }
-                textBoxDescricao.Focus();
             }
             catch (Exception ex)
             {

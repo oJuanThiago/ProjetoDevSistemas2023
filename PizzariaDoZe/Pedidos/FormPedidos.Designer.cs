@@ -29,38 +29,6 @@
         private void InitializeComponent()
         {
             panelCadastrar = new Panel();
-            panelCadastrarCliente = new Panel();
-            labelCliente = new Label();
-            textBox1 = new TextBox();
-            labelEnderecoID = new Label();
-            maskedTextBoxClienteTel = new MaskedTextBox();
-            maskedTextBoxClienteCEP = new MaskedTextBox();
-            maskedTextBoxClienteCPF = new MaskedTextBox();
-            comboBox1 = new ComboBox();
-            buttonSalvar = new Button();
-            buttonClienteFechar = new Button();
-            label7 = new Label();
-            label8 = new Label();
-            textBox2 = new TextBox();
-            label9 = new Label();
-            label10 = new Label();
-            textBox3 = new TextBox();
-            label11 = new Label();
-            textBox4 = new TextBox();
-            label12 = new Label();
-            textBox5 = new TextBox();
-            label13 = new Label();
-            textBox6 = new TextBox();
-            label14 = new Label();
-            textBox7 = new TextBox();
-            label15 = new Label();
-            label16 = new Label();
-            textBoxClienteEmail = new TextBox();
-            labelEmail = new Label();
-            textBoxID = new TextBox();
-            label17 = new Label();
-            textBoxClienteNome = new TextBox();
-            label18 = new Label();
             maskedTextBoxValorPedido = new MaskedTextBox();
             label3 = new Label();
             groupBoxProduto = new GroupBox();
@@ -128,11 +96,42 @@
             labelNome = new Label();
             buttonCadastrar = new Button();
             buttonFechar = new Button();
+            panelCadastrarCliente = new Panel();
+            labelCliente = new Label();
+            textBox1 = new TextBox();
+            labelEnderecoID = new Label();
+            maskedTextBoxClienteTel = new MaskedTextBox();
+            maskedTextBoxClienteCEP = new MaskedTextBox();
+            maskedTextBoxClienteCPF = new MaskedTextBox();
+            comboBox1 = new ComboBox();
+            buttonSalvar = new Button();
+            buttonClienteFechar = new Button();
+            label7 = new Label();
+            label8 = new Label();
+            textBox2 = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            textBox3 = new TextBox();
+            label11 = new Label();
+            textBox4 = new TextBox();
+            label12 = new Label();
+            textBox5 = new TextBox();
+            label13 = new Label();
+            textBox6 = new TextBox();
+            label14 = new Label();
+            textBox7 = new TextBox();
+            label15 = new Label();
+            label16 = new Label();
+            textBoxClienteEmail = new TextBox();
+            labelEmail = new Label();
+            textBoxID = new TextBox();
+            label17 = new Label();
+            textBoxClienteNome = new TextBox();
+            label18 = new Label();
             panel1 = new Panel();
             labelPedido = new Label();
             menu1 = new Menu();
             panelCadastrar.SuspendLayout();
-            panelCadastrarCliente.SuspendLayout();
             groupBoxProduto.SuspendLayout();
             groupBoxAddPizza.SuspendLayout();
             groupBoxIngredientes.SuspendLayout();
@@ -140,6 +139,7 @@
             groupBoxTamanhoPizza.SuspendLayout();
             groupBoxEndereco.SuspendLayout();
             groupBoxCliente.SuspendLayout();
+            panelCadastrarCliente.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -161,370 +161,6 @@
             panelCadastrar.Name = "panelCadastrar";
             panelCadastrar.Size = new Size(1064, 581);
             panelCadastrar.TabIndex = 5;
-            // 
-            // panelCadastrarCliente
-            // 
-            panelCadastrarCliente.BackColor = Color.FromArgb(51, 51, 51);
-            panelCadastrarCliente.Controls.Add(labelCliente);
-            panelCadastrarCliente.Controls.Add(textBox1);
-            panelCadastrarCliente.Controls.Add(labelEnderecoID);
-            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteTel);
-            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteCEP);
-            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteCPF);
-            panelCadastrarCliente.Controls.Add(comboBox1);
-            panelCadastrarCliente.Controls.Add(buttonSalvar);
-            panelCadastrarCliente.Controls.Add(buttonClienteFechar);
-            panelCadastrarCliente.Controls.Add(label7);
-            panelCadastrarCliente.Controls.Add(label8);
-            panelCadastrarCliente.Controls.Add(textBox2);
-            panelCadastrarCliente.Controls.Add(label9);
-            panelCadastrarCliente.Controls.Add(label10);
-            panelCadastrarCliente.Controls.Add(textBox3);
-            panelCadastrarCliente.Controls.Add(label11);
-            panelCadastrarCliente.Controls.Add(textBox4);
-            panelCadastrarCliente.Controls.Add(label12);
-            panelCadastrarCliente.Controls.Add(textBox5);
-            panelCadastrarCliente.Controls.Add(label13);
-            panelCadastrarCliente.Controls.Add(textBox6);
-            panelCadastrarCliente.Controls.Add(label14);
-            panelCadastrarCliente.Controls.Add(textBox7);
-            panelCadastrarCliente.Controls.Add(label15);
-            panelCadastrarCliente.Controls.Add(label16);
-            panelCadastrarCliente.Controls.Add(textBoxClienteEmail);
-            panelCadastrarCliente.Controls.Add(labelEmail);
-            panelCadastrarCliente.Controls.Add(textBoxID);
-            panelCadastrarCliente.Controls.Add(label17);
-            panelCadastrarCliente.Controls.Add(textBoxClienteNome);
-            panelCadastrarCliente.Controls.Add(label18);
-            panelCadastrarCliente.Location = new Point(183, 89);
-            panelCadastrarCliente.Name = "panelCadastrarCliente";
-            panelCadastrarCliente.Size = new Size(654, 535);
-            panelCadastrarCliente.TabIndex = 86;
-            // 
-            // labelCliente
-            // 
-            labelCliente.AutoSize = true;
-            labelCliente.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCliente.ForeColor = SystemColors.ControlLightLight;
-            labelCliente.Location = new Point(50, 30);
-            labelCliente.Name = "labelCliente";
-            labelCliente.Size = new Size(270, 45);
-            labelCliente.TabIndex = 85;
-            labelCliente.Text = "Cadastrar Cliente";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(50, 221);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(50, 23);
-            textBox1.TabIndex = 78;
-            textBox1.TabStop = false;
-            // 
-            // labelEnderecoID
-            // 
-            labelEnderecoID.AutoSize = true;
-            labelEnderecoID.BackColor = Color.Transparent;
-            labelEnderecoID.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelEnderecoID.ForeColor = SystemColors.ButtonHighlight;
-            labelEnderecoID.Location = new Point(50, 203);
-            labelEnderecoID.Name = "labelEnderecoID";
-            labelEnderecoID.Size = new Size(20, 15);
-            labelEnderecoID.TabIndex = 77;
-            labelEnderecoID.Text = "ID";
-            // 
-            // maskedTextBoxClienteTel
-            // 
-            maskedTextBoxClienteTel.Location = new Point(462, 342);
-            maskedTextBoxClienteTel.Mask = "(00) 000-000-000";
-            maskedTextBoxClienteTel.Name = "maskedTextBoxClienteTel";
-            maskedTextBoxClienteTel.Size = new Size(133, 23);
-            maskedTextBoxClienteTel.TabIndex = 12;
-            maskedTextBoxClienteTel.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // maskedTextBoxClienteCEP
-            // 
-            maskedTextBoxClienteCEP.Location = new Point(117, 221);
-            maskedTextBoxClienteCEP.Mask = "00000-000";
-            maskedTextBoxClienteCEP.Name = "maskedTextBoxClienteCEP";
-            maskedTextBoxClienteCEP.Size = new Size(60, 23);
-            maskedTextBoxClienteCEP.TabIndex = 3;
-            maskedTextBoxClienteCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            maskedTextBoxClienteCEP.Leave += MaskedTextBoxClienteCEP_Leave;
-            // 
-            // maskedTextBoxClienteCPF
-            // 
-            maskedTextBoxClienteCPF.Location = new Point(333, 135);
-            maskedTextBoxClienteCPF.Mask = "000.000.000-00";
-            maskedTextBoxClienteCPF.Name = "maskedTextBoxClienteCPF";
-            maskedTextBoxClienteCPF.Size = new Size(133, 23);
-            maskedTextBoxClienteCPF.TabIndex = 2;
-            maskedTextBoxClienteCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(50, 342);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(50, 23);
-            comboBox1.TabIndex = 9;
-            // 
-            // buttonSalvar
-            // 
-            buttonSalvar.BackColor = Color.Green;
-            buttonSalvar.FlatAppearance.BorderColor = Color.Gray;
-            buttonSalvar.FlatAppearance.BorderSize = 0;
-            buttonSalvar.FlatStyle = FlatStyle.Flat;
-            buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSalvar.ForeColor = Color.White;
-            buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSalvar.Location = new Point(428, 472);
-            buttonSalvar.Name = "buttonSalvar";
-            buttonSalvar.Size = new Size(81, 38);
-            buttonSalvar.TabIndex = 13;
-            buttonSalvar.Text = "Salvar";
-            buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonSalvar.UseVisualStyleBackColor = false;
-            buttonSalvar.Click += buttonSalvar_Click;
-            // 
-            // buttonClienteFechar
-            // 
-            buttonClienteFechar.BackColor = Color.Gray;
-            buttonClienteFechar.FlatAppearance.BorderColor = Color.Gray;
-            buttonClienteFechar.FlatAppearance.BorderSize = 0;
-            buttonClienteFechar.FlatStyle = FlatStyle.Flat;
-            buttonClienteFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClienteFechar.ForeColor = Color.White;
-            buttonClienteFechar.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonClienteFechar.Location = new Point(515, 472);
-            buttonClienteFechar.Name = "buttonClienteFechar";
-            buttonClienteFechar.Size = new Size(80, 38);
-            buttonClienteFechar.TabIndex = 15;
-            buttonClienteFechar.Text = "Fechar";
-            buttonClienteFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonClienteFechar.UseVisualStyleBackColor = false;
-            buttonClienteFechar.Click += buttonClienteFechar_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(333, 117);
-            label7.Name = "label7";
-            label7.Size = new Size(27, 15);
-            label7.TabIndex = 73;
-            label7.Text = "CPF";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.ButtonHighlight;
-            label8.Location = new Point(462, 324);
-            label8.Name = "label8";
-            label8.Size = new Size(52, 15);
-            label8.TabIndex = 61;
-            label8.Text = "Telefone";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(117, 342);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(133, 23);
-            textBox2.TabIndex = 10;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.Transparent;
-            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.ForeColor = SystemColors.ButtonHighlight;
-            label9.Location = new Point(117, 324);
-            label9.Name = "label9";
-            label9.Size = new Size(28, 15);
-            label9.TabIndex = 59;
-            label9.Text = "País";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = SystemColors.ButtonHighlight;
-            label10.Location = new Point(50, 324);
-            label10.Name = "label10";
-            label10.Size = new Size(21, 15);
-            label10.TabIndex = 58;
-            label10.Text = "UF";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(50, 279);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(127, 23);
-            textBox3.TabIndex = 6;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.ButtonHighlight;
-            label11.Location = new Point(50, 261);
-            label11.Name = "label11";
-            label11.Size = new Size(38, 15);
-            label11.TabIndex = 57;
-            label11.Text = "Bairro";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(194, 279);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(208, 23);
-            textBox4.TabIndex = 7;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.BackColor = Color.Transparent;
-            label12.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.ForeColor = SystemColors.ButtonHighlight;
-            label12.Location = new Point(194, 261);
-            label12.Name = "label12";
-            label12.Size = new Size(83, 15);
-            label12.TabIndex = 56;
-            label12.Text = "Complemento";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(420, 279);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(175, 23);
-            textBox5.TabIndex = 8;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.Transparent;
-            label13.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.ForeColor = SystemColors.ButtonHighlight;
-            label13.Location = new Point(420, 261);
-            label13.Name = "label13";
-            label13.Size = new Size(43, 15);
-            label13.TabIndex = 55;
-            label13.Text = "Cidade";
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(545, 221);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(50, 23);
-            textBox6.TabIndex = 5;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.Transparent;
-            label14.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.ForeColor = SystemColors.ButtonHighlight;
-            label14.Location = new Point(545, 203);
-            label14.Name = "label14";
-            label14.Size = new Size(51, 15);
-            label14.TabIndex = 53;
-            label14.Text = "Número";
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(194, 221);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(332, 23);
-            textBox7.TabIndex = 4;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.Transparent;
-            label15.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.ForeColor = SystemColors.ButtonHighlight;
-            label15.Location = new Point(194, 203);
-            label15.Name = "label15";
-            label15.Size = new Size(69, 15);
-            label15.TabIndex = 52;
-            label15.Text = "Logradouro";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.BackColor = Color.Transparent;
-            label16.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.ForeColor = SystemColors.ButtonHighlight;
-            label16.Location = new Point(114, 203);
-            label16.Name = "label16";
-            label16.Size = new Size(27, 15);
-            label16.TabIndex = 51;
-            label16.Text = "CEP";
-            // 
-            // textBoxClienteEmail
-            // 
-            textBoxClienteEmail.Location = new Point(268, 342);
-            textBoxClienteEmail.Name = "textBoxClienteEmail";
-            textBoxClienteEmail.Size = new Size(177, 23);
-            textBoxClienteEmail.TabIndex = 11;
-            // 
-            // labelEmail
-            // 
-            labelEmail.AutoSize = true;
-            labelEmail.BackColor = Color.Transparent;
-            labelEmail.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelEmail.ForeColor = SystemColors.ButtonHighlight;
-            labelEmail.Location = new Point(268, 324);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(41, 15);
-            labelEmail.TabIndex = 49;
-            labelEmail.Text = "E-mail";
-            // 
-            // textBoxID
-            // 
-            textBoxID.Location = new Point(50, 135);
-            textBoxID.Name = "textBoxID";
-            textBoxID.ReadOnly = true;
-            textBoxID.Size = new Size(50, 23);
-            textBoxID.TabIndex = 54;
-            textBoxID.TabStop = false;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.Transparent;
-            label17.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.ForeColor = SystemColors.ButtonHighlight;
-            label17.Location = new Point(50, 117);
-            label17.Name = "label17";
-            label17.Size = new Size(20, 15);
-            label17.TabIndex = 42;
-            label17.Text = "ID";
-            // 
-            // textBoxClienteNome
-            // 
-            textBoxClienteNome.Location = new Point(117, 135);
-            textBoxClienteNome.Name = "textBoxClienteNome";
-            textBoxClienteNome.Size = new Size(200, 23);
-            textBoxClienteNome.TabIndex = 1;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.Transparent;
-            label18.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.ForeColor = SystemColors.ButtonHighlight;
-            label18.Location = new Point(117, 117);
-            label18.Name = "label18";
-            label18.Size = new Size(95, 15);
-            label18.TabIndex = 40;
-            label18.Text = "Nome Completo";
             // 
             // maskedTextBoxValorPedido
             // 
@@ -815,7 +451,6 @@
             // 
             // comboBoxSaborBorda
             // 
-            comboBoxSaborBorda.Enabled = false;
             comboBoxSaborBorda.FormattingEnabled = true;
             comboBoxSaborBorda.Items.AddRange(new object[] { "Catupiry", "Cheddar", "Requeijão", "Chocolate Branco", "Chocolate Preto" });
             comboBoxSaborBorda.Location = new Point(118, 194);
@@ -1298,6 +933,370 @@
             buttonFechar.UseVisualStyleBackColor = false;
             buttonFechar.Click += buttonFechar_Click;
             // 
+            // panelCadastrarCliente
+            // 
+            panelCadastrarCliente.BackColor = Color.FromArgb(51, 51, 51);
+            panelCadastrarCliente.Controls.Add(labelCliente);
+            panelCadastrarCliente.Controls.Add(textBox1);
+            panelCadastrarCliente.Controls.Add(labelEnderecoID);
+            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteTel);
+            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteCEP);
+            panelCadastrarCliente.Controls.Add(maskedTextBoxClienteCPF);
+            panelCadastrarCliente.Controls.Add(comboBox1);
+            panelCadastrarCliente.Controls.Add(buttonSalvar);
+            panelCadastrarCliente.Controls.Add(buttonClienteFechar);
+            panelCadastrarCliente.Controls.Add(label7);
+            panelCadastrarCliente.Controls.Add(label8);
+            panelCadastrarCliente.Controls.Add(textBox2);
+            panelCadastrarCliente.Controls.Add(label9);
+            panelCadastrarCliente.Controls.Add(label10);
+            panelCadastrarCliente.Controls.Add(textBox3);
+            panelCadastrarCliente.Controls.Add(label11);
+            panelCadastrarCliente.Controls.Add(textBox4);
+            panelCadastrarCliente.Controls.Add(label12);
+            panelCadastrarCliente.Controls.Add(textBox5);
+            panelCadastrarCliente.Controls.Add(label13);
+            panelCadastrarCliente.Controls.Add(textBox6);
+            panelCadastrarCliente.Controls.Add(label14);
+            panelCadastrarCliente.Controls.Add(textBox7);
+            panelCadastrarCliente.Controls.Add(label15);
+            panelCadastrarCliente.Controls.Add(label16);
+            panelCadastrarCliente.Controls.Add(textBoxClienteEmail);
+            panelCadastrarCliente.Controls.Add(labelEmail);
+            panelCadastrarCliente.Controls.Add(textBoxID);
+            panelCadastrarCliente.Controls.Add(label17);
+            panelCadastrarCliente.Controls.Add(textBoxClienteNome);
+            panelCadastrarCliente.Controls.Add(label18);
+            panelCadastrarCliente.Location = new Point(183, 89);
+            panelCadastrarCliente.Name = "panelCadastrarCliente";
+            panelCadastrarCliente.Size = new Size(654, 535);
+            panelCadastrarCliente.TabIndex = 86;
+            // 
+            // labelCliente
+            // 
+            labelCliente.AutoSize = true;
+            labelCliente.Font = new Font("Yu Gothic UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCliente.ForeColor = SystemColors.ControlLightLight;
+            labelCliente.Location = new Point(50, 30);
+            labelCliente.Name = "labelCliente";
+            labelCliente.Size = new Size(270, 45);
+            labelCliente.TabIndex = 85;
+            labelCliente.Text = "Cadastrar Cliente";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(50, 221);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(50, 23);
+            textBox1.TabIndex = 78;
+            textBox1.TabStop = false;
+            // 
+            // labelEnderecoID
+            // 
+            labelEnderecoID.AutoSize = true;
+            labelEnderecoID.BackColor = Color.Transparent;
+            labelEnderecoID.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelEnderecoID.ForeColor = SystemColors.ButtonHighlight;
+            labelEnderecoID.Location = new Point(50, 203);
+            labelEnderecoID.Name = "labelEnderecoID";
+            labelEnderecoID.Size = new Size(20, 15);
+            labelEnderecoID.TabIndex = 77;
+            labelEnderecoID.Text = "ID";
+            // 
+            // maskedTextBoxClienteTel
+            // 
+            maskedTextBoxClienteTel.Location = new Point(462, 342);
+            maskedTextBoxClienteTel.Mask = "(00) 000-000-000";
+            maskedTextBoxClienteTel.Name = "maskedTextBoxClienteTel";
+            maskedTextBoxClienteTel.Size = new Size(133, 23);
+            maskedTextBoxClienteTel.TabIndex = 12;
+            maskedTextBoxClienteTel.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxClienteCEP
+            // 
+            maskedTextBoxClienteCEP.Location = new Point(117, 221);
+            maskedTextBoxClienteCEP.Mask = "00000-000";
+            maskedTextBoxClienteCEP.Name = "maskedTextBoxClienteCEP";
+            maskedTextBoxClienteCEP.Size = new Size(60, 23);
+            maskedTextBoxClienteCEP.TabIndex = 3;
+            maskedTextBoxClienteCEP.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            maskedTextBoxClienteCEP.Leave += MaskedTextBoxClienteCEP_Leave;
+            // 
+            // maskedTextBoxClienteCPF
+            // 
+            maskedTextBoxClienteCPF.Location = new Point(333, 135);
+            maskedTextBoxClienteCPF.Mask = "000.000.000-00";
+            maskedTextBoxClienteCPF.Name = "maskedTextBoxClienteCPF";
+            maskedTextBoxClienteCPF.Size = new Size(133, 23);
+            maskedTextBoxClienteCPF.TabIndex = 2;
+            maskedTextBoxClienteCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(50, 342);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(50, 23);
+            comboBox1.TabIndex = 9;
+            // 
+            // buttonSalvar
+            // 
+            buttonSalvar.BackColor = Color.Green;
+            buttonSalvar.FlatAppearance.BorderColor = Color.Gray;
+            buttonSalvar.FlatAppearance.BorderSize = 0;
+            buttonSalvar.FlatStyle = FlatStyle.Flat;
+            buttonSalvar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSalvar.ForeColor = Color.White;
+            buttonSalvar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSalvar.Location = new Point(428, 472);
+            buttonSalvar.Name = "buttonSalvar";
+            buttonSalvar.Size = new Size(81, 38);
+            buttonSalvar.TabIndex = 13;
+            buttonSalvar.Text = "Salvar";
+            buttonSalvar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonSalvar.UseVisualStyleBackColor = false;
+            buttonSalvar.Click += buttonSalvar_Click;
+            // 
+            // buttonClienteFechar
+            // 
+            buttonClienteFechar.BackColor = Color.Gray;
+            buttonClienteFechar.FlatAppearance.BorderColor = Color.Gray;
+            buttonClienteFechar.FlatAppearance.BorderSize = 0;
+            buttonClienteFechar.FlatStyle = FlatStyle.Flat;
+            buttonClienteFechar.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClienteFechar.ForeColor = Color.White;
+            buttonClienteFechar.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonClienteFechar.Location = new Point(515, 472);
+            buttonClienteFechar.Name = "buttonClienteFechar";
+            buttonClienteFechar.Size = new Size(80, 38);
+            buttonClienteFechar.TabIndex = 15;
+            buttonClienteFechar.Text = "Fechar";
+            buttonClienteFechar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonClienteFechar.UseVisualStyleBackColor = false;
+            buttonClienteFechar.Click += buttonClienteFechar_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ButtonHighlight;
+            label7.Location = new Point(333, 117);
+            label7.Name = "label7";
+            label7.Size = new Size(27, 15);
+            label7.TabIndex = 73;
+            label7.Text = "CPF";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.ButtonHighlight;
+            label8.Location = new Point(462, 324);
+            label8.Name = "label8";
+            label8.Size = new Size(52, 15);
+            label8.TabIndex = 61;
+            label8.Text = "Telefone";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(117, 342);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(133, 23);
+            textBox2.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ButtonHighlight;
+            label9.Location = new Point(117, 324);
+            label9.Name = "label9";
+            label9.Size = new Size(28, 15);
+            label9.TabIndex = 59;
+            label9.Text = "País";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = SystemColors.ButtonHighlight;
+            label10.Location = new Point(50, 324);
+            label10.Name = "label10";
+            label10.Size = new Size(21, 15);
+            label10.TabIndex = 58;
+            label10.Text = "UF";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(50, 279);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(127, 23);
+            textBox3.TabIndex = 6;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.ButtonHighlight;
+            label11.Location = new Point(50, 261);
+            label11.Name = "label11";
+            label11.Size = new Size(38, 15);
+            label11.TabIndex = 57;
+            label11.Text = "Bairro";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(194, 279);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(208, 23);
+            textBox4.TabIndex = 7;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = SystemColors.ButtonHighlight;
+            label12.Location = new Point(194, 261);
+            label12.Name = "label12";
+            label12.Size = new Size(83, 15);
+            label12.TabIndex = 56;
+            label12.Text = "Complemento";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(420, 279);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(175, 23);
+            textBox5.TabIndex = 8;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = SystemColors.ButtonHighlight;
+            label13.Location = new Point(420, 261);
+            label13.Name = "label13";
+            label13.Size = new Size(43, 15);
+            label13.TabIndex = 55;
+            label13.Text = "Cidade";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(545, 221);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(50, 23);
+            textBox6.TabIndex = 5;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.ForeColor = SystemColors.ButtonHighlight;
+            label14.Location = new Point(545, 203);
+            label14.Name = "label14";
+            label14.Size = new Size(51, 15);
+            label14.TabIndex = 53;
+            label14.Text = "Número";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(194, 221);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(332, 23);
+            textBox7.TabIndex = 4;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.ForeColor = SystemColors.ButtonHighlight;
+            label15.Location = new Point(194, 203);
+            label15.Name = "label15";
+            label15.Size = new Size(69, 15);
+            label15.TabIndex = 52;
+            label15.Text = "Logradouro";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label16.ForeColor = SystemColors.ButtonHighlight;
+            label16.Location = new Point(114, 203);
+            label16.Name = "label16";
+            label16.Size = new Size(27, 15);
+            label16.TabIndex = 51;
+            label16.Text = "CEP";
+            // 
+            // textBoxClienteEmail
+            // 
+            textBoxClienteEmail.Location = new Point(268, 342);
+            textBoxClienteEmail.Name = "textBoxClienteEmail";
+            textBoxClienteEmail.Size = new Size(177, 23);
+            textBoxClienteEmail.TabIndex = 11;
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.BackColor = Color.Transparent;
+            labelEmail.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelEmail.ForeColor = SystemColors.ButtonHighlight;
+            labelEmail.Location = new Point(268, 324);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(41, 15);
+            labelEmail.TabIndex = 49;
+            labelEmail.Text = "E-mail";
+            // 
+            // textBoxID
+            // 
+            textBoxID.Location = new Point(50, 135);
+            textBoxID.Name = "textBoxID";
+            textBoxID.ReadOnly = true;
+            textBoxID.Size = new Size(50, 23);
+            textBoxID.TabIndex = 54;
+            textBoxID.TabStop = false;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = Color.Transparent;
+            label17.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.ForeColor = SystemColors.ButtonHighlight;
+            label17.Location = new Point(50, 117);
+            label17.Name = "label17";
+            label17.Size = new Size(20, 15);
+            label17.TabIndex = 42;
+            label17.Text = "ID";
+            // 
+            // textBoxClienteNome
+            // 
+            textBoxClienteNome.Location = new Point(117, 135);
+            textBoxClienteNome.Name = "textBoxClienteNome";
+            textBoxClienteNome.Size = new Size(200, 23);
+            textBoxClienteNome.TabIndex = 1;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.Transparent;
+            label18.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label18.ForeColor = SystemColors.ButtonHighlight;
+            label18.Location = new Point(117, 117);
+            label18.Name = "label18";
+            label18.Size = new Size(95, 15);
+            label18.TabIndex = 40;
+            label18.Text = "Nome Completo";
+            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(51, 51, 51);
@@ -1342,8 +1341,6 @@
             Text = "FormPedidos";
             panelCadastrar.ResumeLayout(false);
             panelCadastrar.PerformLayout();
-            panelCadastrarCliente.ResumeLayout(false);
-            panelCadastrarCliente.PerformLayout();
             groupBoxProduto.ResumeLayout(false);
             groupBoxProduto.PerformLayout();
             groupBoxAddPizza.ResumeLayout(false);
@@ -1357,6 +1354,8 @@
             groupBoxEndereco.PerformLayout();
             groupBoxCliente.ResumeLayout(false);
             groupBoxCliente.PerformLayout();
+            panelCadastrarCliente.ResumeLayout(false);
+            panelCadastrarCliente.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

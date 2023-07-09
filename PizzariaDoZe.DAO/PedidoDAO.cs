@@ -57,8 +57,8 @@ namespace PizzariaDoZe.DAO
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
                                            //Adiciona parâmetro (@campo e valor)
-            conexao.Open();
             ConverterObjetoParaSql(pedido, comando);
+            conexao.Open();
             // Inicia o controle de Transação LOCAL
             DbTransaction transacao = conexao.BeginTransaction();
             // Associa o command com o controle de Transação
@@ -68,24 +68,25 @@ namespace PizzariaDoZe.DAO
                 //ajusta o comando SQL para capturar o ID gerado tanto do MySQL como do SQLServer
                 string auxSQL_ID = Provider.Contains("MySql") ? "SELECT LAST_INSERT_ID();" : "SELECT SCOPE_IDENTITY();";
                 //realiza o INSERT e retorna o ID gerado, algo que vai ser necessário na sequencia
-                comando.CommandText = @"INSERT INTO tb_pedidos (cliente_id, funcionario_id, status, entrega, pago, valor_total, data_pedido) VALUES (@cliente_id, @funcionario_id, @status, @entrega, @pago, @total, @data_pedido);" + auxSQL_ID;
+                comando.CommandText = @"INSERT INTO tb_pedidos (cliente_id, status, entrega, pago, valor_total, data_pedido) " +
+                                        "VALUES (@cliente_id, @status, @entrega, @pago, @total, @data_pedido); " + auxSQL_ID;
+                
+                var linhasRecebimentoComanda = comando.ExecuteNonQuery();
                 //executa o comando no banco de dados e captura o ID gerado
                 var IdPedidoGerado = comando.ExecuteScalar();
-                // realiza um loop para pegar todos os ingredientes selecionados
+                // realiza um loop para pegar todas as pizzas e produtos selecionados
 
                 foreach (Pizza pizza in pedido.ListaPizzas)
                 {
-                    // salvar os ingredientes do sabor
-                    comando.CommandText = @"INSERT INTO lista_pizzas(pedido_id, pizza_id) VALUES (" + pedido.ID + "," + pizza.ID + ")";
+                    comando.CommandText = @" INSERT INTO lista_pizzas(pizza_id, pedido_id) VALUES (" + pizza.ID + "," + Convert.ToInt32(IdPedidoGerado) + ");";
                     //Executa o script na conexão
-                    _ = comando.ExecuteNonQuery();
+                    var linhasRecebimentoComanda1 = comando.ExecuteNonQuery();
                 }
                 foreach (Produto produto in pedido.ListaProdutos)
                 {
-                    // salvar os ingredientes do sabor
-                    comando.CommandText = @"INSERT INTO lista_produtos(pedido_id, produto_id) VALUES (" + pedido.ID + "," + produto.ID + ")";
+                    comando.CommandText = @" INSERT INTO lista_produtos(pedido_id, produto_id) VALUES (" + Convert.ToInt32(IdPedidoGerado) + "," + produto.ID + ");";
                     //Executa o script na conexão
-                    _ = comando.ExecuteNonQuery();
+                    var linhasRecebimentoComanda2 = comando.ExecuteNonQuery();
                 }
 
                 // Como não ocorreu nenhum erro, confirma as transações através do Commit()
@@ -102,7 +103,7 @@ namespace PizzariaDoZe.DAO
                 throw new Exception(ex.Message);
             }
         }
-        public DataTable Buscar(Pedido pedido)
+        public (DataTable, Pedido) Buscar(Pedido pedido)
         {
             var auxSqlFiltro = "";
 
@@ -170,11 +171,15 @@ namespace PizzariaDoZe.DAO
                                     "ORDER BY pe.data_pedido desc;";
 
             var sdr = comando.ExecuteReader();
+            while (sdr.Read())
+            {
+                pedido = ConverterSqlParaObjeto(sdr);
+            }
             DataTable linhas = new();
             linhas.Load(sdr);
-            return linhas;
+            return (linhas, pedido);
         }
-        public (DataTable, List<Produto>) BuscarProdutosPorPedido(Pedido pedido)
+        public List<Produto> BuscarProdutosPorPedido(Pedido pedido)
         {
             var auxSqlFiltro = "";
 
@@ -206,12 +211,10 @@ namespace PizzariaDoZe.DAO
                 produto.Tipo = sdr["Tipo"].ToString()!;
                 produto.ML = sdr["ML"].ToString()!;
             }
-            DataTable linhas = new();
-            linhas.Load(sdr);
-            return (linhas, listaProdutos);
+            return listaProdutos;
         }
 
-        public (DataTable,List<Pizza>) BuscarPizzasPorPedido(Pedido pedido)
+        public List<Pizza> BuscarPizzasPorPedido(Pedido pedido)
         {
             var auxSqlFiltro = "";
 
@@ -253,9 +256,7 @@ namespace PizzariaDoZe.DAO
 
                 listaPizzas.Add(pizza);
             }
-            DataTable linhas = new();
-            linhas.Load(sdr);
-            return (linhas, listaPizzas);
+            return listaPizzas;
         }
         public void Editar(Pedido pedido)
         {
@@ -350,28 +351,37 @@ namespace PizzariaDoZe.DAO
 
         private void ConverterObjetoParaSql(Pedido pedido, DbCommand comando)
         {
-            var Id = comando.CreateParameter(); Id.ParameterName = "@cliente_id"; Id.Value = pedido.ID; comando.Parameters.Add(Id);
-            var IdCliente = comando.CreateParameter(); IdCliente.ParameterName = "@cliente_id"; IdCliente.Value = pedido.IDCliente; comando.Parameters.Add(IdCliente);
-            var IdFuncionario = comando.CreateParameter(); IdFuncionario.ParameterName = "@funcionario_id"; IdFuncionario.Value = pedido.IDFuncionario; comando.Parameters.Add(IdFuncionario);
-            var Status = comando.CreateParameter(); Status.ParameterName = "@status"; Status.Value = pedido.Status; comando.Parameters.Add(Status);
-            var Entrega = comando.CreateParameter(); Entrega.ParameterName = "@entrega"; Entrega.Value = pedido.Entrega; comando.Parameters.Add(Entrega);
-            var Pago = comando.CreateParameter(); Pago.ParameterName = "@entrega"; Pago.Value = pedido.Pago; comando.Parameters.Add(Pago);
-            var ValorTotal = comando.CreateParameter(); ValorTotal.ParameterName = "@valor_total"; ValorTotal.Value = pedido.ValorTotal; comando.Parameters.Add(ValorTotal);
-            var DataPedido = comando.CreateParameter(); DataPedido.ParameterName = "@data_pedido"; DataPedido.Value = pedido.DataPedido; comando.Parameters.Add(DataPedido);
+            var Id = comando.CreateParameter(); Id.ParameterName = "@id"; Id.Value = pedido.ID; comando.Parameters.Add(Id);
+            var IdCliente = comando.CreateParameter(); IdCliente.ParameterName = "@cliente_id"; 
+            IdCliente.Value = pedido.IDCliente; comando.Parameters.Add(IdCliente);
+            var IdFuncionario = comando.CreateParameter(); IdFuncionario.ParameterName = "@funcionario_id"; 
+            IdFuncionario.Value = pedido.IDFuncionario; comando.Parameters.Add(IdFuncionario);
+            var Status = comando.CreateParameter(); Status.ParameterName = "@status"; 
+            Status.Value = pedido.Status; comando.Parameters.Add(Status);
+            var Entrega = comando.CreateParameter(); Entrega.ParameterName = "@entrega"; 
+            Entrega.Value = pedido.Entrega; comando.Parameters.Add(Entrega);
+            var Pago = comando.CreateParameter(); Pago.ParameterName = "@pago"; 
+            Pago.Value = pedido.Pago; comando.Parameters.Add(Pago);
+            var ValorTotal = comando.CreateParameter(); ValorTotal.ParameterName = "@total"; 
+            ValorTotal.Value = pedido.ValorTotal; comando.Parameters.Add(ValorTotal);
+            var DataPedido = comando.CreateParameter(); DataPedido.ParameterName = "@data_pedido"; 
+            DataPedido.Value = pedido.DataPedido; comando.Parameters.Add(DataPedido);
         }
-        // private Pedido ConverterSqlParaObjeto(DbDataReader leitor)
-        // {
-        //     var pedido = new Pedido();
-        //     pedido.ID = int.Parse(leitor["id_pedido"].ToString()!);
-        //     pedido.IDCliente = int.Parse(leitor["cliente_id"].ToString()!);
-        //     pedido.IDFuncionario = int.Parse(leitor["funcionario_id"].ToString()!);
-        //     pedido.Status = leitor["status"].ToString()!;
-        //     pedido.Entrega = bool.Parse(leitor["entrega"].ToString()!);
-        //     pedido.Pago = bool.Parse(leitor["pago"].ToString()!);
-        //     pedido.DataPedido = Convert.ToDateTime(leitor["data_pedido"].ToString()!);
-        //     pedido.AtribuirValorTotal(decimal.Parse(leitor["valor_total"].ToString()!));
+        private Pedido ConverterSqlParaObjeto(DbDataReader leitor)
+        {
+            var pedido = new Pedido();
+            pedido.ID = int.Parse(leitor["id_pedido"].ToString()!);
+            pedido.IDCliente = int.Parse(leitor["cliente_id"].ToString()!);
+            pedido.IDFuncionario = int.Parse(leitor["funcionario_id"].ToString()!);
+            pedido.Status = leitor["status"].ToString()!;
+            pedido.Entrega = bool.Parse(leitor["entrega"].ToString()!);
+            pedido.Pago = bool.Parse(leitor["pago"].ToString()!);
+            pedido.DataPedido = Convert.ToDateTime(leitor["data_pedido"].ToString()!);
+            pedido.AtribuirValorTotal(decimal.Parse(leitor["valor_total"].ToString()!));
+            pedido.ListaProdutos = BuscarProdutosPorPedido(pedido);
+            pedido.ListaPizzas = BuscarPizzasPorPedido(pedido);
 
-        //     return pedido;
-        // }
+            return pedido;
+        }
     }
 }
